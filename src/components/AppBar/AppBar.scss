@@ -1,0 +1,70 @@
+@import "./_globleStyle.scss";
+
+.navbar-app {
+    width: 100%;
+    height: 50px;
+    padding: $spacing;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: $fontSize24;
+    font-weight: $fontWeightBold;
+    background-color: $pinkD291BC;
+    h1.navbar-logo {
+        width: fit-content;
+        height: fit-content;
+        box-sizing: border-box;
+        padding: $spacing;
+        font-size: $fontSize24 * 1.5;
+        background-color: none;
+        color: $white;
+        font-weight: $fontWeightMedium;
+        transition: $transition02;
+        cursor: pointer;
+        &:hover {
+            background-color: $rgba01;
+        }
+    }
+    .info {
+        h1 {
+            width: fit-content;
+            height: fit-content;
+            box-sizing: border-box;
+            font-size: $fontSize24;
+            background-color: none;
+            color: $white;
+            font-weight: $fontWeightLight;
+            transition: $transition02;
+        }
+    }
+    .group-info {
+        width: 22%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        .sb-avatar {
+            cursor: pointer;
+        }
+        .wrap-icon {
+            width: fit-content;
+            height: fit-content;
+            margin: 0 $spacing;
+            background-color: none;
+            i {
+                color: $white;
+                cursor: pointer;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: $spacing;
+                transition: $transition02;
+                font-size: $fontSize18;
+                &:hover {
+                    background-color: $violet957DAD;
+                }
+            }
+        }
+    }
+}

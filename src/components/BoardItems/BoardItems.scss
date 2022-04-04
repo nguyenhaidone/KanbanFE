@@ -1,0 +1,34 @@
+@import "./_globleStyle.scss";
+
+.wrap-items {
+    position: relative;
+    width: 250px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+    height: 110px;
+    border-radius: $borderRadius;
+    img {
+        width: 100%;
+        border-radius: $borderRadius;
+        height: 100%;
+    }
+    .wrap-title {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        span {
+            font-weight: $fontWeightMedium;
+            font-size: $fontSize18;
+            transition: all 0.2s ease;
+            color: $d9d9d9;
+            display: inline-block;
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+    }
+    &:hover .wrap-title span {
+        color: $white;
+    }
+}

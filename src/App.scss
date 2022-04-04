@@ -1,0 +1,71 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./_globleStyle.scss";
+
+body {
+    margin: 0;
+    font-family: $fontFamily;
+    font-size: $fontSize14;
+    font-weight: $fontWeightRegular;
+    line-height: 1.3em;
+}
+
+.App {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 40px 50px 1fr;
+    line-height: 1.3em;
+    background-color: $blue1;
+    .icon {
+        font-size: $fontSize14;
+        margin-right: 3px;
+    }
+    .trello-container {
+        margin: 0 15px;
+        padding: 0;
+    }
+    textarea:focus,
+    textarea.form-control:focus,
+    input.form-control:focus,
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    [type="text"].form-control:focus,
+    [type="password"].form-control:focus,
+    [type="email"].form-control:focus,
+    [type="tel"].form-control:focus,
+    [contenteditable].form-control:focus {
+        outline: none;
+        box-shadow: none;
+        border-color: $whitefefefe;
+    }
+    .btn:focus,
+    .btn:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .trello-content-editable {
+        background-color: inherit;
+        border: none;
+        font-size: inherit;
+        font-weight: inherit;
+        cursor: pointer;
+        &:focus {
+            background-color: $white;
+            border: 1px solid $whitefefefe;
+        }
+    }
+
+    span.cancel-add-new {
+        margin: 0 $spacing * 1.5;
+        cursor: pointer;
+        i {
+            font-size: $fontSize20;
+            color: $redSuccess;
+            &:hover {
+                color: $redSuccessHover;
+            }
+        }
+    }
+}

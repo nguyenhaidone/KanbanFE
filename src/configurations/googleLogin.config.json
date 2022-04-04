@@ -1,0 +1,10 @@
+{
+  "web": {
+    "client_id": "532459309976-u4anma0797gt5vfgahcran9fib07vdi2.apps.googleusercontent.com",
+    "project_id": "taskmanagementkanban-345604",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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"
+  }
+}

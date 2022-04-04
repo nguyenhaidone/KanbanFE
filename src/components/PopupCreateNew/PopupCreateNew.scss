@@ -1,0 +1,117 @@
+@import "./_globleStyle.scss";
+
+.wrap-popup {
+    z-index: 999999;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    // background-color: $rgba02;
+    width: 100%;
+    .popup {
+        position: absolute;
+        top: 25%;
+        left: 36%;
+        width: 350px;
+        height: 350px;
+        background-color: $white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        transition: $transition02;
+        border-radius: $borderRadius * 2;
+        box-shadow: $boxShadowStyle3;
+        .title {
+            width: 100%;
+            box-sizing: border-box;
+            padding: $spacing * 1.5 0;
+            text-align: center;
+            border-bottom: 1px solid $blue11324D;
+            span {
+                font-size: $fontSize18;
+                color: $blue11324D;
+                font-weight: $fontWeightLight;
+            }
+        }
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: $spacing * 2;
+            label {
+                width: 100%;
+                margin: $spacing;
+                font-size: $fontSize18;
+                color: $blue11324D;
+                font-weight: $fontWeightLight;
+            }
+            input {
+                background-color: $white1;
+                width: 100%;
+                height: $spacing * 6;
+                box-sizing: border-box;
+                padding: $spacing $spacing * 2;
+                font-size: $fontSize14;
+                color: $black1;
+                font-weight: $fontWeightLight;
+                outline: none;
+                border-radius: $borderRadius;
+                border: none;
+            }
+            .list-color {
+                width: 100%;
+                height: 100px;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                .color-option {
+                    width: 36px;
+                    height: 36px;
+                    border-radius: $borderRadius;
+                    margin: $spacing * 0.5;
+                    cursor: pointer;
+                    &:hover {
+                        box-shadow: $boxShadowStyle1;
+                    }
+                }
+            }
+        }
+        .group-button {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            button {
+                font-size: $fontSize18;
+                color: $blue11324D;
+                font-weight: $fontWeightLight;
+                width: 50%;
+                box-sizing: border-box;
+                border-bottom: none;
+                background-color: $white;
+                border-top: 1px solid $blue11324D;
+                padding: $spacing * 1.5 0;
+                transition: $transition02;
+                &:hover {
+                    background-color: $blue11324D;
+                    color: $white;
+                }
+            }
+            .close {
+                border-right: 0.5px solid $blue11324D;
+                border-bottom-left-radius: $borderRadius * 2;
+                border-left: none;
+            }
+            .accept {
+                border-bottom-right-radius: $borderRadius * 2;
+                border-left: 0.5px solid $blue11324D;
+                border-right: none;
+            }
+        }
+    }
+}

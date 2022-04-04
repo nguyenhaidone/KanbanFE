@@ -1,0 +1,10 @@
+@import './_globleStyle.scss';
+
+.navbar-board {
+    padding-left: $spacing;
+    display: flex;
+    align-items: center;
+    font-size: $fontSize20;
+    font-weight: $fontWeightMedium;
+    // background-color: $blue3;
+}

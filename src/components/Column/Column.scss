@@ -1,0 +1,112 @@
+@import "./_globleStyle.scss";
+
+.columns {
+    flex: 0 0 auto;
+    width: 300px;
+    height: calc(100% - #{$spacing});
+    margin-left: $spacing;
+    > * {
+        background-color: $white1;
+        color: $black1;
+        padding: 0 $spacing;
+    }
+    header {
+        padding: $spacing;
+        display: flex;
+        cursor: pointer;
+        height: $lineHeight36 * 1.2;
+        line-height: $lineHeight36;
+        font-size: $fontSize18;
+        font-weight: $fontWeightBold;
+        border-top-left-radius: $borderRadius * 1.5;
+        border-top-right-radius: $borderRadius * 1.5;
+        .column-title {
+            flex: 90%;
+        }
+        .column-dropdown-actions {
+            flex: 10%;
+            .dropdown {
+                button.dropdown-btn {
+                    padding: 0 $spacing;
+                    font-size: $fontSize14;
+                    height: 32px;
+                    margin-top: -10px;
+                    font-weight: $fontWeightBold;
+                    letter-spacing: 1px;
+                    background-color: transparent;
+                    border-color: transparent;
+                    cursor: pointer;
+                    color: $black1;
+                    &:after {
+                        content: "...";
+                        border: none;
+                        outline: none;
+                        vertical-align: 1.255em;
+                    }
+                    &:hover {
+                        background-color: $whitefefefe;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 15px;
+        height: $lineHeight36;
+        line-height: $lineHeight36;
+        font-size: $fontSize14;
+        font-weight: $fontWeightRegular;
+        border-bottom-left-radius: $borderRadius;
+        border-bottom-right-radius: $borderRadius;
+        color: $gray;
+        transition: 0.5s;
+        .footer-actions {
+            cursor: pointer;
+            &:hover {
+                color: $black1;
+            }
+        }
+    }
+    .card-list {
+        list-style-type: none;
+        margin: 0;
+        max-height: 600px;
+        overflow-y: auto;
+        .card-ghost {
+            transition: transform 0.18s ease;
+            transform: rotateZ(5deg);
+            font-weight: $fontWeightBold;
+        }
+
+        .card-ghost-drop {
+            transition: transform 0.18s ease-in-out;
+            transform: rotateZ(0deg);
+        }
+        .drop-preview {
+            background-color: rgba(150, 150, 200, 0.1);
+            // border: 1px dashed #abc;
+            margin: 5px;
+        }
+
+        .column-drop-preview {
+            background-color: rgba(150, 150, 200, 0.1);
+            // border: 1px dashed #abc;
+            margin: 5px 45px 5px 5px;
+        }
+        .smooth-dnd-draggable-wrapper {
+            border-radius: $borderRadius;
+            margin: $spacing 0;
+        }
+
+        .add-new-card {
+            .textarea-enter-new-card {
+                min-height: 54px;
+                max-height: 162px;
+                margin-bottom: $spacing;
+            }
+        }
+    }
+}

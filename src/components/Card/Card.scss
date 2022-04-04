@@ -1,0 +1,20 @@
+@import "./_globleStyle.scss";
+
+.card-item {
+    background-color: $white;
+    padding: $spacing;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    &:not(:last-child) {
+        margin-bottom: $spacing;
+    }
+    img {
+        display: block;
+        width: calc(100% + 2 * #{$spacing});
+        margin: -$spacing 0 $spacing (-$spacing);
+        // width: 100%;
+        border-top-left-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
+    }
+    border-radius: $borderRadius;
+}

@@ -1,0 +1,23 @@
+@import "./_globleStyle.scss";
+
+.btn-group {
+    margin: 0 $spacing;
+    button {
+        width: 100px;
+        height: 36px;
+        border: none;
+        color: $blue11324D;
+        font-weight: $fontWeightLight;
+        font-size: $fontSize18;
+        transition: $transition02;
+        transition: $transition02;
+    }
+    .vn-btn {
+        border-top-left-radius: $borderRadius;
+        border-bottom-left-radius: $borderRadius;
+    }
+    .en-btn {
+        border-top-right-radius: $borderRadius;
+        border-bottom-right-radius: $borderRadius;
+    }
+}

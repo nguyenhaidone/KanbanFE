@@ -1,0 +1,52 @@
+@import "./_globleStyle.scss";
+
+.workspace {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    &:after {
+        content: "";
+        flex: 0 0 $spacing;
+    }
+
+    .add-new-column {
+        width: 250px;
+        max-width: 250px;
+        height: 32px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        line-height: 32px;
+        padding: 4px 0px 4px 15px;
+        margin: 0 $spacing;
+        cursor: pointer;
+        color: $black1;
+        background-color: hsl(0, 0%, 100%, 0.24);
+        border-radius: $borderRadius;
+        &:hover {
+            background-color: hsl(0, 0%, 100%, 0.8);
+            color: $black1;
+        }
+    }
+
+    .enter-new-column {
+        width: 250px;
+        max-width: 250px;
+        background-color: $white1;
+        border-radius: $borderRadius/2;
+        line-height: 32px;
+        margin: 0 $spacing;
+        padding: $spacing;
+        input.input-enter-new-column {
+            margin: 5px 0;
+        }
+        button {
+            background-color: $greenSuccess;
+            border: 1px solid $greenSuccess;
+            &:hover {
+                background-color: $greenSuccessHover;
+                border: 1px solid $greenSuccessHover;
+            }
+        }
+    }
+}

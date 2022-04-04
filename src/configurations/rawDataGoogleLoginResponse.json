@@ -1,0 +1,54 @@
+{
+  "Ba": "107410504993802271842",
+  "wc": {
+    "token_type": "Bearer",
+    "access_token": "ya29.A0ARrdaM_ij6s7elJ0Z4_gW8MkdIiXVnWf8Q8PFTLWbvZZ3LPbiqyRzmrb-VIC3ncPXQ9nqSyJ-ycBp6q5AGvsDIQ_BP0y5CCp_lc69uEoJlQyMa1FkvDVD3W27RvmKKcd7maCf41T97133WH-PWBNIU49IgDw",
+    "scope": "email profile https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email",
+    "login_hint": "AJDLj6JUa8yxXrhHdWRHIV0S13cAoEPHse8KSoiwIedy__WkUs54Vr83gjHaIECVEcL91ey6krSzWp_ACUMzZs5WZlyG16rgiQ",
+    "expires_in": 3599,
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU4YjQyOTY2MmRiMDc4NmYyZWZlZmUxM2MxZWIxMmEyOGRjNDQyZDAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTMyNDU5MzA5OTc2LXU0YW5tYTA3OTdndDV2ZmdhaGNyYW45ZmliMDd2ZGkyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTMyNDU5MzA5OTc2LXU0YW5tYTA3OTdndDV2ZmdhaGNyYW45ZmliMDd2ZGkyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3NDEwNTA0OTkzODAyMjcxODQyIiwiZW1haWwiOiJkYW5nNjgyMDAwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiZ0Rsd3BYOVYwVjhqalZ3YnNfMXhvZyIsIm5hbWUiOiJI4bqjaSDEkMSDbmciLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUFUWEFKd3dDd2c2WHA2R0Y1ZXB6dmFiSGY4TXpQbE9yQm8yd1F4a1JjV3c9czk2LWMiLCJnaXZlbl9uYW1lIjoiSOG6o2kiLCJmYW1pbHlfbmFtZSI6IsSQxINuZyIsImxvY2FsZSI6InZpIiwiaWF0IjoxNjQ4NTM4MzA4LCJleHAiOjE2NDg1NDE5MDgsImp0aSI6IjQxOTczNTQwMjg1NjJlNGEzZjk3OGMzNzVlNmYyYTM5OTA0YTM2NDYifQ.sGrigTHqNhmlMYVliHFreKc4Mp4JnJ0l9jT6LYbhy9eXDWRohj81rGtETK0gs_zFLq-olbDjnIcHNPa4BvOaxIoha7S9fGXWdtjDMqLfCHA0uDBXF8GFsFtaa4O5Nv-QobuGBF3C0v99upfAS9Xw3TMWPiVzYqEuaJpKNcv8wi4EiN0ib8K145JwDKjY3WQZN6diULALInGa0_aA93P2tofv9BYNpQKba50s5XxY9nBSGX01MJW_Lg7wcXjUH2en028lZfBti5c5EWw2zSuM4Lak6o6U9DYGEngJrw7GtXYyOqZhCTuYR51byp9RuPe49V4MJ6Q3zpv-KWf2aBU5XA",
+    "session_state": {
+      "extraQueryParams": {
+        "authuser": "0"
+      }
+    },
+    "first_issued_at": 1648538308602,
+    "expires_at": 1648541907602,
+    "idpId": "google"
+  },
+  "Iu": {
+    "RW": "107410504993802271842",
+    "sf": "Hải Đăng",
+    "gY": "Hải",
+    "uW": "Đăng",
+    "zN": "https://lh3.googleusercontent.com/a/AATXAJwwCwg6Xp6GF5epzvabHf8MzPlOrBo2wQxkRcWw=s96-c",
+    "yv": "dang682000@gmail.com"
+  },
+  "googleId": "107410504993802271842",
+  "tokenObj": {
+    "token_type": "Bearer",
+    "access_token": "ya29.A0ARrdaM_wGgoWVyjKp38ETPk_upOTDE2oxf4mY1C-H9VWTJ1qP38j3jYXm2unRd0FHTYKo0CWk7C4S43zHQ4HU1Pvv35FkpG_oke4HeMBbv5hu6hu0EkWifm0qdivcroj36AWJWciSzPzCGtjkFoAqb9m3AkX",
+    "scope": "email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",
+    "login_hint": "AJDLj6JUa8yxXrhHdWRHIV0S13cAoEPHse8KSoiwIedy__WkUs54Vr83gjHaIECVEcL91ey6krSzWp_ACUMzZs5WZlyG16rgiQ",
+    "expires_in": 3599,
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU4YjQyOTY2MmRiMDc4NmYyZWZlZmUxM2MxZWIxMmEyOGRjNDQyZDAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTMyNDU5MzA5OTc2LXU0YW5tYTA3OTdndDV2ZmdhaGNyYW45ZmliMDd2ZGkyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTMyNDU5MzA5OTc2LXU0YW5tYTA3OTdndDV2ZmdhaGNyYW45ZmliMDd2ZGkyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3NDEwNTA0OTkzODAyMjcxODQyIiwiZW1haWwiOiJkYW5nNjgyMDAwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiNmJMc0tZQV8wcnNxVVNUa0IxZHpqdyIsIm5hbWUiOiJI4bqjaSDEkMSDbmciLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUFUWEFKd3dDd2c2WHA2R0Y1ZXB6dmFiSGY4TXpQbE9yQm8yd1F4a1JjV3c9czk2LWMiLCJnaXZlbl9uYW1lIjoiSOG6o2kiLCJmYW1pbHlfbmFtZSI6IsSQxINuZyIsImxvY2FsZSI6InZpIiwiaWF0IjoxNjQ4NTI5ODA0LCJleHAiOjE2NDg1MzM0MDQsImp0aSI6IjFjNTA2ZTYxZDM2NGE1NjNiNzRjYjg2ZjM2NzRmYTYzNjNiMzhlMjMifQ.wOq4sUk10OqR6aUL0TfjADOlPBcXip4s1lEFLRd7kHq9g9SdKMUuEkC0RA03jcOVDfVoffjA4NYRh2Y_qvCHgvjH2cAB78lF5vF5frZbPyuaAJH3yb6WEmbfRshlFDAp293lDx1dvp2p6wDWlkP-ebEmPOkxVPbc3Xs7uYz3hN_G9mLaEQL-68DGflxX5BpNKC0tjmS2N0Ah999WsSvJI-AiBr7CieM1YGRvtdiZHGZHKlFnF2hMqcAyKNq_6Vhjq4zxUggxZkBT0AslU0ki0NFYHiTECS6ZNrwAAet_Yqh9VxI8IeTuR4MfKg2c8480Vyczyp0orRVPLQ4l-7R2UA",
+    "session_state": {
+      "extraQueryParams": {
+        "authuser": "0"
+      }
+    },
+    "first_issued_at": 1648529804697,
+    "expires_at": 1648533403697,
+    "idpId": "google"
+  },
+  "tokenId": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU4YjQyOTY2MmRiMDc4NmYyZWZlZmUxM2MxZWIxMmEyOGRjNDQyZDAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTMyNDU5MzA5OTc2LXU0YW5tYTA3OTdndDV2ZmdhaGNyYW45ZmliMDd2ZGkyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTMyNDU5MzA5OTc2LXU0YW5tYTA3OTdndDV2ZmdhaGNyYW45ZmliMDd2ZGkyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3NDEwNTA0OTkzODAyMjcxODQyIiwiZW1haWwiOiJkYW5nNjgyMDAwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiNmJMc0tZQV8wcnNxVVNUa0IxZHpqdyIsIm5hbWUiOiJI4bqjaSDEkMSDbmciLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUFUWEFKd3dDd2c2WHA2R0Y1ZXB6dmFiSGY4TXpQbE9yQm8yd1F4a1JjV3c9czk2LWMiLCJnaXZlbl9uYW1lIjoiSOG6o2kiLCJmYW1pbHlfbmFtZSI6IsSQxINuZyIsImxvY2FsZSI6InZpIiwiaWF0IjoxNjQ4NTI5ODA0LCJleHAiOjE2NDg1MzM0MDQsImp0aSI6IjFjNTA2ZTYxZDM2NGE1NjNiNzRjYjg2ZjM2NzRmYTYzNjNiMzhlMjMifQ.wOq4sUk10OqR6aUL0TfjADOlPBcXip4s1lEFLRd7kHq9g9SdKMUuEkC0RA03jcOVDfVoffjA4NYRh2Y_qvCHgvjH2cAB78lF5vF5frZbPyuaAJH3yb6WEmbfRshlFDAp293lDx1dvp2p6wDWlkP-ebEmPOkxVPbc3Xs7uYz3hN_G9mLaEQL-68DGflxX5BpNKC0tjmS2N0Ah999WsSvJI-AiBr7CieM1YGRvtdiZHGZHKlFnF2hMqcAyKNq_6Vhjq4zxUggxZkBT0AslU0ki0NFYHiTECS6ZNrwAAet_Yqh9VxI8IeTuR4MfKg2c8480Vyczyp0orRVPLQ4l-7R2UA",
+  "accessToken": "ya29.A0ARrdaM_wGgoWVyjKp38ETPk_upOTDE2oxf4mY1C-H9VWTJ1qP38j3jYXm2unRd0FHTYKo0CWk7C4S43zHQ4HU1Pvv35FkpG_oke4HeMBbv5hu6hu0EkWifm0qdivcroj36AWJWciSzPzCGtjkFoAqb9m3AkX",
+  "profileObj": {
+    "googleId": "107410504993802271842",
+    "imageUrl": "https://lh3.googleusercontent.com/a/AATXAJwwCwg6Xp6GF5epzvabHf8MzPlOrBo2wQxkRcWw=s96-c",
+    "email": "dang682000@gmail.com",
+    "name": "Hải Đăng",
+    "givenName": "Hải",
+    "familyName": "Đăng"
+  }
+}
