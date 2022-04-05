@@ -8,10 +8,12 @@ import Register from "components/Register/Register";
 import BoardItems from "components/BoardItems/BoardItems";
 import ListBoardItems from "components/ListBoardItems/ListBoardItems";
 import PopupBoardItems from "components/PopupCreateNew/PopupCreateNew";
+import CardPayment from "components/CardPayment/CardPayment";
 import HomepageContainer from "containers/HomepageContainer/HomepageContainer";
 import LoginContainer from "containers/LoginContainer/LoginContainer";
 import RegisterContainer from "containers/RegisterContainer/RegisterContainer";
 import BoardContainer from "containers/BoardContainer/BoardContainer";
+import PaymentContainer from "containers/PaymentContainer/PaymentContainer";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -24,6 +26,7 @@ const App = () => {
           <Route path="/login" element={<LoginContainer />}></Route>
           <Route path="/register" element={<RegisterContainer />}></Route>
           <Route path="/board" element={<BoardContainer />}></Route>
+          <Route path="/payment-plan" element={<PaymentContainer />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
