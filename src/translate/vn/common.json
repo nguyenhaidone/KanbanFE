@@ -49,5 +49,18 @@
   "whatIsBoardName": "Bảng của bạn tên là: ",
   "newBoardExample": "Ví dụ: Dự án quản lý đô thị...",
   "helloFriend": "Xin chào {{name}}!",
-  "colorBackground": "Màu nền cho bảng: {{colorCode}}"
+  "colorBackground": "Màu nền cho bảng: {{colorCode}}",
+  "basicPlan": "Gói cơ bản",
+  "exclusivePlan": "Gói chọn lọc",
+  "free": "Miễn phí",
+  "currentPlan": "Gói hiện tại",
+  "purchaseNow": "Mua ngay",
+  "month": "tháng",
+  "limitBoard": "Có thể tạo tối đa 10 bảng",
+  "unlimitedBoard": "Không giới hạn số bảng tạo",
+  "cannotInvite": "Không thể mời người cộng tác",
+  "canInvite": "Thoải mái mời bạn bè, đồng nghiệp, cộng tác tham gia vào dự án",
+  "otherFeature": "Và rất nhiều tính năng hữu ích khác chờ bạn khám phá...",
+  "notification": "Thông báo",
+  "youUsingCurrentPlan": "Bạn đang sử dụng gói này"
 }

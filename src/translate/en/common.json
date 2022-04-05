@@ -49,5 +49,18 @@
   "whatIsBoardName": "Board's name is: ",
   "newBoardExample": "Example: Awesome project,.. ",
   "helloFriend": "Hello {{name}}!",
-  "colorBackground": "Background color for board: {{colorCode}}"
+  "colorBackground": "Background color for board: {{colorCode}}",
+  "basicPlan": "Basic plan",
+  "exclusivePlan": "Exclusive plan",
+  "free": "Free",
+  "currentPlan": "Current plan",
+  "purchaseNow": "Purchase now",
+  "month": "month",
+  "limitBoard": "Can only create up to 10 boards",
+  "unlimitedBoard": "Unlimited number of boards created",
+  "cannotInvite": "Can't invite collaborators",
+  "canInvite": "Feel free to invite friends, colleagues, collaborators to participate in the project",
+  "otherFeature": "And many other useful features waiting for you to discover...",
+  "notification": "Notification",
+  "youUsingCurrentPlan": "You are using this plan"
 }

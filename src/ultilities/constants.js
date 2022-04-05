@@ -18,3 +18,7 @@ export const LIST_COLOR_THEME = [
   "#E2A3B4",
   "#AE99BF",
 ];
+export const USD = "$";
+export const VND = "đồng";
+export const USD_TO_VND_RATE = 22000;
+export const EXCLUSIVE_PLAN_FEE = 99.99;
