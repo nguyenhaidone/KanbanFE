@@ -8,6 +8,8 @@ import { Dropdown, Form, Button } from "react-bootstrap";
 import ConfirmModal from "components/Common/ConfirmModal";
 import { MODAL_ACTION_CONFIRM } from "utils/constants";
 import { saveContent, selectAllInlineText } from "utils/contentEditable";
+import { createNewCardlApi } from "../../libs/apis/card.api";
+import { updateColumnlApi } from "../../libs/apis/column.api";
 
 import "./Column.scss";
 
@@ -36,21 +38,21 @@ const Column = (props) => {
     }
 
     const newCardToAdd = {
-      id: Math.random().toString(36).substr(2, 5),
+      // id: Math.random().toString(36).substr(2, 5),
       boardId: column.boardId,
       columnId: column._id,
       title: newCardTitle.trim(),
-      cover: null,
     };
+    createNewCardlApi(newCardToAdd).then((card) => {
+      let newColumns = cloneDeep(column);
 
-    let newColumns = cloneDeep(column);
+      newColumns.cards.push(card);
+      newColumns.cardOrder.push(card._id);
 
-    newColumns.cards.push(newCardToAdd);
-    newColumns.cardOrder.push(newCardToAdd._id);
-
-    onUpdateColumn(newColumns);
-    setNewCardTitle("");
-    setIsCreateInputOpen(false);
+      onUpdateColumn(newColumns);
+      setNewCardTitle("");
+      setIsCreateInputOpen(false);
+    });
   };
 
   const handleShowConfirmation = () =>
@@ -66,7 +68,9 @@ const Column = (props) => {
         ...column,
         _destroy: true,
       };
-      onUpdateColumn(newColumn);
+      updateColumnlApi(newColumn, newColumn._id).then((updatedCol) => {
+        onUpdateColumn(updatedCol);
+      });
     }
     setIsShowConfirmPopup(!isShowConfirmPopup);
   };
@@ -76,11 +80,16 @@ const Column = (props) => {
   };
 
   const handleColumnTitleBlur = (e) => {
-    const newColumn = {
-      ...column,
-      title: columnTitle,
-    };
-    onUpdateColumn(newColumn);
+    if (columnTitle !== column.title) {
+      const newColumn = {
+        ...column,
+        title: columnTitle,
+      };
+      updateColumnlApi(newColumn, newColumn._id).then((updatedCol) => {
+        updatedCol.cards = newColumn.cards;
+        onUpdateColumn(updatedCol);
+      });
+    }
   };
 
   const onChangeInput = (e) => {
