@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import { mapOrder } from "utils/ultis";
 import { applyDrag } from "../../utils/dnd";
 import { boardDetailApi } from "../../libs/apis/board.api";
+import { createNewColumnlApi } from "../../libs/apis/column.api";
 
 const BoardContent = () => {
   const [board, setBoard] = useState({});
@@ -32,9 +33,7 @@ const BoardContent = () => {
       if (board) {
         setBoard(board);
 
-        setColumn(
-          mapOrder(board.columns, board.columnOrder, "_id")
-        );
+        setColumn(mapOrder(board.columns, board.columnOrder, "_id"));
       }
     });
   }, []);
@@ -86,23 +85,23 @@ const BoardContent = () => {
     }
 
     const newColumnToAdd = {
-      id: Math.random().toString(36).substr(2, 5),
       boardId: board._id,
       title: newColumnTitle.trim(),
-      cardOrder: [],
-      cards: [],
     };
 
-    let newColumns = [...column];
-    newColumns.push(newColumnToAdd);
+    createNewColumnlApi(newColumnToAdd).then((newCol) => {
+      console.log(newCol);
+      let newColumns = [...column];
+      newColumns.push(newCol);
 
-    let newBoard = { ...board };
-    newBoard.columnOrder = newColumns.map((c) => c._id);
-    newBoard.columns = newColumns;
-    setBoard(newBoard);
-    setColumn(newColumns);
-    setNewColumnTitle("");
-    setIsCreateInputOpen(false);
+      let newBoard = { ...board };
+      newBoard.columnOrder = newColumns.map((c) => c._id);
+      newBoard.columns = newColumns;
+      setBoard(newBoard);
+      setColumn(newColumns);
+      setNewColumnTitle("");
+      setIsCreateInputOpen(false);
+    });
   };
 
   const onChangeInput = (e) => {
