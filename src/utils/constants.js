@@ -22,3 +22,4 @@ export const USD = "$";
 export const VND = "đồng";
 export const USD_TO_VND_RATE = 22000;
 export const EXCLUSIVE_PLAN_FEE = 99.99;
+export const API_ROUTE = "http://localhost:8080";

@@ -1,5 +1,5 @@
 import React from "react";
-import { MODAL_ACTION_CLOSE, MODAL_ACTION_CONFIRM } from "ultilities/constants";
+import { MODAL_ACTION_CLOSE, MODAL_ACTION_CONFIRM } from "utils/constants";
 import { Button, Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
