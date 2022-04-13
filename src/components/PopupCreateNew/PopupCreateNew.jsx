@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { LIST_COLOR_THEME } from "../../ultilities/constants";
+import { LIST_COLOR_THEME } from "../../utils/constants";
 import "./PopupCreateNew.scss";
 
 const PopupCreateNew = (props) => {

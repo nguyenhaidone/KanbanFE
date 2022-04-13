@@ -3,17 +3,17 @@ import { Container, Draggable } from "react-smooth-dnd";
 import { useTranslation } from "react-i18next";
 import Card from "components/Card/Card";
 import { cloneDeep } from "lodash";
-import { mapOrder } from "ultilities/ultis";
+import { mapOrder } from "utils/ultis";
 import { Dropdown, Form, Button } from "react-bootstrap";
 import ConfirmModal from "components/Common/ConfirmModal";
-import { MODAL_ACTION_CONFIRM } from "ultilities/constants";
-import { saveContent, selectAllInlineText } from "ultilities/contentEditable";
+import { MODAL_ACTION_CONFIRM } from "utils/constants";
+import { saveContent, selectAllInlineText } from "utils/contentEditable";
 
 import "./Column.scss";
 
 const Column = (props) => {
   const { column, onCardDrop, onUpdateColumn } = props;
-  const cards = mapOrder(column.cards, column.cardOrder, "id");
+  const cards = mapOrder(column.cards, column.cardOrder, "_id");
   const { t } = useTranslation();
   const [isShowConfirmPopup, setIsShowConfirmPopup] = useState(false);
   const [columnTitle, setColumnTitle] = useState("");
@@ -38,7 +38,7 @@ const Column = (props) => {
     const newCardToAdd = {
       id: Math.random().toString(36).substr(2, 5),
       boardId: column.boardId,
-      columnId: column.id,
+      columnId: column._id,
       title: newCardTitle.trim(),
       cover: null,
     };
@@ -46,7 +46,7 @@ const Column = (props) => {
     let newColumns = cloneDeep(column);
 
     newColumns.cards.push(newCardToAdd);
-    newColumns.cardOrder.push(newCardToAdd.id);
+    newColumns.cardOrder.push(newCardToAdd._id);
 
     onUpdateColumn(newColumns);
     setNewCardTitle("");
@@ -138,15 +138,15 @@ const Column = (props) => {
             groupName="col"
             // onDragStart={(e) => console.log("drag started", e)}
             // onDragEnd={(e) => console.log("drag end", e)}
-            onDrop={(dropResult) => onCardDrop(column.id, dropResult)}
+            onDrop={(dropResult) => onCardDrop(column._id, dropResult)}
             getChildPayload={(index) => cards[index]}
             dragClass="card-ghost"
             dropClass="card-ghost-drop"
             // onDragEnter={() => {
-            //   console.log("drag enter:", column.id);
+            //   console.log("drag enter:", column._id);
             // }}
             // onDragLeave={() => {
-            //   console.log("drag leave:", column.id);
+            //   console.log("drag leave:", column._id);
             // }}
             // onDropReady={(p) => console.log("Drop ready: ", p)}
             dropPlaceholder={{
