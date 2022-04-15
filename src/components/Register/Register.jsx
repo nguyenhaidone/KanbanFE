@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import GoogleLoginButton from "components/GoogleLogin/GoogleLogin";
-import React from "react";
+import React,{useState} from "react";
 import "./Register.scss";
 import * as Yup from "yup";
 
@@ -29,7 +29,6 @@ const Register = () => {
     password: "",
     rePassword: "",
     username: "",
-    // rememberMe: false,
   };
 
   const handleOnSubmit = (values) => {
@@ -147,7 +146,6 @@ const Register = () => {
                 )}
               </div>
               <button
-                onClick={handleOnSubmit}
                 type="submit"
                 className="submit-btn"
               >
