@@ -4,6 +4,7 @@ import GoogleLoginButton from "components/GoogleLogin/GoogleLogin";
 import React from "react";
 import "./Login.scss";
 import * as Yup from "yup";
+import { loginApi } from "../../libs/apis/auth.api";
 // import { useHistory } from "react-router-dom";
 
 const Login = () => {
@@ -28,7 +29,10 @@ const Login = () => {
   };
 
   const handleOnSubmit = (values) => {
-    console.log(values);
+    const data = { email: values.email, password: values.password };
+    loginApi(data).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -48,7 +52,6 @@ const Login = () => {
         validateOnChange={false}
       >
         {(props) => {
-          console.log(props);
           return (
             <form
               className="form-login"
@@ -110,7 +113,6 @@ const Login = () => {
                 <label className="password-label">{t("text.rememberMe")}</label>
               </div>
               <button
-                onClick={handleOnSubmit}
                 type="submit"
                 className="submit-btn"
               >

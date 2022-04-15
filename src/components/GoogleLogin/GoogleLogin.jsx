@@ -2,22 +2,27 @@ import React from "react";
 import "./GoogleLogin.scss";
 import { useTranslation } from "react-i18next";
 import GoogleLogin from "react-google-login";
+import { GoogleLoginDto } from "./googleLoginDto";
+import { socialLoginApi } from "../../libs/apis/auth.api";
 
 const GoogleLoginButton = () => {
   const { t } = useTranslation();
 
   const responseGoogle = (response) => {
-    console.log(response);
+    const dataMapping = GoogleLoginDto(response.profileObj);
+    socialLoginApi(dataMapping).then((data) => {
+      console.log(data);
+    });
   };
 
   return (
     <GoogleLogin
       clientId="532459309976-u4anma0797gt5vfgahcran9fib07vdi2.apps.googleusercontent.com"
-    //   render={(renderProps) => (
-    //     <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
-    //       {t("text.loginByGoogle")}
-    //     </button>
-    //   )}
+      //   render={(renderProps) => (
+      //     <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
+      //       {t("text.loginByGoogle")}
+      //     </button>
+      //   )}
       buttonText={t("text.loginByGoogle")}
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
