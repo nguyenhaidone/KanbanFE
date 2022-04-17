@@ -9,13 +9,18 @@ import {
   Button,
 } from "react-bootstrap";
 import "./BoardContent.scss";
-import { isEmpty } from "lodash";
+import { isEmpty, cloneDeep } from "lodash";
 import { initialData } from "actions/initialData";
 import { useTranslation } from "react-i18next";
 import { mapOrder } from "utils/ultis";
 import { applyDrag } from "../../utils/dnd";
-import { boardDetailApi } from "../../libs/apis/board.api";
-import { createNewColumnlApi } from "../../libs/apis/column.api";
+import { boardDetailApi, updateBoardlApi } from "../../libs/apis/board.api";
+import {
+  createNewColumnlApi,
+  updateColumnlApi,
+} from "../../libs/apis/column.api";
+
+import { updateCardlApi } from "../../libs/apis/card.api";
 
 const BoardContent = () => {
   const [board, setBoard] = useState({});
@@ -50,24 +55,28 @@ const BoardContent = () => {
   }
 
   const onColumnDrop = (dropResult) => {
-    let newColumn = [...column];
+    let newColumn = cloneDeep(column);
     newColumn = applyDrag(newColumn, dropResult);
 
-    let newBoard = { ...board };
+    let newBoard = cloneDeep(board);
     newBoard.columnOrder = newColumn.map((c) => c._id);
     newBoard.columns = newColumn;
+    /**
+     * !call api update column order
+     */
     setBoard(newBoard);
     setColumn(newColumn);
-
-    // console.log(dropResult);
-    // console.log(column);
-    // console.log(newColumn);
+    updateBoardlApi(newBoard._id, newBoard).catch((error) => {
+      console.log(error);
+      setBoard(board);
+      setColumn(column);
+    });
   };
 
   const onCardDrop = (columnId, dropResult) => {
     //log history when change column
     if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-      let newColumn = [...column];
+      let newColumn = cloneDeep(column);
 
       let curColumn = newColumn.find((c) => c._id === columnId);
 
@@ -75,6 +84,30 @@ const BoardContent = () => {
       curColumn.cardOrder = curColumn.cards.map((i) => i._id);
 
       setColumn(newColumn);
+
+      if (dropResult.removedIndex !== null && dropResult.addedIndex !== null) {
+        //move card inside col
+        //update order current col
+        updateColumnlApi(curColumn, curColumn._id).catch((error) => {
+          setColumn(newColumn);
+        });
+      } 
+      else {
+        //move card between 2 cols
+        //update order current col and col._id of card moving
+        // console.log(curColumn)
+        updateColumnlApi(curColumn, curColumn._id).catch((error) => {
+          setColumn(newColumn);
+        });
+
+        // console.log(dropResult);
+        if (dropResult.addedIndex !== null) {
+          let currentCard = cloneDeep(dropResult.payload);
+          currentCard.columnId = curColumn._id;
+          // console.log(currentCard);
+          updateCardlApi(currentCard, currentCard._id);
+        }
+      }
     }
   };
 
@@ -90,7 +123,7 @@ const BoardContent = () => {
     };
 
     createNewColumnlApi(newColumnToAdd).then((newCol) => {
-      console.log(newCol);
+      // console.log(newCol);
       let newColumns = [...column];
       newColumns.push(newCol);
 
@@ -125,7 +158,7 @@ const BoardContent = () => {
     newBoard.columns = newColumn;
     setBoard(newBoard);
     setColumn(newColumn);
-    console.log(columnIndexToUpdate);
+    // console.log(columnIndexToUpdate);
   };
 
   return (

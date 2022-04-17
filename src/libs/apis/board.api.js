@@ -6,3 +6,9 @@ export const boardDetailApi = async (id) => {
   console.log(request.data.data);
   return request.data.data;
 };
+
+export const updateBoardlApi = async (id, body) => {
+  const request = await axios.put(`${API_ROUTE}/v1/boards/${id}`, body);
+  console.log(request.data.data);
+  return request.data.data;
+};
