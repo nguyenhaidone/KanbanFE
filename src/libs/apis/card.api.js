@@ -6,3 +6,9 @@ export const createNewCardlApi = async (body) => {
   console.log(request.data.data);
   return request.data.data;
 };
+
+export const updateCardlApi = async (body, id) => {
+  const request = await axios.put(`${API_ROUTE}/v1/cards/${id}`, body);
+  console.log(request.data.data);
+  return request.data.data;
+};
