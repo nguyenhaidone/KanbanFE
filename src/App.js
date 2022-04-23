@@ -4,6 +4,7 @@ import AppBar from "components/AppBar/AppBar";
 import BoardBar from "components/BoardBar/BoardBar";
 import BoardContent from "components/BoardContent/BoardContent";
 import Login from "components/Login/Login";
+import PopupCardDetail from "components/PopupCardDetail/PopupCardDetail";
 import Register from "components/Register/Register";
 import BoardItems from "components/BoardItems/BoardItems";
 import ListBoardItems from "components/ListBoardItems/ListBoardItems";
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/register" element={<RegisterContainer />}></Route>
           <Route path="/board" element={<BoardContainer />}></Route>
           <Route path="/payment-plan" element={<PaymentContainer />}></Route>
+          <Route path="/card-detail" element={<PopupCardDetail />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
