@@ -7,7 +7,7 @@ const HomepageContainer = () => {
   return (
     <div>
       <AppBar />
-      <div className="wrap-container">
+      <div className="wrap-homepage-container">
         <ListBoardItems />
       </div>
     </div>

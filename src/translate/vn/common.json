@@ -62,5 +62,9 @@
   "canInvite": "Thoải mái mời bạn bè, đồng nghiệp, cộng tác tham gia vào dự án",
   "otherFeature": "Và rất nhiều tính năng hữu ích khác chờ bạn khám phá...",
   "notification": "Thông báo",
-  "youUsingCurrentPlan": "Bạn đang sử dụng gói này"
+  "youUsingCurrentPlan": "Bạn đang sử dụng gói này",
+  "assignee": "Người thực hiện: {{assignee}}",
+  "createdAt": "Tạo lúc: {{time}}",
+  "creater": "Người tạo: {{creater}}",
+  "description": "Mô tả"
 }

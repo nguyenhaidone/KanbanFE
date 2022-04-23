@@ -62,5 +62,9 @@
   "canInvite": "Feel free to invite friends, colleagues, collaborators to participate in the project",
   "otherFeature": "And many other useful features waiting for you to discover...",
   "notification": "Notification",
-  "youUsingCurrentPlan": "You are using this plan"
+  "youUsingCurrentPlan": "You are using this plan",
+  "assignee": "Assignee: {{assignee}}",
+  "createdAt": "Created at: {{time}}",
+  "creater": "Creater: {{creater}}",
+  "description": "Description"
 }

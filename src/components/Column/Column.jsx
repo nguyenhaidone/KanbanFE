@@ -14,7 +14,7 @@ import { updateColumnlApi } from "../../libs/apis/column.api";
 import "./Column.scss";
 
 const Column = (props) => {
-  const { column, onCardDrop, onUpdateColumn } = props;
+  const { column, onCardDrop, onUpdateColumn, handleOpenPopup } = props;
   const cards = mapOrder(column.cards, column.cardOrder, "_id");
   const { t } = useTranslation();
   const [isShowConfirmPopup, setIsShowConfirmPopup] = useState(false);
@@ -167,7 +167,7 @@ const Column = (props) => {
           >
             {cards.map((card, index) => (
               <Draggable key={index}>
-                <Card card={card} />
+                <Card card={card} handleOpenPopup={handleOpenPopup} />
               </Draggable>
             ))}
           </Container>

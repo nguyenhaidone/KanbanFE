@@ -22,7 +22,8 @@ import {
 
 import { updateCardlApi } from "../../libs/apis/card.api";
 
-const BoardContent = () => {
+const BoardContent = (props) => {
+  const { handleOpenPopup } = props;
   const [board, setBoard] = useState({});
   const [column, setColumn] = useState([]);
   const [isCreateInputOpen, setIsCreateInputOpen] = useState(false);
@@ -91,8 +92,7 @@ const BoardContent = () => {
         updateColumnlApi(curColumn, curColumn._id).catch((error) => {
           setColumn(newColumn);
         });
-      } 
-      else {
+      } else {
         //move card between 2 cols
         //update order current col and col._id of card moving
         // console.log(curColumn)
@@ -181,6 +181,7 @@ const BoardContent = () => {
                 column={column}
                 onCardDrop={onCardDrop}
                 onUpdateColumn={onUpdateColumn}
+                handleOpenPopup={handleOpenPopup}
               />
             </Draggable>
           ))}
