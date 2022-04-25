@@ -15,6 +15,7 @@ import LoginContainer from "containers/LoginContainer/LoginContainer";
 import RegisterContainer from "containers/RegisterContainer/RegisterContainer";
 import BoardContainer from "containers/BoardContainer/BoardContainer";
 import PaymentContainer from "containers/PaymentContainer/PaymentContainer";
+import AuthContainer from "containers/AuthContainer/AuthContainer";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -23,10 +24,25 @@ const App = () => {
     <div className="App" style={{ backgroundColor: "white" }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/homepage" element={<HomepageContainer />}></Route>
+          <Route
+            path="/"
+            element={
+              <AuthContainer>
+                <HomepageContainer />
+              </AuthContainer>
+            }
+          ></Route>
+          <Route
+            path="/homepage"
+            element={
+              <AuthContainer>
+                <HomepageContainer />
+              </AuthContainer>
+            }
+          ></Route>
           <Route path="/login" element={<LoginContainer />}></Route>
           <Route path="/register" element={<RegisterContainer />}></Route>
-          <Route path="/board" element={<BoardContainer />}></Route>
+          <Route path="/board/:id" element={<BoardContainer />}></Route>
           <Route path="/payment-plan" element={<PaymentContainer />}></Route>
           <Route path="/card-detail" element={<PopupCardDetail />}></Route>
         </Routes>

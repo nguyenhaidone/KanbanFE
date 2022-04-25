@@ -4,14 +4,18 @@ import { useTranslation } from "react-i18next";
 import GoogleLogin from "react-google-login";
 import { GoogleLoginDto } from "./googleLoginDto";
 import { socialLoginApi } from "../../libs/apis/auth.api";
+import { setToken, getToken } from "../../utils/localStorageService";
+import { useNavigate } from "react-router-dom";
 
 const GoogleLoginButton = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const responseGoogle = (response) => {
     const dataMapping = GoogleLoginDto(response.profileObj);
     socialLoginApi(dataMapping).then((data) => {
-      console.log(data);
+      setToken(data.accessToken, data.refreshToken);
+      navigate("/homepage");
     });
   };
 

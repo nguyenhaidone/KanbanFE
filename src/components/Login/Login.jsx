@@ -5,11 +5,12 @@ import React from "react";
 import "./Login.scss";
 import * as Yup from "yup";
 import { loginApi } from "../../libs/apis/auth.api";
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { setToken, getToken } from "../../utils/localStorageService";
 
 const Login = () => {
   const { t } = useTranslation();
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   const Schema = Yup.object().shape({
     email: Yup.string()
@@ -31,7 +32,8 @@ const Login = () => {
   const handleOnSubmit = (values) => {
     const data = { email: values.email, password: values.password };
     loginApi(data).then((response) => {
-      console.log(response);
+      setToken(response.accessToken, response.refreshToken);
+      navigate("/homepage");
     });
   };
 
@@ -112,10 +114,7 @@ const Login = () => {
                 />
                 <label className="password-label">{t("text.rememberMe")}</label>
               </div>
-              <button
-                type="submit"
-                className="submit-btn"
-              >
+              <button type="submit" className="submit-btn">
                 {t("text.loginIn")}
               </button>
             </form>
