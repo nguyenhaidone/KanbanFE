@@ -14,16 +14,18 @@ import { initialData } from "actions/initialData";
 import { useTranslation } from "react-i18next";
 import { mapOrder } from "utils/ultis";
 import { applyDrag } from "../../utils/dnd";
-import { boardDetailApi, updateBoardlApi } from "../../libs/apis/board.api";
+import { boardDetailApi, updateBoardApi } from "../../libs/apis/board.api";
 import {
-  createNewColumnlApi,
-  updateColumnlApi,
+  createNewColumnApi,
+  updateColumnApi,
 } from "../../libs/apis/column.api";
 
-import { updateCardlApi } from "../../libs/apis/card.api";
+import { updateCardApi } from "../../libs/apis/card.api";
 
 const BoardContent = (props) => {
   const { handleOpenPopup } = props;
+  let url = window.location.href;
+  const boardId = url.substring(url.lastIndexOf("/") + 1);
   const [board, setBoard] = useState({});
   const [column, setColumn] = useState([]);
   const [isCreateInputOpen, setIsCreateInputOpen] = useState(false);
@@ -35,7 +37,7 @@ const BoardContent = (props) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    boardDetailApi("62431b548b415403a7495ecc").then((board) => {
+    boardDetailApi(boardId).then((board) => {
       if (board) {
         setBoard(board);
 
@@ -67,7 +69,7 @@ const BoardContent = (props) => {
      */
     setBoard(newBoard);
     setColumn(newColumn);
-    updateBoardlApi(newBoard._id, newBoard).catch((error) => {
+    updateBoardApi(newBoard._id, newBoard).catch((error) => {
       console.log(error);
       setBoard(board);
       setColumn(column);
@@ -89,14 +91,14 @@ const BoardContent = (props) => {
       if (dropResult.removedIndex !== null && dropResult.addedIndex !== null) {
         //move card inside col
         //update order current col
-        updateColumnlApi(curColumn, curColumn._id).catch((error) => {
+        updateColumnApi(curColumn, curColumn._id).catch((error) => {
           setColumn(newColumn);
         });
       } else {
         //move card between 2 cols
         //update order current col and col._id of card moving
         // console.log(curColumn)
-        updateColumnlApi(curColumn, curColumn._id).catch((error) => {
+        updateColumnApi(curColumn, curColumn._id).catch((error) => {
           setColumn(newColumn);
         });
 
@@ -105,7 +107,7 @@ const BoardContent = (props) => {
           let currentCard = cloneDeep(dropResult.payload);
           currentCard.columnId = curColumn._id;
           // console.log(currentCard);
-          updateCardlApi(currentCard, currentCard._id);
+          updateCardApi(currentCard, currentCard._id);
         }
       }
     }
@@ -122,7 +124,7 @@ const BoardContent = (props) => {
       title: newColumnTitle.trim(),
     };
 
-    createNewColumnlApi(newColumnToAdd).then((newCol) => {
+    createNewColumnApi(newColumnToAdd).then((newCol) => {
       // console.log(newCol);
       let newColumns = [...column];
       newColumns.push(newCol);
