@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_ROUTE } from "../../utils/constants";
-import { getToken } from "../../utils/localStorageService";
+import { getToken, setToken } from "../../utils/localStorageService";
 
 export const loginApi = async (body) => {
   const request = await axios.post(`${API_ROUTE}/v1/auth/login`, body);
@@ -15,8 +15,11 @@ export const registerApi = async (body) => {
 };
 
 export const refreshToken = async (body) => {
-  const request = await axios.post(`${API_ROUTE}/v1/auth/login`, body);
-  // console.log(request.data.data);
+  const request = await axios.post(`${API_ROUTE}/v1/auth/refresh-token`, body, {
+    headers: {
+      x_authorization: getToken().accessToken,
+    },
+  });
   return request.data.data;
 };
 
@@ -36,7 +39,7 @@ export const userDetailApi = async (email) => {
   return request.data.data;
 };
 
-export const currentUserDetailApi = async () => {
+export const currentUserDetailApi = async (refreshToken) => {
   try {
     const request = await axios.get(
       `${API_ROUTE}/v1/auth/current-user-detail`,
@@ -49,7 +52,27 @@ export const currentUserDetailApi = async () => {
     console.log(request.data.data);
     return request.data.data;
   } catch (error) {
-    console.log(error);
-    return error;
+    try {
+      const getNewToken = await axios.post(
+        `${API_ROUTE}/v1/auth/refresh-token`,
+        refreshToken,
+        {
+          headers: {
+            x_authorization: getToken().accessToken,
+          },
+        }
+      );
+      const request = await axios.get(
+        `${API_ROUTE}/v1/auth/current-user-detail`,
+        {
+          headers: {
+            x_authorization: getNewToken.data.data,
+          },
+        }
+      );
+      return request.data.data;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 };

@@ -2,29 +2,47 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LIST_COLOR_THEME } from "../../utils/constants";
 import "./PopupCreateNew.scss";
+import useAuth from "../../libs/hook/useAuth";
 
-const PopupCreateNew = (props) => {
+const PopupCreateNew = ({
+  handleOnClose,
+  setBoardDetailCreated,
+  handleOnAccept,
+}) => {
   const { t } = useTranslation();
   const [boardTitle, setBoardTitle] = useState("");
   const [boardColor, setBoardColor] = useState("");
+  const auth = useAuth();
 
   const handleInputChange = (e) => {
     setBoardTitle(e.target.value);
+    setBoardDetailCreated({
+      title: e.target.value,
+      creater: auth.user ? auth.user.email : "",
+      boardBackgroundColor: boardColor,
+    });
   };
 
   const handleOnColorClick = (event) => {
     event.preventDefault();
     const value = event.target.getAttribute("value");
+    setBoardDetailCreated({
+      title: boardTitle,
+      creater: auth.user ? auth.user.email : "",
+      boardBackgroundColor: value,
+    });
     setBoardColor(value);
   };
 
-  const handleOnClose = () => {
-    props.handleOnClose();
+  const handleOnClosePopup = () => {
+    handleOnClose();
   };
-  const handleOnAccept = () => {
-    boardTitle.length === 0
-      ? alert("Nhap dung dinh dang")
-      : props.handleOnAccept();
+  const handleOnAcceptPopup = () => {
+    if (boardTitle.length === 0) {
+      alert("Nhap dung dinh dang");
+    } else {
+      handleOnAccept();
+    }
   };
 
   return (
@@ -58,10 +76,10 @@ const PopupCreateNew = (props) => {
           </div>
         </form>
         <div className="group-button">
-          <button className="close" onClick={handleOnClose}>
+          <button className="close" onClick={handleOnClosePopup}>
             {t("text.closeButton")}
           </button>
-          <button className="accept" onClick={handleOnAccept}>
+          <button className="accept" onClick={handleOnAcceptPopup}>
             {t("text.confirm")}
           </button>
         </div>

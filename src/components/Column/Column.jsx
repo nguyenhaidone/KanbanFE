@@ -8,8 +8,8 @@ import { Dropdown, Form, Button } from "react-bootstrap";
 import ConfirmModal from "components/Common/ConfirmModal";
 import { MODAL_ACTION_CONFIRM } from "utils/constants";
 import { saveContent, selectAllInlineText } from "utils/contentEditable";
-import { createNewCardlApi } from "../../libs/apis/card.api";
-import { updateColumnlApi } from "../../libs/apis/column.api";
+import { createNewCardApi } from "../../libs/apis/card.api";
+import { updateColumnApi } from "../../libs/apis/column.api";
 
 import "./Column.scss";
 
@@ -43,7 +43,7 @@ const Column = (props) => {
       columnId: column._id,
       title: newCardTitle.trim(),
     };
-    createNewCardlApi(newCardToAdd).then((card) => {
+    createNewCardApi(newCardToAdd).then((card) => {
       let newColumns = cloneDeep(column);
 
       newColumns.cards.push(card);
@@ -68,7 +68,7 @@ const Column = (props) => {
         ...column,
         _destroy: true,
       };
-      updateColumnlApi(newColumn, newColumn._id).then((updatedCol) => {
+      updateColumnApi(newColumn, newColumn._id).then((updatedCol) => {
         onUpdateColumn(updatedCol);
       });
     }
@@ -85,7 +85,7 @@ const Column = (props) => {
         ...column,
         title: columnTitle,
       };
-      updateColumnlApi(newColumn, newColumn._id).then((updatedCol) => {
+      updateColumnApi(newColumn, newColumn._id).then((updatedCol) => {
         updatedCol.cards = newColumn.cards;
         onUpdateColumn(updatedCol);
       });

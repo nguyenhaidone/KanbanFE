@@ -42,7 +42,14 @@ const App = () => {
           ></Route>
           <Route path="/login" element={<LoginContainer />}></Route>
           <Route path="/register" element={<RegisterContainer />}></Route>
-          <Route path="/board/:id" element={<BoardContainer />}></Route>
+          <Route
+            path="/board/:id"
+            element={
+              <AuthContainer>
+                <BoardContainer />
+              </AuthContainer>
+            }
+          ></Route>
           <Route path="/payment-plan" element={<PaymentContainer />}></Route>
           <Route path="/card-detail" element={<PopupCardDetail />}></Route>
         </Routes>
