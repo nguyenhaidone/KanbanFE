@@ -24,3 +24,14 @@ export const checkAuth = () => {
     ? true
     : false;
 };
+
+export const setDefaultLanguage = (language) => {
+  const defaultLanguage = language ? language : "en";
+  localStorage.setItem(LOCAL_STORAGE_KEY.DEFAULT_LANGUAGE, defaultLanguage);
+};
+
+export const getDefaultLanguage = () => {
+  return localStorage.getItem(LOCAL_STORAGE_KEY.DEFAULT_LANGUAGE)
+    ? localStorage.getItem(LOCAL_STORAGE_KEY.DEFAULT_LANGUAGE)
+    : "vn";
+};
