@@ -31,3 +31,13 @@ export const createNewBoardApi = async (body) => {
   console.log(request.data.data);
   return request.data.data;
 };
+
+export const getBoardOfCurrentUserApi = async () => {
+  const request = await axios.get(`${API_ROUTE}/v1/boards`, {
+    headers: {
+      x_authorization: getToken().accessToken,
+    },
+  });
+  console.log(request.data.data);
+  return request.data.data;
+};

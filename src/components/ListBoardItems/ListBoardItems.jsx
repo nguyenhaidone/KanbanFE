@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import BoardItems from "components/BoardItems/BoardItems";
 import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
 import useAuth from "../../libs/hook/useAuth";
+import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
 
 const ListBoardItems = () => {
+  const [listBoardOfCurrentUser, setListBoardOfCurrentUser] = useState([]);
   const navigate = useNavigate();
   const auth = useAuth();
 
@@ -16,7 +18,6 @@ const ListBoardItems = () => {
     boardBackgroundColor: "",
     creater: auth.user ? auth.user.email : "",
   });
-  console.log(boardDetailCreated);
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const handleCreateNewBoard = () => {
@@ -36,12 +37,25 @@ const ListBoardItems = () => {
     });
   };
 
+  const getBoardOfCurrentUser = async () => {
+    await getBoardOfCurrentUserApi().then((data) => {
+      setListBoardOfCurrentUser(data);
+    });
+  };
+
+  console.log(listBoardOfCurrentUser);
   useEffect(() => {
+    getBoardOfCurrentUser();
     setBoardDetailCreated({
       ...boardDetailCreated,
       creater: auth.user ? auth.user.email : "",
     });
   }, []);
+
+  // const handleOnBoardClick = (id) => {
+  //   navigate(`/board/${id}`);
+  // };
+
   return (
     <>
       {isOpen && (
@@ -56,24 +70,17 @@ const ListBoardItems = () => {
           <span>{t("text.kanbanWorkspace")}</span>
         </div>
         <div className="list-board">
-          <div className="wrap-board-items">
-            <BoardItems />
-          </div>
-          <div className="wrap-board-items">
-            <BoardItems />
-          </div>
-          <div className="wrap-board-items">
-            <BoardItems />
-          </div>
-          <div className="wrap-board-items">
-            <BoardItems />
-          </div>
-          <div className="wrap-board-items">
-            <BoardItems />
-          </div>
-          <div className="wrap-board-items">
-            <BoardItems />
-          </div>
+          {listBoardOfCurrentUser.map((item, index) => {
+            return (
+              <div
+                className="wrap-board-items"
+                key={index}
+                onClick={() => navigate(`/board/${item._id}`)}
+              >
+                <BoardItems title={item.title} />
+              </div>
+            );
+          })}
           <div className="wrap-board-items">
             <div className="add-new" onClick={handleCreateNewBoard}>
               <i className="fa fa-plus-square"></i>
