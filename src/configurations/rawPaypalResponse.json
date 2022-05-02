@@ -1,0 +1,73 @@
+{
+  "id": "8SF58259PS597581H",
+  "intent": "CAPTURE",
+  "status": "COMPLETED",
+  "purchase_units": [
+    {
+      "reference_id": "default",
+      "amount": {
+        "currency_code": "CAD",
+        "value": "650.00"
+      },
+      "payee": {
+        "email_address": "sb-cs55e15128943@business.example.com",
+        "merchant_id": "HRFXBR4S6WRU6"
+      },
+      "description": "payment success",
+      "shipping": {
+        "name": {
+          "full_name": "John Doe"
+        },
+        "address": {
+          "address_line_1": "1 Maire-Victorin",
+          "admin_area_2": "Toronto",
+          "admin_area_1": "ON",
+          "postal_code": "M5A 1E1",
+          "country_code": "CA"
+        }
+      },
+      "payments": {
+        "captures": [
+          {
+            "id": "0SU93524UB3177807",
+            "status": "COMPLETED",
+            "amount": {
+              "currency_code": "CAD",
+              "value": "650.00"
+            },
+            "final_capture": true,
+            "seller_protection": {
+              "status": "ELIGIBLE",
+              "dispute_categories": [
+                "ITEM_NOT_RECEIVED",
+                "UNAUTHORIZED_TRANSACTION"
+              ]
+            },
+            "create_time": "2022-05-02T02:01:34Z",
+            "update_time": "2022-05-02T02:01:34Z"
+          }
+        ]
+      }
+    }
+  ],
+  "payer": {
+    "name": {
+      "given_name": "John",
+      "surname": "Doe"
+    },
+    "email_address": "sb-o8w9k16112629@personal.example.com",
+    "payer_id": "JLSD4QDCGEZQQ",
+    "address": {
+      "country_code": "CA"
+    }
+  },
+  "create_time": "2022-05-02T01:58:14Z",
+  "update_time": "2022-05-02T02:01:34Z",
+  "links": [
+    {
+      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8SF58259PS597581H",
+      "rel": "self",
+      "method": "GET"
+    }
+  ]
+}
