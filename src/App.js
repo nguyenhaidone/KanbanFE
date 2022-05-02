@@ -10,6 +10,7 @@ import BoardItems from "components/BoardItems/BoardItems";
 import ListBoardItems from "components/ListBoardItems/ListBoardItems";
 import PopupBoardItems from "components/PopupCreateNew/PopupCreateNew";
 import CardPayment from "components/CardPayment/CardPayment";
+import CheckoutConfirmation from "components/CheckoutConfirmation/CheckoutConfirmation";
 import HomepageContainer from "containers/HomepageContainer/HomepageContainer";
 import LoginContainer from "containers/LoginContainer/LoginContainer";
 import RegisterContainer from "containers/RegisterContainer/RegisterContainer";
@@ -50,7 +51,10 @@ const App = () => {
               </AuthContainer>
             }
           ></Route>
-          <Route path="/payment-plan" element={<PaymentContainer />}></Route>
+          <Route
+            path="/payment-plan"
+            element={<CheckoutConfirmation />}
+          ></Route>
           <Route path="/card-detail" element={<PopupCardDetail />}></Route>
         </Routes>
       </BrowserRouter>
