@@ -35,3 +35,15 @@ export const getDefaultLanguage = () => {
     ? localStorage.getItem(LOCAL_STORAGE_KEY.DEFAULT_LANGUAGE)
     : "vn";
 };
+
+export const setEmail = (email) => {
+  localStorage.setItem(LOCAL_STORAGE_KEY.EMAIL, email);
+};
+
+export const getEmail = () => {
+  return localStorage.getItem(LOCAL_STORAGE_KEY.EMAIL);
+};
+
+export const removeEmail = () => {
+  localStorage.removeItem(LOCAL_STORAGE_KEY.EMAIL);
+};

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_ROUTE } from "../../utils/constants";
-import { getToken, setToken } from "../../utils/localStorageService";
+import { getToken, setToken, getEmail } from "../../utils/localStorageService";
 
 export const loginApi = async (body) => {
   const request = await axios.post(`${API_ROUTE}/v1/auth/login`, body);
@@ -75,4 +75,16 @@ export const currentUserDetailApi = async (refreshToken) => {
       throw new Error(error);
     }
   }
+};
+
+export const handleSendVerifyCode = async (verifyCode) => {
+  const body = {
+    email: getEmail(),
+    verifyCode: verifyCode,
+  };
+
+  const request = await axios.post(`${API_ROUTE}/v1/auth/verify-code`, body);
+
+  // console.log(request);
+  return request.data.data;
 };

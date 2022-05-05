@@ -66,5 +66,6 @@
   "assignee": "Người thực hiện: {{assignee}}",
   "createdAt": "Tạo lúc: {{time}}",
   "creater": "Người tạo: {{creater}}",
-  "description": "Mô tả"
+  "description": "Mô tả",
+  "verifyCode": "Mã xác thực: "
 }

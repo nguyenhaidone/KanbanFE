@@ -1,12 +1,16 @@
 import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import GoogleLoginButton from "components/GoogleLogin/GoogleLogin";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./Register.scss";
+import { registerApi } from "../../libs/apis/auth.api";
 import * as Yup from "yup";
+import { setEmail } from "../../utils/localStorageService";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const Schema = Yup.object().shape({
     email: Yup.string()
@@ -33,6 +37,17 @@ const Register = () => {
 
   const handleOnSubmit = (values) => {
     console.log(values);
+    const body = {
+      email: values.email,
+      password: values.password,
+      fullname: values.username,
+      isActive: false,
+    };
+    registerApi(body).then((response) => {
+      console.log(response);
+      setEmail(values.email);
+      navigate("/verify");
+    });
   };
 
   return (
@@ -145,10 +160,7 @@ const Register = () => {
                   <></>
                 )}
               </div>
-              <button
-                type="submit"
-                className="submit-btn"
-              >
+              <button type="submit" className="submit-btn">
                 {t("text.register")}
               </button>
             </form>
