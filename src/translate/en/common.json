@@ -66,5 +66,6 @@
   "assignee": "Assignee: {{assignee}}",
   "createdAt": "Created at: {{time}}",
   "creater": "Creater: {{creater}}",
-  "description": "Description"
+  "description": "Description",
+  "verifyCode": "Verify Code"
 }

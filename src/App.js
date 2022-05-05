@@ -6,6 +6,7 @@ import BoardContent from "components/BoardContent/BoardContent";
 import Login from "components/Login/Login";
 import PopupCardDetail from "components/PopupCardDetail/PopupCardDetail";
 import Register from "components/Register/Register";
+import VerifyCode from "components/VerifyCode/VerifyCode";
 import BoardItems from "components/BoardItems/BoardItems";
 import ListBoardItems from "components/ListBoardItems/ListBoardItems";
 import PopupBoardItems from "components/PopupCreateNew/PopupCreateNew";
@@ -56,6 +57,7 @@ const App = () => {
             element={<CheckoutConfirmation />}
           ></Route>
           <Route path="/card-detail" element={<PopupCardDetail />}></Route>
+          <Route path="/verify" element={<VerifyCode />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
