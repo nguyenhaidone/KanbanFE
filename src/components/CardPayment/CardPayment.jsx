@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { exchangeConvert } from "../../utils/exchangeRate";
+import { useNavigate } from "react-router-dom";
 
 import "./CardPayment.scss";
 
 const CardPayment = (props) => {
   const { isFree } = props;
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const listFreePlanBenefit = [t("text.limitBoard"), t("text.cannotInvite")];
@@ -21,7 +23,7 @@ const CardPayment = (props) => {
   };
 
   const handleOnClick = (e) => {
-    props.isFree ? setIsOpen(!isOpen) : alert("alo alo");
+    props.isFree ? setIsOpen(!isOpen) : navigate("/checkout-confirmation");
   };
 
   return (
