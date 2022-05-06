@@ -68,3 +68,48 @@
         }
     }
 }
+
+.wrap-user-quick-view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+    height: fit-content;
+    overflow-y: auto;
+
+    .wrap-user-avatar-quick-view {
+        margin-bottom: $spacing;
+    }
+
+    .wrap-user-name-quick-view {
+        color: $blue11324D;
+        margin-bottom: $spacing;
+        font-size: $fontSize24;
+        box-sizing: border-box;
+        padding-bottom: $spacing * 2;
+        font-weight: $fontWeightLight;
+    }
+
+    .wrap-user-quick-view-button {
+        width: 100%;
+        border-top: 1px solid $blue11324D;
+        color: $blue11324D;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: $fontSize18;
+        font-weight: $fontWeightLight;
+        background-color: none;
+        transition: $transition02;
+        box-sizing: border-box;
+        padding: $spacing;
+        cursor: pointer;
+        &:hover {
+            background-color: $blue11324D;
+            color: $white;
+        }
+    }
+}

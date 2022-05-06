@@ -1,10 +1,96 @@
-@import './_globleStyle.scss';
+@import "./_globleStyle.scss";
 
 .navbar-board {
-    padding-left: $spacing;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     font-size: $fontSize20;
     font-weight: $fontWeightMedium;
-    // background-color: $blue3;
+    box-sizing: border-box;
+    padding: $spacing * 3;
+    background-color: $pinkD291BC;
+    width: 100%;
+    height: 58px;
+}
+
+.board-title-label {
+    width: fit-content;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: $spacing;
+    cursor: pointer;
+    border-radius: $borderRadius;
+    transition: $transition02;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+.img-icon-setting {
+    width: fit-content;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: $spacing;
+    cursor: pointer;
+    border-radius: $borderRadius;
+    transition: $transition02;
+    margin-left: $spacing;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+.board-bar-icon {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.wrap-setting-popup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: $spacing;
+    height: fit-content;
+    .wrap-board-label {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $blue11324D;
+        font-size: $fontSize20;
+        font-weight: $fontWeightLight;
+    }
+    .wrap-row {
+        margin-top: $spacing * 2;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .circle-button {
+            width: 110px;
+            height: 110px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: $white1;
+            color: $blue11324D;
+            transition: $transition02;
+            font-size: $fontSize14;
+            font-weight: $fontWeightLight;
+            &:hover {
+                background-color: $blue11324D;
+                color: $white;
+            }
+        }
+    }
 }

@@ -52,11 +52,23 @@ const App = () => {
               </AuthContainer>
             }
           ></Route>
+          <Route path="/payment-plan" element={<PaymentContainer />}></Route>
           <Route
-            path="/payment-plan"
-            element={<CheckoutConfirmation />}
+            path="/checkout-confirmation"
+            element={
+              <AuthContainer>
+                <CheckoutConfirmation />
+              </AuthContainer>
+            }
           ></Route>
-          <Route path="/card-detail" element={<PopupCardDetail />}></Route>
+          <Route
+            path="/card-detail"
+            element={
+              <AuthContainer>
+                <PopupCardDetail />
+              </AuthContainer>
+            }
+          ></Route>
           <Route path="/verify" element={<VerifyCode />}></Route>
         </Routes>
       </BrowserRouter>

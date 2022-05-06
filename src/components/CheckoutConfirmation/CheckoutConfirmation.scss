@@ -1,0 +1,119 @@
+@import "./_globleStyle.scss";
+
+.wrap-checkout-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .wrap-left-side {
+        width: 50%;
+        height: 100vh;
+        background-color: $white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .wrap-plan {
+            .wrap-label {
+                margin: $spacing 0;
+                margin-bottom: $spacing * 2;
+                font-size: $fontSize18;
+                color: $redSuccessHover;
+                font-weight: $fontWeightLight;
+            }
+            .wrap-money {
+                margin: $spacing 0;
+                font-size: $fontSize14 * 2;
+                margin-bottom: $spacing * 2;
+                color: $redSuccessHover;
+                font-weight: $fontWeightLight;
+            }
+            .wrap-list-benefit {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                margin: $spacing * 2 0;
+                .items {
+                    width: 100%;
+                    display: flex;
+                    margin: $spacing 0;
+                    color: $gray;
+                    flex-direction: rows;
+                    font-size: $fontSize18 * 0.9;
+                    transition: $transition02;
+                    i {
+                        color: $redSuccessHover;
+                        margin: 0 $spacing;
+                    }
+                    .benefit {
+                        font-weight: $fontWeightLight;
+                    }
+                    &:hover {
+                        color: $redSuccessHover;
+                    }
+                }
+            }
+        }
+    }
+
+    .wrap-right-side {
+        width: 50%;
+        height: 100vh;
+        background-color: $redSuccessHover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 $spacing * 5;
+        .wrap-button-checkout {
+            margin: $spacing 0;
+            button {
+                width: fit-content;
+                height: 48px;
+                font-size: $fontSize20;
+                color: $redSuccessHover;
+                font-weight: $fontWeightMedium;
+                background-color: $redSuccess;
+                display: flex;
+                justify-content: center;
+                box-sizing: border-box;
+                padding: $spacing * 2 $spacing * 3;
+                align-items: center;
+                outline: none;
+                border-radius: $borderRadius * 2;
+                border: 1.5px solid $redSuccessHover;
+                background-color: $white;
+                transition: all ease 0.5s;
+                &:hover {
+                    color: $white;
+                    background-color: $redSuccessHover;
+                }
+            }
+        }
+        .wrap-money {
+            margin: $spacing 0;
+            font-size: $fontSize14 * 2;
+            margin-bottom: $spacing * 2;
+            color: $white;
+            font-weight: $fontWeightLight;
+            text-align: center;
+        }
+        .wrap-sub-thanks {
+            margin: $spacing 0;
+            font-size: $fontSize14 * 1.25;
+            margin-bottom: $spacing * 2;
+            color: $white1;
+            font-weight: $fontWeightLight;
+            text-align: center;
+        }
+        .wrap-sub-detail {
+            margin: $spacing 0;
+            font-size: $fontSize14;
+            margin-bottom: $spacing * 2;
+            color: $white1;
+            font-weight: $fontWeightLight;
+            text-align: center;
+        }
+    }
+}

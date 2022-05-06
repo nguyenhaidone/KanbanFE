@@ -165,7 +165,7 @@ const BoardContent = (props) => {
 
   return (
     <>
-      <nav className="workspace">
+      <nav className="workspace" style={{ backgroundColor: `${board.boardBackgroundColor}` }}>
         <Container
           orientation="horizontal"
           onDrop={onColumnDrop}
