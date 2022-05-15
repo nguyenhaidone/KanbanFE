@@ -91,5 +91,17 @@
   "activities": "Activities",
   "boardDetail": "Details",
   "author": "Author: {{author}}",
-  "addPeople": "Add member"
+  "addPeople": "Add member",
+  "changePhoto": "Change photo",
+  "aboutMe": "Personal information",
+  "listBoardInProfile": "My boards",
+  "editProfile": "Edit profile",
+  "fullName": "Full name",
+  "phoneNumber": "Phone number",
+  "address": "Address",
+  "dateOfBirth": "Date of Birth",
+  "profession": "Profession",
+  "haveNotUpdate": "You have not updated",
+  "editDateTime": "Pick date time",
+  "update": "Update"
 }

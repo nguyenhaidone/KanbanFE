@@ -88,3 +88,17 @@ export const handleSendVerifyCode = async (verifyCode) => {
   // console.log(request);
   return request.data.data;
 };
+
+export const updateUserInfo = async (body) => {
+  const request = await axios.put(
+    `${API_ROUTE}/v1/auth/update-user-info`,
+    body,
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+};
