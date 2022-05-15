@@ -18,6 +18,7 @@ import RegisterContainer from "containers/RegisterContainer/RegisterContainer";
 import BoardContainer from "containers/BoardContainer/BoardContainer";
 import PaymentContainer from "containers/PaymentContainer/PaymentContainer";
 import AuthContainer from "containers/AuthContainer/AuthContainer";
+import ProfileContainer from "containers/ProfileContainer/ProfileContainer";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -70,6 +71,7 @@ const App = () => {
             }
           ></Route>
           <Route path="/verify" element={<VerifyCode />}></Route>
+          <Route path="/profile" element={<ProfileContainer />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

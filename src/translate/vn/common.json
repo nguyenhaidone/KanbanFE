@@ -91,5 +91,17 @@
   "activities": "Hoạt động",
   "boardDetail": "Chi tiết",
   "author": "Người tạo: {{author}}",
-  "addPeople": "Thêm thành viên"
+  "addPeople": "Thêm thành viên",
+  "changePhoto": "Đổi ảnh",
+  "aboutMe": "Thông tin cá nhân",
+  "listBoardInProfile": "Các bảng của tôi",
+  "editProfile": "Sửa thông tin",
+  "fullName": "Họ và tên",
+  "phoneNumber": "Số điện thoại",
+  "address": "Địa chỉ",
+  "dateOfBirth": "Ngày tháng năm sinh",
+  "profession": "Nghề nghiệp",
+  "haveNotUpdate": "Bạn chưa cập nhật",
+  "editDateTime": "Chọn ngày tháng năm",
+  "update": "Cập nhật"
 }

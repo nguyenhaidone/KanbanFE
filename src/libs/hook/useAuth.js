@@ -36,7 +36,7 @@ export default function useAuth() {
       try {
         await currentUserDetailApi(refreshToken).then((data) => {
           if (isMounting) setAuthContext({ isAuth: true, user: data });
-          console.log(data);
+          // console.log(data);
         });
       } catch (error) {
         throw new Error(error.message);
