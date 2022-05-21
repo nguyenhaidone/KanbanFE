@@ -103,5 +103,6 @@
   "profession": "Profession",
   "haveNotUpdate": "You have not updated",
   "editDateTime": "Pick date time",
-  "update": "Update"
+  "update": "Update",
+  "daysLeft": "You have {{days}} days left"
 }

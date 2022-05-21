@@ -23,6 +23,9 @@ export default function useAuth() {
         value: "",
       },
       isActive: false,
+      extensionDate: "",
+      permission: "",
+      profession: "",
     },
   });
 

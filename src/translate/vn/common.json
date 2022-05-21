@@ -103,5 +103,6 @@
   "profession": "Nghề nghiệp",
   "haveNotUpdate": "Bạn chưa cập nhật",
   "editDateTime": "Chọn ngày tháng năm",
-  "update": "Cập nhật"
+  "update": "Cập nhật",
+  "daysLeft": "Bạn còn {{days}} ngày sử dụng"
 }
