@@ -41,15 +41,22 @@ const AppBar = () => {
         <Modal.Body>
           <div className="wrap-user-quick-view">
             <div className="wrap-user-avatar-quick-view">
-              <Avatar
-                name={auth.user.avatar !== "" ? auth.user.avatar : name}
-                round={true}
-                size="64"
-                onClick={handleShowDetail}
-              />
+              {auth.user.avatar === "" ? (
+                <Avatar
+                  name={name}
+                  round={true}
+                  size="64"
+                  onClick={handleShowDetail}
+                />
+              ) : (
+                <img src={auth.user.avatar} width="100%" />
+              )}
             </div>
             <div className="wrap-user-name-quick-view">{name}</div>
-            <div className="wrap-user-quick-view-button">
+            <div
+              className="wrap-user-quick-view-button"
+              onClick={() => navigate("/profile")}
+            >
               {t("text.userInfo")}
             </div>
             <div
@@ -96,12 +103,23 @@ const AppBar = () => {
           <div className="wrap-icon" onClick={handleOnUpgradeClick}>
             <i className="fa fa-diamond"></i>
           </div>
-          <Avatar
-            name={auth.user.avatar !== "" ? auth.user.avatar : name}
-            round={true}
-            size="36"
-            onClick={handleShowDetail}
-          />
+          {auth.user.avatar === "" ? (
+            <Avatar
+              name={name}
+              round={true}
+              size="64"
+              onClick={handleShowDetail}
+            />
+          ) : (
+            <img
+              src={auth.user.avatar}
+              width="32"
+              height="32"
+              style={{ borderRadius: "50%" }}
+              onClick={handleShowDetail}
+            />
+          )}
+
           <ChangeLanguageButton />
         </div>
       </div>

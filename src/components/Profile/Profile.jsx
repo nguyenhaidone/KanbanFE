@@ -6,6 +6,9 @@ import { updateUserInfo } from "../../libs/apis/auth.api";
 import "./Profile.scss";
 import { Modal, Button, Form } from "react-bootstrap";
 import { formatToDMY } from "../../utils/formatDateTime";
+import { storage } from "../../firebase/index";
+import { FREE_PLAN } from "utils/constants";
+import { getDaysLeft } from "../../utils/formatDateTime";
 
 const Profile = (props) => {
   const { t } = useTranslation();
@@ -14,6 +17,8 @@ const Profile = (props) => {
     personalInformation: true,
     myBoards: false,
   });
+  const [url, setUrl] = useState("");
+  const [progress, setProgress] = useState(0);
   const [profilePopup, setProfilePopup] = useState(false);
   //   const [calendar, setCalendar] = useState(false);
   const [profile, setProfile] = useState({
@@ -23,30 +28,78 @@ const Profile = (props) => {
     profession: auth.user.profession,
     dateOfBirth: auth.user.dateOfBirth,
   });
+  const [avatar, setAvatar] = useState(auth.user.avatar || null);
 
   const handleSetProfilePopup = () => setProfilePopup(!profilePopup);
   //   const handleSetCalendarOpen = () => setCalendar(!calendar);
-  const handleOnSubmitUpdate = () => {
-    console.log(profile);
-    const body = {
-      fullname: profile.fullName,
-      phoneNumber: profile.phoneNumber,
-      address: profile.address,
-      profession: profile.profession,
-      dateOfBirth: profile.dateOfBirth,
-    };
+  const handleOnSubmitUpdate = async () => {
     try {
-      updateUserInfo(body).then((response) => {
+      await handleOnUpload();
+      await updateUserInfo({
+        fullname: profile.fullName,
+        phoneNumber: profile.phoneNumber,
+        address: profile.address,
+        profession: profile.profession,
+        dateOfBirth: profile.dateOfBirth,
+      }).then((response) => {
         console.log(response);
         setProfile({
+          avatar: response.avatar,
           fullName: response.fullname,
           phoneNumber: response.phoneNumber,
           address: response.address,
-          // profession: response.profession
+          profession: response.profession,
           dateOfBirth: response.dateOfBirth,
         });
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleOnChangeImg = (e) => {
+    if (e.target.files[0]) {
+      setAvatar(e.target.files[0]);
+    }
+  };
+
+  const handleOnUpload = () => {
+    const uploadTask = storage.ref(`images/${avatar.name}`).put(avatar);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(avatar.name)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            setUrl(url);
+            updateUserInfo({
+              avatar: url,
+            }).then((response) => {
+              console.log(response);
+              setProfile({
+                avatar: response.avatar,
+                fullName: response.fullname,
+                phoneNumber: response.phoneNumber,
+                address: response.address,
+                profession: response.profession,
+                dateOfBirth: response.dateOfBirth,
+              });
+            });
+          });
+      }
+    );
   };
 
   useEffect(() => {
@@ -57,6 +110,7 @@ const Profile = (props) => {
       // profession: auth.user.profession
       dateOfBirth: auth.user.dateOfBirth,
     });
+    setAvatar(auth.user.avatar || null);
   }, [auth]);
 
   return (
@@ -78,14 +132,14 @@ const Profile = (props) => {
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
                   alt=""
                 /> */}
-            {auth.user.avatar ? (
-              <img src={auth.user.avatar} alt="" />
+            {avatar ? (
+              <img src={url || avatar} alt="" />
             ) : (
               <Avatar name={auth.user.fullname} round={true} size="200" />
             )}
             <div className="file btn btn-lg btn-primary">
               {t("text.changePhoto")}
-              <input type="file" name="file" />
+              <input type="file" name="file" onChange={handleOnChangeImg} />
             </div>
           </div>
           <Form style={{ height: "300px", overflowY: "auto" }}>
@@ -182,8 +236,22 @@ const Profile = (props) => {
                 <h3>{auth.user.fullname}</h3>
                 {/* <h6>Web Developer and Designer</h6> */}
                 <p className="proile-rating">
-                  {t("text.currentPlan")} : <span>{t("text.free")}</span>
+                  {t("text.currentPlan")} :{" "}
+                  <span>
+                    {auth.user.plan === FREE_PLAN
+                      ? t("text.free")
+                      : t("text.exclusivePlan")}
+                  </span>
                 </p>
+                {auth.user.plan && auth.user.extensionDate && (
+                  <p className="proile-rating">
+                    <span>
+                      {t("text.daysLeft", {
+                        days: getDaysLeft(auth.user.extensionDate),
+                      })}
+                    </span>
+                  </p>
+                )}
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
                     <a

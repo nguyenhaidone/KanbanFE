@@ -15,6 +15,7 @@ import "./Column.scss";
 
 const Column = (props) => {
   const { column, onCardDrop, onUpdateColumn, handleOpenPopup } = props;
+  console.log(column);
   const cards = mapOrder(column.cards, column.cardOrder, "_id");
   const { t } = useTranslation();
   const [isShowConfirmPopup, setIsShowConfirmPopup] = useState(false);
