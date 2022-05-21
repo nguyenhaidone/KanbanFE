@@ -41,3 +41,17 @@ export const getBoardOfCurrentUserApi = async () => {
   console.log(request.data.data);
   return request.data.data;
 };
+
+export const addNewMemberApi = async (body, boardId) => {
+  const request = await axios.put(
+    `${API_ROUTE}/v1/boards/add-new-user/${boardId}`,
+    body,
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+};

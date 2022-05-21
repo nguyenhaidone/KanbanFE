@@ -104,5 +104,6 @@
   "haveNotUpdate": "You have not updated",
   "editDateTime": "Pick date time",
   "update": "Update",
-  "daysLeft": "You have {{days}} days left"
+  "daysLeft": "You have {{days}} days left",
+  "emailInvitation": "Invitations will be sent to the collaborator's email address and they can join your board"
 }

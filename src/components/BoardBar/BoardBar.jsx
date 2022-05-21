@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 import setting from "../../images/setting.svg";
 import history from "../../images/histories2.svg";
 import useAuth from "../../libs/hook/useAuth";
+import { addNewMemberApi } from "../../libs/apis/board.api";
 
 import "./BoardBar.scss";
 
@@ -11,6 +12,8 @@ const BoardBar = (props) => {
   const { boardInfo } = props;
   const [showPopup, setShowPopup] = useState(false);
   const [showPopupHistory, setShowPopupHistory] = useState(false);
+  const [showEmailSubscription, setShowEmailSubscription] = useState(false);
+  const [inviteEmail, setInviteEmail] = useState("");
   const { t } = useTranslation();
   const auth = useAuth();
 
@@ -19,6 +22,19 @@ const BoardBar = (props) => {
 
   const handleClosePopupHistory = () => setShowPopupHistory(false);
   const handleShowPopupHistory = () => setShowPopupHistory(true);
+
+  const handleOnInvite = () => {
+    console.log({ email: inviteEmail }, boardInfo._id);
+    if (inviteEmail === "") {
+      alert(`${t("text.validEmail")}`);
+    } else {
+      const sendInviteEmail = addNewMemberApi(
+        { email: inviteEmail },
+        boardInfo._id
+      );
+      console.log(sendInviteEmail);
+    }
+  };
   return (
     <>
       <Modal show={showPopup} onHide={handleClosePopup}>
@@ -36,7 +52,12 @@ const BoardBar = (props) => {
             <div className="wrap-row">
               <div className="circle-button">{t("text.boardDetail")}</div>
               <div className="circle-button">{t("text.deleteBoard")}</div>
-              <div className="circle-button">{t("text.addPeople")}</div>
+              <div
+                className="circle-button"
+                onClick={() => setShowEmailSubscription(!showEmailSubscription)}
+              >
+                {t("text.addPeople")}
+              </div>
             </div>
             <div className="wrap-row">
               <div className="circle-button">{t("text.chart")}</div>
@@ -46,14 +67,33 @@ const BoardBar = (props) => {
             </div> */}
           </div>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClosePopup}>
+        {showEmailSubscription && (
+          <Modal.Footer>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="email"
+                  onChange={(e) => setInviteEmail(e.target.value)}
+                />
+                <Form.Text className="text-muted">
+                  {t("text.emailInvitation")}
+                </Form.Text>
+              </Form.Group>
+
+              <Button variant="primary" type="submit" onClick={handleOnInvite}>
+                {t("text.acceptButton")}
+              </Button>
+            </Form>
+            {/* <Button variant="secondary" onClick={handleClosePopup}>
             {t("text.closeButton")}
           </Button>
           <Button variant="primary" onClick={handleClosePopup}>
             {t("text.acceptButton")}
-          </Button>
-        </Modal.Footer> */}
+          </Button> */}
+          </Modal.Footer>
+        )}
       </Modal>
       <Modal show={showPopupHistory} onHide={handleClosePopupHistory}>
         <Modal.Header closeButton>

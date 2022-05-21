@@ -104,5 +104,6 @@
   "haveNotUpdate": "Bạn chưa cập nhật",
   "editDateTime": "Chọn ngày tháng năm",
   "update": "Cập nhật",
-  "daysLeft": "Bạn còn {{days}} ngày sử dụng"
+  "daysLeft": "Bạn còn {{days}} ngày sử dụng",
+  "emailInvitation": "Lời mời sẽ được gửi đến cho địa chỉ email của người cộng tác và họ có thể tham gia vào bảng của bạn"
 }
