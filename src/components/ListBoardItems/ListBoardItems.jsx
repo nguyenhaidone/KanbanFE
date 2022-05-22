@@ -7,9 +7,11 @@ import BoardItems from "components/BoardItems/BoardItems";
 import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
 import useAuth from "../../libs/hook/useAuth";
 import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
+import { FREE_PLAN } from "../../utils/constants";
 
 const ListBoardItems = () => {
   const [listBoardOfCurrentUser, setListBoardOfCurrentUser] = useState([]);
+  const [totalBoard, setTotalBoard] = useState(10);
   const navigate = useNavigate();
   const auth = useAuth();
 
@@ -28,9 +30,6 @@ const ListBoardItems = () => {
   };
   const handleOnAccept = () => {
     console.log(boardDetailCreated);
-    // setTimeout(() => {
-    //   console.log(boardDetailCreated);
-    // }, 1000);
     createNewBoardApi(boardDetailCreated).then((data) => {
       console.log(data);
       navigate(`/board/${data._id}`);
@@ -39,6 +38,7 @@ const ListBoardItems = () => {
 
   const getBoardOfCurrentUser = async () => {
     await getBoardOfCurrentUserApi().then((data) => {
+      if (auth.user.plan == FREE_PLAN) setTotalBoard(10 - data.length);
       setListBoardOfCurrentUser(data);
     });
   };
@@ -51,10 +51,6 @@ const ListBoardItems = () => {
       creater: auth.user ? auth.user.email : "",
     });
   }, []);
-
-  // const handleOnBoardClick = (id) => {
-  //   navigate(`/board/${id}`);
-  // };
 
   return (
     <>
@@ -77,7 +73,7 @@ const ListBoardItems = () => {
                 key={index}
                 onClick={() => navigate(`/board/${item._id}`)}
               >
-                <BoardItems title={item.title} />
+                <BoardItems title={item.title} index={index} />
               </div>
             );
           })}
@@ -85,7 +81,11 @@ const ListBoardItems = () => {
             <div className="add-new" onClick={handleCreateNewBoard}>
               <i className="fa fa-plus-square"></i>
               <div className="message">
-                <span>{t("text.createNewBoard", { number: 9 })}</span>
+                <span>
+                  {auth.user.plan === FREE_PLAN
+                    ? t("text.createNewBoard", { number: totalBoard })
+                    : t("text.createNewBoardWithPremiumPlan")}
+                </span>
               </div>
             </div>
           </div>

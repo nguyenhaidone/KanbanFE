@@ -1,0 +1,71 @@
+@import "./_globleStyle.scss";
+
+.wrap-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .title {
+        width: 100%;
+        span {
+            font-size: $fontSize24;
+            color: $blue11324D;
+            font-weight: $fontWeightMedium;
+        }
+        margin: $spacing * 2 0;
+    }
+    .list-board {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        .wrap-board-items {
+            margin-right: $spacing * 2;
+            margin-bottom: $spacing * 2;
+            .add-new {
+                width: 250px;
+                height: 110px;
+                border-radius: $borderRadius;
+                cursor: pointer;
+                display: flex;
+                background-color: $rgba01;
+                transition: $transition02;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                i {
+                    font-size: $fontSize24;
+                    transition: $transition02;
+                    color: $blue11324D;
+                }
+                .message {
+                    margin: $spacing;
+                    font-size: $fontSize18;
+                    font-weight: $fontWeightLight;
+                    transition: $transition02;
+                    text-align: center;
+                    color: $blue11324D;
+                }
+                &:hover {
+                    background-color: $rgba03;
+                    i {
+                        color: $white;
+                    }
+                    .message {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.let-sign-premium-plan {
+    width: 100%;
+    text-align: center;
+    span {
+        font-size: $fontSize24;
+        color: $blue11324D;
+        font-weight: $fontWeightMedium;
+    }
+}
