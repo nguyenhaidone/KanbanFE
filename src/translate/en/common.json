@@ -45,6 +45,7 @@
   "alreadyHaveAccount": "You already have an account, just log in!!",
   "kanbanWorkspace": "Kanban Workspace",
   "createNewBoard": "Create new board, you can create {{number}} boards!",
+  "createNewBoardWithPremiumPlan": "Create new board, you can create unlimited boards!",
   "createBoard": "Create board",
   "whatIsBoardName": "Board's name is: ",
   "newBoardExample": "Example: Awesome project,.. ",
@@ -105,5 +106,9 @@
   "editDateTime": "Pick date time",
   "update": "Update",
   "daysLeft": "You have {{days}} days left",
-  "emailInvitation": "Invitations will be sent to the collaborator's email address and they can join your board"
+  "emailInvitation": "Invitations will be sent to the collaborator's email address and they can join your board",
+  "createWithTemplate": "Create board with template",
+  "kanbanDes": "A simple and visual workflow for engineering teams.",
+  "agileDes": "Getting things done is a process: it’s a way of thinking that involves planning, execution, iteration, and reflection.",
+  "letSignPremiumPlan": "Let sign premium plan to enjoy the features"
 }

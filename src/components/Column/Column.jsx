@@ -44,6 +44,7 @@ const Column = (props) => {
       title: newCardTitle.trim(),
     };
     createNewCardApi(newCardToAdd).then((card) => {
+      console.log(card);
       let newColumns = cloneDeep(column);
 
       newColumns.cards.push(card);
@@ -110,7 +111,14 @@ const Column = (props) => {
   return (
     <>
       <div className="columns">
-        <header className="column-drag-handle">
+        <header
+          className="column-drag-handle"
+          style={{
+            borderTop: `2px solid #${Math.floor(
+              Math.random() * 0xffffff
+            ).toString(16)}`,
+          }}
+        >
           <Form.Control
             size="sm"
             type="text"

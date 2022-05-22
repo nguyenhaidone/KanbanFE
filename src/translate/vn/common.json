@@ -45,6 +45,7 @@
   "alreadyHaveAccount": "Bạn đã có tài khoản, đăng nhập thôi!",
   "kanbanWorkspace": "Không gian làm việc Kanban",
   "createNewBoard": "Thêm bảng mới, bạn có thể tạo {{number}} bảng nữa!",
+  "createNewBoardWithPremiumPlan": "Thêm bảng mới, bạn có thể tạo vô số bảng nữa!",
   "createBoard": "Tạo bảng mới",
   "whatIsBoardName": "Bảng của bạn tên là: ",
   "newBoardExample": "Ví dụ: Dự án quản lý đô thị...",
@@ -105,5 +106,9 @@
   "editDateTime": "Chọn ngày tháng năm",
   "update": "Cập nhật",
   "daysLeft": "Bạn còn {{days}} ngày sử dụng",
-  "emailInvitation": "Lời mời sẽ được gửi đến cho địa chỉ email của người cộng tác và họ có thể tham gia vào bảng của bạn"
+  "emailInvitation": "Lời mời sẽ được gửi đến cho địa chỉ email của người cộng tác và họ có thể tham gia vào bảng của bạn",
+  "createWithTemplate": "Tạo bảng với mẫu có sẵn",
+  "kanbanDes": "Quy trình làm việc đơn giản và trực quan cho các nhóm kỹ thuật.",
+  "agileDes": "Hoàn thành công việc là một quá trình: đó là một cách suy nghĩ bao gồm lập kế hoạch, thực hiện, lặp lại và phản ánh.",
+  "letSignPremiumPlan": "Hãy đăng ký gói Premium để có thể tận hưởng tính năng này nhé!"
 }

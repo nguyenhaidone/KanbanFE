@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { LIST_COLOR_THEME } from "../../utils/constants";
+import { LIST_COLOR_THEME, PREMIUM_PLAN } from "../../utils/constants";
 import "./PopupCreateNew.scss";
 import useAuth from "../../libs/hook/useAuth";
 
@@ -8,10 +8,13 @@ const PopupCreateNew = ({
   handleOnClose,
   setBoardDetailCreated,
   handleOnAccept,
+  description,
+  title,
 }) => {
   const { t } = useTranslation();
   const [boardTitle, setBoardTitle] = useState("");
   const [boardColor, setBoardColor] = useState("");
+  // const [template, setTemplate] = useState(false);
   const auth = useAuth();
 
   const handleInputChange = (e) => {
@@ -45,11 +48,18 @@ const PopupCreateNew = ({
     }
   };
 
+  // useEffect(() => {
+  //   if (auth.user.plan === PREMIUM_PLAN) {
+  //     setTemplate(true);
+  //   }
+  //   console.log(auth.user.plan);
+  // }, [auth]);
+
   return (
     <div className="wrap-popup">
       <div className="popup">
         <div className="title">
-          <span>{t("text.createBoard")}</span>
+          <span>{title || t("text.createBoard")}</span>
         </div>
         <form className="form">
           <label className="label-title">{t("text.whatIsBoardName")}</label>
@@ -60,6 +70,9 @@ const PopupCreateNew = ({
             placeholder={t("text.newBoardExample")}
             value={boardTitle}
           />
+          {description && (
+            <p style={{ marginTop: "8px" }}>{t(`text.${description}`)}</p>
+          )}
           <label className="label-title">
             {t("text.colorBackground", { colorCode: boardColor })}
           </label>
@@ -75,6 +88,7 @@ const PopupCreateNew = ({
             ))}
           </div>
         </form>
+
         <div className="group-button">
           <button className="close" onClick={handleOnClosePopup}>
             {t("text.closeButton")}
