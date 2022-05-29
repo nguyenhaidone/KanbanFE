@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { currentUserDetailApi } from "../../libs/apis/auth.api";
 import { getToken } from "../../utils/localStorageService";
 
@@ -13,7 +13,6 @@ export default function useAuth() {
       avatar: "",
       dateOfBirth: "",
       plan: "",
-      permission: "",
       metadata: {
         key: "",
         value: "",

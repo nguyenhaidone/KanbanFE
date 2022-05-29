@@ -4,7 +4,7 @@ import "./BoardItems.scss";
 const BoardItems = (props) => {
   const { img, title } = props;
 
-  // const handleOnClick = (id) => {};
+  const handleOnClick = () => {};
   return (
     <div className="wrap-items" onClick={handleOnClick}>
       <img
