@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import GoogleLogin from "react-google-login";
 import { GoogleLoginDto } from "./googleLoginDto";
 import { socialLoginApi } from "../../libs/apis/auth.api";
-import { setToken, getToken } from "../../utils/localStorageService";
+import { setToken } from "../../utils/localStorageService";
 import { useNavigate } from "react-router-dom";
 
 const GoogleLoginButton = () => {

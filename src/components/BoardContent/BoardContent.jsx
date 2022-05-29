@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import "./BoardContent.scss";
 import { isEmpty, cloneDeep } from "lodash";
-import { initialData } from "actions/initialData";
+// import { initialData } from "actions/initialData";
 import { useTranslation } from "react-i18next";
 import { mapOrder } from "utils/ultis";
 import { applyDrag } from "../../utils/dnd";
@@ -37,13 +37,15 @@ const BoardContent = (props) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    boardDetailApi(boardId).then((board) => {
-      if (board) {
-        setBoard(board);
+    const fetchBoardAPI = () =>
+      boardDetailApi(boardId).then((board) => {
+        if (board) {
+          setBoard(board);
 
-        setColumn(mapOrder(board.columns, board.columnOrder, "_id"));
-      }
-    });
+          setColumn(mapOrder(board.columns, board.columnOrder, "_id"));
+        }
+      });
+    fetchBoardAPI();
   }, []);
 
   useEffect(() => {
@@ -165,7 +167,10 @@ const BoardContent = (props) => {
 
   return (
     <>
-      <nav className="workspace" style={{ backgroundColor: `${board.boardBackgroundColor}` }}>
+      <nav
+        className="workspace"
+        style={{ backgroundColor: `${board.boardBackgroundColor}` }}
+      >
         <Container
           orientation="horizontal"
           onDrop={onColumnDrop}

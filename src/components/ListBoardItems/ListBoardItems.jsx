@@ -38,7 +38,7 @@ const ListBoardItems = () => {
 
   const getBoardOfCurrentUser = async () => {
     await getBoardOfCurrentUserApi().then((data) => {
-      if (auth.user.plan == FREE_PLAN) setTotalBoard(10 - data.length);
+      if (auth.user.plan === FREE_PLAN) setTotalBoard(10 - data.length);
       setListBoardOfCurrentUser(data);
     });
   };

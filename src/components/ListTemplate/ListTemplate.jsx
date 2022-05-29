@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./ListTemplate.scss";
 import { createNewBoardApi } from "../../libs/apis/board.api";
@@ -8,7 +8,7 @@ import BoardItems from "components/BoardItems/BoardItems";
 import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
 import useAuth from "../../libs/hook/useAuth";
 import { template } from "../../template/template";
-import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
+// import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
 import { createNewCardApi } from "../../libs/apis/card.api";
 import { PREMIUM_PLAN } from "utils/constants";
 

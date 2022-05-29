@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./ListBoardJoined.scss";
-import { createNewBoardApi } from "../../libs/apis/board.api";
+// import { createNewBoardApi } from "../../libs/apis/board.api";
 import { useNavigate } from "react-router-dom";
 import BoardItems from "components/BoardItems/BoardItems";
-import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
+// import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
 import useAuth from "../../libs/hook/useAuth";
 import { getListBoardJoinedOfCurrentUser } from "../../libs/apis/board.api";
 

@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { loginApi } from "../../libs/apis/auth.api";
 import { Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { setToken, getToken } from "../../utils/localStorageService";
+import { setToken } from "../../utils/localStorageService";
 
 const Login = () => {
   const { t } = useTranslation();

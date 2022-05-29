@@ -1,16 +1,16 @@
 import "./App.scss";
 import React from "react";
-import AppBar from "components/AppBar/AppBar";
-import BoardBar from "components/BoardBar/BoardBar";
-import BoardContent from "components/BoardContent/BoardContent";
-import Login from "components/Login/Login";
+// import AppBar from "components/AppBar/AppBar";
+// import BoardBar from "components/BoardBar/BoardBar";
+// import BoardContent from "components/BoardContent/BoardContent";
+// import Login from "components/Login/Login";
 import PopupCardDetail from "components/PopupCardDetail/PopupCardDetail";
-import Register from "components/Register/Register";
+// import Register from "components/Register/Register";
 import VerifyCode from "components/VerifyCode/VerifyCode";
-import BoardItems from "components/BoardItems/BoardItems";
-import ListBoardItems from "components/ListBoardItems/ListBoardItems";
-import PopupBoardItems from "components/PopupCreateNew/PopupCreateNew";
-import CardPayment from "components/CardPayment/CardPayment";
+// import BoardItems from "components/BoardItems/BoardItems";
+// import ListBoardItems from "components/ListBoardItems/ListBoardItems";
+// import PopupBoardItems from "components/PopupCreateNew/PopupCreateNew";
+// import CardPayment from "components/CardPayment/CardPayment";
 import CheckoutConfirmation from "components/CheckoutConfirmation/CheckoutConfirmation";
 import HomepageContainer from "containers/HomepageContainer/HomepageContainer";
 import LoginContainer from "containers/LoginContainer/LoginContainer";
@@ -19,7 +19,7 @@ import BoardContainer from "containers/BoardContainer/BoardContainer";
 import PaymentContainer from "containers/PaymentContainer/PaymentContainer";
 import AuthContainer from "containers/AuthContainer/AuthContainer";
 import ProfileContainer from "containers/ProfileContainer/ProfileContainer";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
