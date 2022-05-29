@@ -107,10 +107,11 @@ const Profile = (props) => {
       fullName: auth.user.fullname,
       phoneNumber: auth.user.phoneNumber,
       address: auth.user.address,
-      // profession: auth.user.profession
+      profession: auth.user.profession,
       dateOfBirth: auth.user.dateOfBirth,
     });
     setAvatar(auth.user.avatar || null);
+    setUrl(auth.user.avatar || null)
   }, [auth]);
 
   return (
@@ -221,7 +222,7 @@ const Profile = (props) => {
                   alt=""
                 /> */}
                 {auth.user.avatar ? (
-                  <img src={auth.user.avatar} alt="" />
+                  <img src={url} alt="" />
                 ) : (
                   <Avatar name={auth.user.fullname} round={true} size="200" />
                 )}

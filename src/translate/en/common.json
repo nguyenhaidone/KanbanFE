@@ -110,5 +110,6 @@
   "createWithTemplate": "Create board with template",
   "kanbanDes": "A simple and visual workflow for engineering teams.",
   "agileDes": "Getting things done is a process: it’s a way of thinking that involves planning, execution, iteration, and reflection.",
-  "letSignPremiumPlan": "Let sign premium plan to enjoy the features"
+  "letSignPremiumPlan": "Let sign premium plan to enjoy the features",
+  "listBoardJoined": "List board you are joining"
 }

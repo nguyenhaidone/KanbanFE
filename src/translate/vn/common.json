@@ -110,5 +110,6 @@
   "createWithTemplate": "Tạo bảng với mẫu có sẵn",
   "kanbanDes": "Quy trình làm việc đơn giản và trực quan cho các nhóm kỹ thuật.",
   "agileDes": "Hoàn thành công việc là một quá trình: đó là một cách suy nghĩ bao gồm lập kế hoạch, thực hiện, lặp lại và phản ánh.",
-  "letSignPremiumPlan": "Hãy đăng ký gói Premium để có thể tận hưởng tính năng này nhé!"
+  "letSignPremiumPlan": "Hãy đăng ký gói Premium để có thể tận hưởng tính năng này nhé!",
+  "listBoardJoined": "Các bảng bạn đã tham gia"
 }
