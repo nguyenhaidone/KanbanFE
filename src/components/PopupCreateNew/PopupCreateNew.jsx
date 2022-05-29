@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { LIST_COLOR_THEME, PREMIUM_PLAN } from "../../utils/constants";
+import { LIST_COLOR_THEME } from "../../utils/constants";
 import "./PopupCreateNew.scss";
 import useAuth from "../../libs/hook/useAuth";
 

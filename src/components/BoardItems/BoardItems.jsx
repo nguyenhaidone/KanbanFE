@@ -2,9 +2,9 @@ import React from "react";
 import "./BoardItems.scss";
 
 const BoardItems = (props) => {
-  const { id, img, title, index } = props;
+  const { img, title } = props;
 
-  const handleOnClick = (id) => {};
+  // const handleOnClick = (id) => {};
   return (
     <div className="wrap-items" onClick={handleOnClick}>
       <img

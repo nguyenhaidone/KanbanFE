@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ButtonGroup, Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import ChangeLanguageButton from "components/ChangeLanguageButton/ChangeLanguagueButton";
 import "./AppBar.scss";
 import Avatar from "react-avatar";
@@ -19,9 +19,9 @@ const AppBar = () => {
 
   let name = auth.user.fullname !== "" ? auth.user.fullname : auth.user.email;
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  // const changeLanguage = (lng) => {
+  //   i18n.changeLanguage(lng);
+  // };
 
   const handleOnUpgradeClick = () => {
     navigate("/payment-plan");
@@ -49,7 +49,7 @@ const AppBar = () => {
                   onClick={handleShowDetail}
                 />
               ) : (
-                <img src={auth.user.avatar} width="100%" />
+                <img src={auth.user.avatar} width="100%" alt="giaodien" />
               )}
             </div>
             <div className="wrap-user-name-quick-view">{name}</div>
@@ -117,6 +117,7 @@ const AppBar = () => {
               height="32"
               style={{ borderRadius: "50%" }}
               onClick={handleShowDetail}
+              alt="anhbia"
             />
           )}
 

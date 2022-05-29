@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./CheckoutConfirmation.scss";
 import paymentImg from "../../images/payment.svg";
 import certificateImg from "../../images/certificate.svg";
