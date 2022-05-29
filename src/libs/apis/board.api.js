@@ -55,3 +55,16 @@ export const addNewMemberApi = async (body, boardId) => {
   console.log(request.data.data);
   return request.data.data;
 };
+
+export const getListBoardJoinedOfCurrentUser = async () => {
+  const request = await axios.get(
+    `${API_ROUTE}/v1/boards/get-list-board-joined-by-current-user`,
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+}
