@@ -14,15 +14,24 @@ import { isEmpty, cloneDeep } from "lodash";
 import { useTranslation } from "react-i18next";
 import { mapOrder } from "utils/ultis";
 import { applyDrag } from "../../utils/dnd";
-import { boardDetailApi, updateBoardApi } from "../../libs/apis/board.api";
+import {
+  boardDetailApi,
+  updateBoardApi,
+  updateBoardHistory,
+} from "../../libs/apis/board.api";
 import {
   createNewColumnApi,
   updateColumnApi,
 } from "../../libs/apis/column.api";
-
+import {
+  messageUpdateCardStatus,
+  messageCreateColumn,
+} from "../../utils/historyMapping";
 import { updateCardApi } from "../../libs/apis/card.api";
+import useAuth from "libs/hook/useAuth";
 
 const BoardContent = (props) => {
+  const auth = useAuth();
   const { handleOpenPopup } = props;
   let url = window.location.href;
   const boardId = url.substring(url.lastIndexOf("/") + 1);
@@ -66,6 +75,7 @@ const BoardContent = (props) => {
     let newBoard = cloneDeep(board);
     newBoard.columnOrder = newColumn.map((c) => c._id);
     newBoard.columns = newColumn;
+    console.log(newColumn);
     /**
      * !call api update column order
      */
@@ -80,6 +90,7 @@ const BoardContent = (props) => {
 
   const onCardDrop = (columnId, dropResult) => {
     //log history when change column
+    console.log(columnId, dropResult);
     if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
       let newColumn = cloneDeep(column);
 
@@ -110,6 +121,12 @@ const BoardContent = (props) => {
           currentCard.columnId = curColumn._id;
           // console.log(currentCard);
           updateCardApi(currentCard, currentCard._id);
+          const message = messageUpdateCardStatus(
+            auth.user.fullname,
+            board.title,
+            currentCard.title
+          );
+          updateBoardHistory(boardId, message);
         }
       }
     }
@@ -128,6 +145,11 @@ const BoardContent = (props) => {
 
     createNewColumnApi(newColumnToAdd).then((newCol) => {
       // console.log(newCol);
+      const message = messageCreateColumn(
+        auth.user.fullname,
+        newColumnToAdd.title
+      );
+      updateBoardHistory(boardId, message);
       let newColumns = [...column];
       newColumns.push(newCol);
 

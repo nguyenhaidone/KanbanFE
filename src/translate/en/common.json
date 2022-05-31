@@ -111,5 +111,14 @@
   "kanbanDes": "A simple and visual workflow for engineering teams.",
   "agileDes": "Getting things done is a process: it’s a way of thinking that involves planning, execution, iteration, and reflection.",
   "letSignPremiumPlan": "Let sign premium plan to enjoy the features",
-  "listBoardJoined": "List board you are joining"
+  "listBoardJoined": "List board you are joining",
+  "messageUpdateCreateBoard": "{{name}} has been create {{board}} workspaces",
+  "messageUpdateBoardInfo": "{{name}} has been updated information of {{board}}",
+  "messageUpdateColumnOrder": "{{name}} has been updated column {{column}} order of {{board}}",
+  "messageUpdateCardStatus": "{{name}} has been updated card {{card}} status of {{board}}",
+  "messageAddNewMemberStatus": "{{name}} has been added {{member}} to this board",
+  "messageDeleteMember": "{{name}} has been delete {{member}} to this board",
+  "messageDeleteColumn": "{{name}} has been delete {{column}} to this board",
+  "messageCreateColumn": "{{name}} has been create column {{column}}",
+  "messageCreateCard": "{{name}} has been create card {{card}}"
 }

@@ -111,5 +111,14 @@
   "kanbanDes": "Quy trình làm việc đơn giản và trực quan cho các nhóm kỹ thuật.",
   "agileDes": "Hoàn thành công việc là một quá trình: đó là một cách suy nghĩ bao gồm lập kế hoạch, thực hiện, lặp lại và phản ánh.",
   "letSignPremiumPlan": "Hãy đăng ký gói Premium để có thể tận hưởng tính năng này nhé!",
-  "listBoardJoined": "Các bảng bạn đã tham gia"
+  "listBoardJoined": "Các bảng bạn đang tham gia",
+  "messageUpdateCreateBoard": "{{name}} đã tạo không gian làm việc {{board}}",
+  "messageUpdateBoardInfo": "{{name}} đã cập nhật thông tin cho bảng {{board}}",
+  "messageUpdateColumnOrder": "{{name}} đã thay đổi thứ tự cột của bảng {{board}}",
+  "messageUpdateCardStatus": "{{name}} đã cập nhât trạng thái từ {{firstCol}} sang {{endCol}} của bảng {{board}}",
+  "messageAddNewMemberStatus": "{{name}} đã thêm {{member}} vào trong bảng",
+  "messageDeleteMember": "{{name}} đã xoá {{member}} ra khỏi bảng",
+  "messageDeleteColumn": "{{name}} đã xoá {{column}} ra khỏi bảng",
+  "messageCreateColumn": "{{name}} đã tạo cột {{column}}",
+  "messageCreateCard": "{{name}} đã tạo thẻ {{card}}"
 }
