@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./ListBoardItems.scss";
 import { createNewBoardApi } from "../../libs/apis/board.api";
+import { updateBoardHistory } from "../../libs/apis/board.api";
 import { useNavigate } from "react-router-dom";
 import BoardItems from "components/BoardItems/BoardItems";
 import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
 import useAuth from "../../libs/hook/useAuth";
 import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
 import { FREE_PLAN } from "../../utils/constants";
+import { messageUpdateCreateBoard } from "../../utils/historyMapping";
 
 const ListBoardItems = () => {
   const [listBoardOfCurrentUser, setListBoardOfCurrentUser] = useState([]);
@@ -32,7 +34,10 @@ const ListBoardItems = () => {
     console.log(boardDetailCreated);
     createNewBoardApi(boardDetailCreated).then((data) => {
       console.log(data);
-      navigate(`/board/${data._id}`);
+      const message = messageUpdateCreateBoard(auth.user.fullname, data.title);
+      updateBoardHistory(data._id, message).then(() => {
+        navigate(`/board/${data._id}`);
+      });
     });
   };
 

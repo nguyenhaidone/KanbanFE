@@ -10,8 +10,11 @@ import { MODAL_ACTION_CONFIRM } from "utils/constants";
 import { saveContent, selectAllInlineText } from "utils/contentEditable";
 import { createNewCardApi } from "../../libs/apis/card.api";
 import { updateColumnApi } from "../../libs/apis/column.api";
+import { updateBoardHistory } from "../../libs/apis/board.api";
+import { messageCreateCard } from "../../utils/historyMapping";
 
 import "./Column.scss";
+import useAuth from "libs/hook/useAuth";
 
 const Column = (props) => {
   const { column, onCardDrop, onUpdateColumn, handleOpenPopup } = props;
@@ -21,6 +24,7 @@ const Column = (props) => {
   const [columnTitle, setColumnTitle] = useState("");
   const newCardTextareaRef = useRef(null);
   const [newCardTitle, setNewCardTitle] = useState("");
+  const auth = useAuth();
 
   // const onCardDrop = (card) => {
   //   console.log(card);
@@ -45,6 +49,8 @@ const Column = (props) => {
     };
     createNewCardApi(newCardToAdd).then((card) => {
       console.log(card);
+      const message = messageCreateCard(auth.user.fullname, card.title);
+      updateBoardHistory(column.boardId, message);
       let newColumns = cloneDeep(column);
 
       newColumns.cards.push(card);

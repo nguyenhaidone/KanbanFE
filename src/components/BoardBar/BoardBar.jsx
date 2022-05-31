@@ -4,7 +4,8 @@ import { Modal, Button, Form } from "react-bootstrap";
 import setting from "../../images/setting.svg";
 import history from "../../images/histories2.svg";
 import useAuth from "../../libs/hook/useAuth";
-import { addNewMemberApi } from "../../libs/apis/board.api";
+import { addNewMemberApi, updateBoardHistory } from "../../libs/apis/board.api";
+import { messageAddNewMemberStatus } from "../../utils/historyMapping";
 
 import "./BoardBar.scss";
 
@@ -32,6 +33,13 @@ const BoardBar = (props) => {
         { email: inviteEmail },
         boardInfo._id
       );
+      const message = messageAddNewMemberStatus(
+        auth.user.fullname,
+        inviteEmail
+      );
+      updateBoardHistory(boardInfo._id, message).then((data) => {
+        console.log(data);
+      });
       console.log(sendInviteEmail);
     }
   };

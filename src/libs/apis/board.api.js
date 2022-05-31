@@ -67,4 +67,18 @@ export const getListBoardJoinedOfCurrentUser = async () => {
   );
   console.log(request.data.data);
   return request.data.data;
-}
+};
+
+export const updateBoardHistory = async (boardId, message) => {
+  const request = await axios.put(
+    `${API_ROUTE}/v1/boards/message/${boardId}`,
+    message,
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+};
