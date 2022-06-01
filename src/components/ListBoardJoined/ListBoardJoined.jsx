@@ -26,7 +26,7 @@ const ListBoardJoined = () => {
     });
   };
 
-  console.log(listBoardJoinedOfCurrentUser);
+  // console.log(listBoardJoinedOfCurrentUser);
   useEffect(() => {
     getBoardOfCurrentUser();
     setBoardDetailCreated({

@@ -49,7 +49,7 @@ export const currentUserDetailApi = async (refreshToken) => {
         },
       }
     );
-    console.log(request.data.data);
+    // console.log(request.data.data);
     return request.data.data;
   } catch (error) {
     try {
