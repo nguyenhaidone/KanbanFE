@@ -30,9 +30,7 @@ const GoogleLoginButton = () => {
       //   )}
       buttonText={t("text.loginByGoogle")}
       onSuccess={responseGoogle}
-      onFailure={responseGoogle}
-      cookiePolicy={"single_host_origin"}
-    />
+      onFailure={responseGoogle}    />
   );
 };
 
