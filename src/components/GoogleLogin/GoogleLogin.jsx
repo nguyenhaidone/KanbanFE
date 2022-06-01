@@ -12,6 +12,7 @@ const GoogleLoginButton = () => {
   const navigate = useNavigate();
 
   const responseGoogle = (response) => {
+    console.log(response);
     const dataMapping = GoogleLoginDto(response.profileObj);
     socialLoginApi(dataMapping).then((data) => {
       setToken(data.accessToken, data.refreshToken);
