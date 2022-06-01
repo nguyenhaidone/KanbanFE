@@ -31,9 +31,9 @@ const ListBoardItems = () => {
     setIsOpen(!isOpen);
   };
   const handleOnAccept = () => {
-    console.log(boardDetailCreated);
+    // console.log(boardDetailCreated);
     createNewBoardApi(boardDetailCreated).then((data) => {
-      console.log(data);
+      // console.log(data);
       const message = messageUpdateCreateBoard(auth.user.fullname, data.title);
       updateBoardHistory(data._id, message).then(() => {
         navigate(`/board/${data._id}`);
@@ -48,7 +48,7 @@ const ListBoardItems = () => {
     });
   };
 
-  console.log(listBoardOfCurrentUser);
+  // console.log(listBoardOfCurrentUser);
   useEffect(() => {
     getBoardOfCurrentUser();
     setBoardDetailCreated({
