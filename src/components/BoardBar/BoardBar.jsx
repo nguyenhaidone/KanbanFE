@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import setting from "../../images/setting.svg";
 import history from "../../images/histories2.svg";
 import useAuth from "../../libs/hook/useAuth";
 import { addNewMemberApi, updateBoardHistory } from "../../libs/apis/board.api";
 import { messageAddNewMemberStatus } from "../../utils/historyMapping";
+import ItemHistory from "../ItemHistory/ItemHistory";
 
 import "./BoardBar.scss";
 
@@ -14,9 +16,15 @@ const BoardBar = (props) => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopupHistory, setShowPopupHistory] = useState(false);
   const [showEmailSubscription, setShowEmailSubscription] = useState(false);
+  const navigate = useNavigate();
   const [inviteEmail, setInviteEmail] = useState("");
   const { t } = useTranslation();
   const auth = useAuth();
+  const boardMessage =
+    boardInfo.message &&
+    boardInfo.message.sort(
+      (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+    );
 
   const handleClosePopup = () => setShowPopup(false);
   const handleShowPopup = () => setShowPopup(true);
@@ -43,6 +51,7 @@ const BoardBar = (props) => {
       console.log(sendInviteEmail);
     }
   };
+  console.log(boardMessage);
   return (
     <>
       <Modal show={showPopup} onHide={handleClosePopup}>
@@ -58,7 +67,12 @@ const BoardBar = (props) => {
               {t("text.author", { author: auth.user.fullname })}
             </div>
             <div className="wrap-row">
-              <div className="circle-button">{t("text.boardDetail")}</div>
+              <div
+                className="circle-button"
+                onClick={() => navigate(`/board/details/${boardInfo._id}`)}
+              >
+                {t("text.boardDetail")}
+              </div>
               <div className="circle-button">{t("text.deleteBoard")}</div>
               <div
                 className="circle-button"
@@ -108,21 +122,18 @@ const BoardBar = (props) => {
           <Modal.Title>{t("text.histories")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="wrap-payment-alert">
-            <div>{t("text.paymentFail")}</div>
+          <div className="wrap-list-history">
+            {/* <div>{t("text.paymentFail")}</div> */}
+            {boardMessage &&
+              boardMessage.map((item) => <ItemHistory {...item} />)}
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClosePopupHistory}>
-            {t("text.closeButton")}
-          </Button>
-          <Button variant="primary" onClick={handleClosePopupHistory}>
-            {t("text.acceptButton")}
-          </Button>
-        </Modal.Footer>
       </Modal>
       <nav className="navbar-board">
-        <div className="board-title-label">
+        <div
+          className="board-title-label"
+          onClick={() => navigate(`/board/${boardInfo._id}`)}
+        >
           {boardInfo.title || t("text.boardTitle")}
         </div>
         <div className="board-bar-icon">

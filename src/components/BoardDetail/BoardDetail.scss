@@ -1,0 +1,46 @@
+@import "./_globleStyle.scss";
+
+.wrap-container-board-detail {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: $white;
+    background-size: contain;
+    background-image: url(../../images/WelcomeLogin.png);
+}
+
+.wrap-board-label {
+    margin-top: $spacing;
+    color: $blue11324D;
+    font-size: $fontSize14*2;
+    font-weight: $fontWeightLight;
+}
+
+.wrap-board-detail-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: $spacing * 3;
+}
+
+.list-color {
+    width: 100%;
+    height: 100px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .color-option {
+        width: 36px;
+        height: 36px;
+        border-radius: $borderRadius;
+        margin: $spacing * 0.5;
+        cursor: pointer;
+        &:hover {
+            box-shadow: $boxShadowStyle1;
+        }
+    }
+}

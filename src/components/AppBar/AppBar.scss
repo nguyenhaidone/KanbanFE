@@ -81,6 +81,11 @@
 
     .wrap-user-avatar-quick-view {
         margin-bottom: $spacing;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: flex-start;
     }
 
     .wrap-user-name-quick-view {

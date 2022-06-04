@@ -3,12 +3,14 @@ import { useTranslation } from "react-i18next";
 import useAuth from "../../libs/hook/useAuth";
 import Avatar from "react-avatar";
 import { updateUserInfo } from "../../libs/apis/auth.api";
+import { listOrderBuyUserApi } from "../../libs/apis/order.api";
 import "./Profile.scss";
 import { Modal, Button, Form } from "react-bootstrap";
 import { formatToDMY } from "../../utils/formatDateTime";
 import { storage } from "../../firebase/index";
 import { FREE_PLAN } from "utils/constants";
 import { getDaysLeft } from "../../utils/formatDateTime";
+import ItemHistory from "../ItemHistory/ItemHistory";
 
 const Profile = (props) => {
   const { t } = useTranslation();
@@ -20,7 +22,7 @@ const Profile = (props) => {
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
   const [profilePopup, setProfilePopup] = useState(false);
-  //   const [calendar, setCalendar] = useState(false);
+  const [listOrder, setListOrder] = useState([]);
   const [profile, setProfile] = useState({
     fullName: auth.user.fullname,
     phoneNumber: auth.user.phoneNumber,
@@ -31,7 +33,6 @@ const Profile = (props) => {
   const [avatar, setAvatar] = useState(auth.user.avatar || null);
 
   const handleSetProfilePopup = () => setProfilePopup(!profilePopup);
-  //   const handleSetCalendarOpen = () => setCalendar(!calendar);
   const handleOnSubmitUpdate = async () => {
     try {
       await handleOnUpload();
@@ -111,7 +112,10 @@ const Profile = (props) => {
       dateOfBirth: auth.user.dateOfBirth,
     });
     setAvatar(auth.user.avatar || null);
-    setUrl(auth.user.avatar || null)
+    setUrl(auth.user.avatar || null);
+    listOrderBuyUserApi().then((data) => {
+      setListOrder(data);
+    });
   }, [auth]);
 
   return (
@@ -212,7 +216,7 @@ const Profile = (props) => {
           </div>
         </Modal.Body>
       </Modal>
-      <div className="container emp-profile">
+      <div className="container emp-profile" style={{ background: "none" }}>
         <form method="post" className="form-styling">
           <div className="row">
             <div className="col-md-4">
@@ -291,7 +295,7 @@ const Profile = (props) => {
                       aria-controls="profile"
                       aria-selected="false"
                     >
-                      {t("text.listBoardInProfile")}
+                      {t("text.orderHistory")}
                     </a>
                   </li>
                 </ul>
@@ -396,60 +400,22 @@ const Profile = (props) => {
                 <div
                   className={
                     tab.personalInformation
-                      ? "tab-pane fade"
-                      : "tab-pane fade show active"
+                      ? "tab-pane fade list-order"
+                      : "tab-pane fade show active list-order"
                   }
                   id="profile"
                   role="tabpanel"
                   aria-labelledby="profile-tab"
                 >
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Experience</label>
+                  {listOrder.map((item) => (
+                    <div className="wrap-item-history" key={item._id}>
+                      <ItemHistory
+                        fullname={auth.user.fullname}
+                        createdOrderAt={item.createdOrderAt}
+                        status={item.status}
+                      />
                     </div>
-                    <div className="col-md-6">
-                      <p>Expert</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Hourly Rate</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>10$/hr</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Total Projects</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>230</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>English Level</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Expert</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Availability</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>6 months</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-12">
-                      <label>Your Bio</label>
-                      <br />
-                      <p>Your detail description</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>

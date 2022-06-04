@@ -12,7 +12,7 @@ body {
     text-align: center;
 }
 .profile-img img {
-    width: 70%;
+    width: 50%;
     height: 100%;
 }
 .profile-img .file {
@@ -98,4 +98,14 @@ body {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     box-sizing: border-box;
     padding: 32px;
+}
+
+.list-order {
+    width: 74%;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.wrap-item-history {
+    width: 100%;
 }

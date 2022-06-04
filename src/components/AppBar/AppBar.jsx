@@ -49,7 +49,7 @@ const AppBar = () => {
                   onClick={handleShowDetail}
                 />
               ) : (
-                <img src={auth.user.avatar} width="100%" alt="giaodien" />
+                <img src={auth.user.avatar} width="70%" alt="giaodien" />
               )}
             </div>
             <div className="wrap-user-name-quick-view">{name}</div>

@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "./BoardContainer.scss";
+import "./BoardDetailContainer.scss";
 import AppBar from "components/AppBar/AppBar";
 import BoardBar from "components/BoardBar/BoardBar";
-import BoardContent from "components/BoardContent/BoardContent";
-import PopupCardDetail from "components/PopupCardDetail/PopupCardDetail";
+import BoardDetail from "components/BoardDetail/BoardDetail";
 import { boardDetailApi } from "../../libs/apis/board.api";
 
-const BoardContainer = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const BoardDetailContainer = () => {
   let url = window.location.href;
   const boardId = url.substring(url.lastIndexOf("/") + 1);
   const [board, setBoard] = useState({});
-  const handleSetOpen = () => {
-    setIsOpen(!isOpen);
-  };
   useEffect(() => {
     boardDetailApi(boardId).then((board) => {
       if (board) {
@@ -22,15 +17,12 @@ const BoardContainer = () => {
     });
   }, []);
   return (
-    // <div className="wrap-board-container">
     <>
-      {isOpen && <PopupCardDetail handlePopupClose={handleSetOpen} />}
       <AppBar />
       <BoardBar boardInfo={board} />
-      <BoardContent handleOpenPopup={handleSetOpen} />
+      <BoardDetail boardInfo={board} />
     </>
-    // </div>
   );
 };
 
-export default React.memo(BoardContainer);
+export default React.memo(BoardDetailContainer);
