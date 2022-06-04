@@ -5,10 +5,18 @@ const BoardItems = (props) => {
   const { img, title } = props;
 
   const handleOnClick = () => {};
+  const isImage = (boardBgColor) => {
+    const spread = [...`${boardBgColor}`];
+    return spread[0] !== "#" ? true : false;
+  };
   return (
     <div className="wrap-items" onClick={handleOnClick}>
       <img
-        src={img ? img : `https://picsum.photos/250/110?random=${Math.random()}`}
+        src={
+          img && isImage(img)
+            ? img
+            : `https://picsum.photos/250/110?random=${Math.random()}`
+        }
         alt="board-item"
       />
       <div className="wrap-title">

@@ -9,7 +9,8 @@ import useAuth from "../../libs/hook/useAuth";
 import { getListBoardJoinedOfCurrentUser } from "../../libs/apis/board.api";
 
 const ListBoardJoined = () => {
-  const [listBoardJoinedOfCurrentUser, setListBoardJoinedOfCurrentUser] = useState([]);
+  const [listBoardJoinedOfCurrentUser, setListBoardJoinedOfCurrentUser] =
+    useState([]);
   const navigate = useNavigate();
   const auth = useAuth();
 
@@ -49,7 +50,11 @@ const ListBoardJoined = () => {
                 key={index}
                 onClick={() => navigate(`/board/${item._id}`)}
               >
-                <BoardItems title={item.title} index={index} />
+                <BoardItems
+                  title={item.title}
+                  index={index}
+                  img={item.boardBackgroundColor}
+                />
               </div>
             );
           })}

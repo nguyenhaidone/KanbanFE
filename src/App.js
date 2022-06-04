@@ -16,6 +16,7 @@ import HomepageContainer from "containers/HomepageContainer/HomepageContainer";
 import LoginContainer from "containers/LoginContainer/LoginContainer";
 import RegisterContainer from "containers/RegisterContainer/RegisterContainer";
 import BoardContainer from "containers/BoardContainer/BoardContainer";
+import BoardDetailContainer from "containers/BoardDetailContainer/BoardDetailContainer";
 import PaymentContainer from "containers/PaymentContainer/PaymentContainer";
 import AuthContainer from "containers/AuthContainer/AuthContainer";
 import ProfileContainer from "containers/ProfileContainer/ProfileContainer";
@@ -50,6 +51,14 @@ const App = () => {
             element={
               <AuthContainer>
                 <BoardContainer />
+              </AuthContainer>
+            }
+          ></Route>
+          <Route
+            path="/board/details/:id"
+            element={
+              <AuthContainer>
+                <BoardDetailContainer />
               </AuthContainer>
             }
           ></Route>

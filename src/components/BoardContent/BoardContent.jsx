@@ -187,11 +187,23 @@ const BoardContent = (props) => {
     // console.log(columnIndexToUpdate);
   };
 
+  const isImage = (boardBgColor) => {
+    const spread = [...`${boardBgColor}`];
+    return spread[0] !== "#" ? true : false;
+  };
+
   return (
     <>
       <nav
         className="workspace"
-        style={{ backgroundColor: `${board.boardBackgroundColor}` }}
+        style={
+          isImage(board.boardBackgroundColor)
+            ? {
+                backgroundImage: `url(${board.boardBackgroundColor})`,
+                backgroundSize: "contain",
+              }
+            : { backgroundColor: `${board.boardBackgroundColor}` }
+        }
       >
         <Container
           orientation="horizontal"

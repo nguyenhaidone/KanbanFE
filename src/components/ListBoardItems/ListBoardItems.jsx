@@ -78,7 +78,11 @@ const ListBoardItems = () => {
                 key={index}
                 onClick={() => navigate(`/board/${item._id}`)}
               >
-                <BoardItems title={item.title} index={index} />
+                <BoardItems
+                  title={item.title}
+                  index={index}
+                  img={item.boardBackgroundColor}
+                />
               </div>
             );
           })}

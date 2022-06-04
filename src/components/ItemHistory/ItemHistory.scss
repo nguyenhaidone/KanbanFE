@@ -1,0 +1,42 @@
+@import "./_globleStyle.scss";
+
+.item-history {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #3a3a3a;
+    background-color: #eeeeee;
+    transition: $transition02;
+    &:hover {
+        background-color: #ffffff;
+    }
+}
+
+.first-cell {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: $spacing;
+    flex-direction: row;
+    justify-content: flex-start;
+    span {
+        font-size: $fontSize18;
+        color: $blue11324D;
+        font-weight: $fontWeightLight;
+    }
+}
+
+.second-cell {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: $spacing;
+    flex-direction: row;
+    justify-content: flex-end;
+    span {
+        font-size: $fontSize14;
+        color: $gray;
+        font-weight: $fontWeightLight;
+        font-style: italic;
+    }
+}

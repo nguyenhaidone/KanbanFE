@@ -11,3 +11,12 @@ export const createOrderApi = async (body) => {
   console.log(request);
   return request.data.data;
 };
+
+export const listOrderBuyUserApi = async () => {
+  const request = await axios.get(`${API_ROUTE}/v1/order/list-order`, {
+    headers: {
+      x_authorization: getToken().accessToken,
+    },
+  });
+  return request.data.data;
+};

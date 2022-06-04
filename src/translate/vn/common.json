@@ -115,10 +115,13 @@
   "messageUpdateCreateBoard": "{{name}} đã tạo không gian làm việc {{board}}",
   "messageUpdateBoardInfo": "{{name}} đã cập nhật thông tin cho bảng {{board}}",
   "messageUpdateColumnOrder": "{{name}} đã thay đổi thứ tự cột của bảng {{board}}",
-  "messageUpdateCardStatus": "{{name}} đã cập nhât trạng thái từ {{firstCol}} sang {{endCol}} của bảng {{board}}",
+  "messageUpdateCardStatus": "{{name}} đã cập nhât trạng thái thẻ {{card}} của bảng {{board}}",
   "messageAddNewMemberStatus": "{{name}} đã thêm {{member}} vào trong bảng",
   "messageDeleteMember": "{{name}} đã xoá {{member}} ra khỏi bảng",
   "messageDeleteColumn": "{{name}} đã xoá {{column}} ra khỏi bảng",
   "messageCreateColumn": "{{name}} đã tạo cột {{column}}",
-  "messageCreateCard": "{{name}} đã tạo thẻ {{card}}"
+  "messageCreateCard": "{{name}} đã tạo thẻ {{card}}",
+  "chooseBackgroundImg": "Hoặc chọn ảnh nền cho bảng",
+  "orderSuccess": "{{name}} đã đăng kí gói Premium thành công, kiểm tra email của bạn để biết thêm thông tin chi tiết",
+  "orderHistory": "Lịch sử gia hạn"
 }

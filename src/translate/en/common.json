@@ -120,5 +120,8 @@
   "messageDeleteMember": "{{name}} has been delete {{member}} to this board",
   "messageDeleteColumn": "{{name}} has been delete {{column}} to this board",
   "messageCreateColumn": "{{name}} has been create column {{column}}",
-  "messageCreateCard": "{{name}} has been create card {{card}}"
+  "messageCreateCard": "{{name}} has been create card {{card}}",
+  "chooseBackgroundImg": "Or choose background image",
+  "orderSuccess": "{{name}} signed Premium plan successfully, check your email for more information",
+  "orderHistory": "Renewal History"
 }
