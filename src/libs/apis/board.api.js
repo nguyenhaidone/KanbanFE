@@ -82,3 +82,33 @@ export const updateBoardHistory = async (boardId, message) => {
   console.log(request.data.data);
   return request.data.data;
 };
+
+export const removeCurrentUserApi = async (boardId) => {
+  const request = await axios.put(
+    `${API_ROUTE}/v1/boards/remove-current-user/${boardId}`,
+    {},
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+};
+
+export const removeMemberByCreaterApi = async (boardId, email) => {
+  const request = await axios.put(
+    `${API_ROUTE}/v1/boards/remove-current-user-by-creater/${boardId}`,
+    {
+      member: email,
+    },
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+};

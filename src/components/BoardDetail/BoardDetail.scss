@@ -12,7 +12,7 @@
 .wrap-board-label {
     margin-top: $spacing;
     color: $blue11324D;
-    font-size: $fontSize14*2;
+    font-size: $fontSize14 * 2;
     font-weight: $fontWeightLight;
 }
 
@@ -28,7 +28,6 @@
 
 .list-color {
     width: 100%;
-    height: 100px;
     overflow-y: auto;
     display: flex;
     flex-direction: row;
@@ -41,6 +40,61 @@
         cursor: pointer;
         &:hover {
             box-shadow: $boxShadowStyle1;
+        }
+    }
+}
+
+.wrap-list-member {
+    margin: $spacing * 2 0;
+    width: 100%;
+    height: 400px;
+    overflow-y: auto;
+    .member-option {
+        width: 100%;
+        box-sizing: border-box;
+        padding: $spacing;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: $borderRadius;
+        cursor: pointer;
+        transition: $transition02;
+        box-shadow: $boxShadowStyle1;
+        .member-info {
+            width: fit-content;
+            box-sizing: border-box;
+            padding: $spacing;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            color: $blue11324D;
+            font-size: $fontSize14;
+            font-weight: $fontWeightLight;
+            .member-email {
+                margin-left: $spacing;
+                color: $blue11324D;
+                font-size: $fontSize18;
+                font-weight: $fontWeightLight;
+            }
+        }
+        .member-action {
+            width: fit-content;
+            box-sizing: border-box;
+            padding: $spacing;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: white;
+            font-size: $fontSize14;
+            transition: $transition02;
+            font-weight: $fontWeightLight;
+            background-color: $blue11324D;
+            border-radius: $borderRadius;
+        }
+        &:hover {
+            background-color: $white;
         }
     }
 }

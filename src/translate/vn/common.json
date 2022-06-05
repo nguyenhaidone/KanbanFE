@@ -123,5 +123,11 @@
   "messageCreateCard": "{{name}} đã tạo thẻ {{card}}",
   "chooseBackgroundImg": "Hoặc chọn ảnh nền cho bảng",
   "orderSuccess": "{{name}} đã đăng kí gói Premium thành công, kiểm tra email của bạn để biết thêm thông tin chi tiết",
-  "orderHistory": "Lịch sử gia hạn"
+  "orderHistory": "Lịch sử gia hạn",
+  "requestToLeave": "Yêu cầu rời đi",
+  "leave": "Rời khỏi bảng",
+  "areYouSureKichThisMember": "Bạn có chắc muốn mời thành viên này ra khỏi bảng này không? Hành động này không thể hoàn tác nhưng bạn vẫn có thể mời bạn đó vào lại như ban đầu!",
+  "listMembers": "Danh sách thành viên",
+  "dontHaveAnyMemberRightNow": "Không có bất kì thành viên nào tham gia bảng",
+  "ifYouLeaveThisBoard": "Nếu bạn chọn rời khỏi bảng này, bạn sẽ không thể tham gia hay vào lại bảng lần nữa"
 }
