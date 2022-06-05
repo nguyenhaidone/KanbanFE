@@ -7,7 +7,11 @@ import Avatar from "react-avatar";
 import { storage } from "../../firebase/index";
 import useAuth from "../../libs/hook/useAuth";
 import { Container, Modal, Form, Button } from "react-bootstrap";
-import { updateBoardApi, updateBoardHistory } from "../../libs/apis/board.api";
+import {
+  updateBoardApi,
+  updateBoardHistory,
+  removeMemberByCreaterApi,
+} from "../../libs/apis/board.api";
 import { messageUpdateBoardInfo } from "../../utils/historyMapping";
 
 const BoardDetail = (props) => {
@@ -19,18 +23,20 @@ const BoardDetail = (props) => {
   const [boardTitle, setBoardTitle] = useState(boardInfo.title);
   const [backgroundColor, setBackgroundColor] = useState(null);
   const [imageBackground, setImageBackground] = useState(null);
+  const [isRemovePopupOpen, setIsRemovePopupOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState({
     message: "Thiếu tên bảng",
     heading: "Yêu cầu nhập tên bảng",
     variant: "danger",
   });
   const [alertShow, setAlertShow] = useState(false);
+  const [listMembers, setListMembers] = useState([]);
+  const [memberRemoved, setMemberRemoved] = useState("");
 
   const isImage = (boardBgColor) => {
     const spread = [...`${boardBgColor}`];
     return spread[0] !== "#" ? true : false;
   };
-  console.log(imageBackground);
 
   const handleOnUpload = () => {
     console.log(imageBackground);
@@ -118,11 +124,27 @@ const BoardDetail = (props) => {
     }
   };
 
+  const handleOnRemoveMember = () => {
+    removeMemberByCreaterApi(boardInfo._id, memberRemoved).then((data) => {
+      setListMembers(data.members);
+      setAlertMessage({
+        message: "Xoá thành viên thành công",
+        heading: "Xoá thành viên",
+        variant: "success",
+      });
+      setAlertShow(true);
+      handleCloseRemove();
+    });
+  };
+
+  const handleCloseRemove = () => setIsRemovePopupOpen(!isRemovePopupOpen);
+
   useEffect(() => {
+    setListMembers(boardInfo.members || []);
     isImage(boardInfo.boardBackgroundColor || "")
       ? setImageBackground(boardInfo.boardBackgroundColor)
       : setBackgroundColor(boardInfo.boardBackgroundColor);
-  }, []);
+  }, [listMembers]);
 
   return (
     <>
@@ -138,6 +160,22 @@ const BoardDetail = (props) => {
           </Modal.Body>
         </Modal>
       </>
+      <>
+        <Modal show={isRemovePopupOpen} onHide={handleCloseRemove}>
+          <Modal.Header closeButton>
+            <Modal.Title>{t("text.requestToLeave")}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{t("text.areYouSureKichThisMember")}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseRemove}>
+              {t("text.closeButton")}
+            </Button>
+            <Button variant="primary" onClick={handleOnRemoveMember}>
+              {t("text.acceptButton")}
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
       <div className="wrap-container-board-detail">
         <Container>
           <div className="wrap-board-detail-title">
@@ -151,12 +189,12 @@ const BoardDetail = (props) => {
               {boardInfo.title || "Bang"}
             </span>
           </div>
-          <Form>
+          <Form style={{ margin: "8px 0" }}>
             <Form.Group className="mb-3">
               <Form.Label
                 style={{
                   color: "#11324D",
-                  fontSize: "18px",
+                  fontSize: "22px",
                   fontWeight: "300",
                 }}
               >
@@ -175,7 +213,7 @@ const BoardDetail = (props) => {
               <Form.Label
                 style={{
                   color: "#11324D",
-                  fontSize: "18px",
+                  fontSize: "22px",
                   fontWeight: "300",
                 }}
               >
@@ -198,7 +236,7 @@ const BoardDetail = (props) => {
               <Form.Label
                 style={{
                   color: "#11324D",
-                  fontSize: "18px",
+                  fontSize: "22px",
                   fontWeight: "300",
                 }}
               >
@@ -218,9 +256,38 @@ const BoardDetail = (props) => {
             </Form.Group>
 
             <Button variant="primary" onClick={handleOnUpload}>
-              Submit
+              {t("text.acceptButton")}
             </Button>
           </Form>
+          <span
+            style={{
+              color: "#11324D",
+              fontSize: "22px",
+              fontWeight: "300",
+            }}
+          >
+            {t("text.listMembers")}
+          </span>
+          <div className="wrap-list-member">
+            {listMembers &&
+              listMembers.map((member, index) => (
+                <div className="member-option" key={index}>
+                  <div className="member-info">
+                    <Avatar name={member} round={true} size="32" />
+                    <div className="member-email">{member}</div>
+                  </div>
+                  <div
+                    className="member-action"
+                    onClick={() => {
+                      setMemberRemoved(member);
+                      handleCloseRemove();
+                    }}
+                  >
+                    {t("text.requestToLeave")}
+                  </div>
+                </div>
+              ))}
+          </div>
         </Container>
       </div>
     </>

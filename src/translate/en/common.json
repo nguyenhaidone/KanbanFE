@@ -123,5 +123,11 @@
   "messageCreateCard": "{{name}} has been create card {{card}}",
   "chooseBackgroundImg": "Or choose background image",
   "orderSuccess": "{{name}} signed Premium plan successfully, check your email for more information",
-  "orderHistory": "Renewal History"
+  "orderHistory": "Renewal History",
+  "requestToLeave": "Request to leave",
+  "leave": "Leave the board",
+  "areYouSureKichThisMember": "Are you sure you want to invite this member off this board? This action cannot be undone, but you can still invite this member back in!",
+  "listMembers": "List board's member",
+  "dontHaveAnyMemberRightNow": "No members have joined the board yet",
+  "ifYouLeaveThisBoard": "If you leave this board, you never join the board again"
 }

@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 import setting from "../../images/setting.svg";
 import history from "../../images/histories2.svg";
 import useAuth from "../../libs/hook/useAuth";
-import { addNewMemberApi, updateBoardHistory } from "../../libs/apis/board.api";
+import {
+  addNewMemberApi,
+  updateBoardHistory,
+  removeCurrentUserApi,
+} from "../../libs/apis/board.api";
 import { messageAddNewMemberStatus } from "../../utils/historyMapping";
 import ItemHistory from "../ItemHistory/ItemHistory";
 
@@ -14,6 +18,7 @@ import "./BoardBar.scss";
 const BoardBar = (props) => {
   const { boardInfo } = props;
   const [showPopup, setShowPopup] = useState(false);
+  const [showConfirmLeaveBoard, setShowConfirmLeaveBoard] = useState(false);
   const [showPopupHistory, setShowPopupHistory] = useState(false);
   const [showEmailSubscription, setShowEmailSubscription] = useState(false);
   const navigate = useNavigate();
@@ -51,6 +56,15 @@ const BoardBar = (props) => {
       console.log(sendInviteEmail);
     }
   };
+  const handleOnLeaveBoard = () => {
+    removeCurrentUserApi(boardInfo._id)
+      .then((data) => {
+        data ? navigate("/homepage") : alert("Fail");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   console.log(boardMessage);
   return (
     <>
@@ -84,6 +98,12 @@ const BoardBar = (props) => {
             <div className="wrap-row">
               <div className="circle-button">{t("text.chart")}</div>
               <div className="circle-button">{t("text.activities")}</div>
+              <div
+                className="circle-button"
+                onClick={() => setShowConfirmLeaveBoard(!showEmailSubscription)}
+              >
+                {t("text.leave")}
+              </div>
             </div>
             {/* <div className="wrap-row">
             </div> */}
@@ -105,6 +125,30 @@ const BoardBar = (props) => {
               </Form.Group>
 
               <Button variant="primary" type="submit" onClick={handleOnInvite}>
+                {t("text.acceptButton")}
+              </Button>
+            </Form>
+            {/* <Button variant="secondary" onClick={handleClosePopup}>
+            {t("text.closeButton")}
+          </Button>
+          <Button variant="primary" onClick={handleClosePopup}>
+            {t("text.acceptButton")}
+          </Button> */}
+          </Modal.Footer>
+        )}
+        {showConfirmLeaveBoard && (
+          <Modal.Footer>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Text className="text-muted">
+                  {t("text.ifYouLeaveThisBoard")}
+                </Form.Text>
+              </Form.Group>
+
+              <Button
+                variant="primary"
+                onClick={handleOnLeaveBoard}
+              >
                 {t("text.acceptButton")}
               </Button>
             </Form>
