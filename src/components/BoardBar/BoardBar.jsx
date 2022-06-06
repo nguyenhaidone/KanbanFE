@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, OverlayTrigger, Popover } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import setting from "../../images/setting.svg";
 import history from "../../images/histories2.svg";
+import Avatar from "react-avatar";
 import useAuth from "../../libs/hook/useAuth";
 import {
   addNewMemberApi,
@@ -66,6 +67,24 @@ const BoardBar = (props) => {
       });
   };
   console.log(boardMessage);
+  const popover = (
+    <Popover id="popover-basic" style={{ height: "300px", overflowY: "auto" }}>
+      <Popover.Header as="h3">{t("text.listMembers")}</Popover.Header>
+      <Popover.Body>
+        {/* And here's some <strong>amazing</strong> content. It's very engaging.
+        right? */}
+        {boardInfo.members &&
+          boardInfo.members.map((member, index) => (
+            <div className="member-option" key={index}>
+              <div className="member-info">
+                <Avatar name={member} round={true} size="24" />
+                <div className="member-email">{member}</div>
+              </div>
+            </div>
+          ))}
+      </Popover.Body>
+    </Popover>
+  );
   return (
     <>
       <Modal show={showPopup} onHide={handleClosePopup}>
@@ -87,23 +106,40 @@ const BoardBar = (props) => {
               >
                 {t("text.boardDetail")}
               </div>
-              <div className="circle-button">{t("text.deleteBoard")}</div>
-              <div
-                className="circle-button"
-                onClick={() => setShowEmailSubscription(!showEmailSubscription)}
-              >
-                {t("text.addPeople")}
-              </div>
+              {boardInfo.creater && boardInfo.creater === auth.user._id && (
+                <div className="circle-button">{t("text.deleteBoard")}</div>
+              )}
+              {boardInfo.creater && boardInfo.creater === auth.user._id && (
+                <div
+                  className="circle-button"
+                  onClick={() =>
+                    setShowEmailSubscription(!showEmailSubscription)
+                  }
+                >
+                  {t("text.addPeople")}
+                </div>
+              )}
             </div>
             <div className="wrap-row">
-              <div className="circle-button">{t("text.chart")}</div>
-              <div className="circle-button">{t("text.activities")}</div>
               <div
                 className="circle-button"
-                onClick={() => setShowConfirmLeaveBoard(!showEmailSubscription)}
+                onClick={() => navigate(`/board/details/${boardInfo._id}`)}
               >
-                {t("text.leave")}
+                {t("text.chart")}
               </div>
+              <div className="circle-button" onClick={handleShowPopupHistory}>
+                {t("text.activities")}
+              </div>
+              {boardInfo.creater && boardInfo.creater !== auth.user._id && (
+                <div
+                  className="circle-button"
+                  onClick={() =>
+                    setShowConfirmLeaveBoard(!showEmailSubscription)
+                  }
+                >
+                  {t("text.leave")}
+                </div>
+              )}
             </div>
             {/* <div className="wrap-row">
             </div> */}
@@ -145,10 +181,7 @@ const BoardBar = (props) => {
                 </Form.Text>
               </Form.Group>
 
-              <Button
-                variant="primary"
-                onClick={handleOnLeaveBoard}
-              >
+              <Button variant="primary" onClick={handleOnLeaveBoard}>
                 {t("text.acceptButton")}
               </Button>
             </Form>
@@ -180,6 +213,49 @@ const BoardBar = (props) => {
         >
           {boardInfo.title || t("text.boardTitle")}
         </div>
+        <div className="wrap-list-member-joined">
+          <span className="member-label">{t("text.listMembers")}: </span>
+          {boardInfo.members && boardInfo.members.length > 3 ? (
+            boardInfo.members.map((item, index) => (
+              <div className="icon-member" key={index}>
+                <Avatar name={item} round={true} size="32" />
+              </div>
+            ))
+          ) : (
+            <>
+              <div className="icon-member">
+                <Avatar
+                  name={boardInfo.members ? boardInfo.members[0] : "member"}
+                  round={true}
+                  size="32"
+                />
+              </div>
+              <div className="icon-member">
+                <Avatar
+                  name={boardInfo.members ? boardInfo.members[1] : "member"}
+                  round={true}
+                  size="32"
+                />
+              </div>
+              <OverlayTrigger
+                trigger="click"
+                placement="right"
+                overlay={popover}
+              >
+                <div className="icon-member">
+                  <Avatar
+                    name={`+${
+                      boardInfo.members ? boardInfo.members.length - 2 : 0
+                    }`}
+                    round={true}
+                    size="32"
+                  />
+                </div>
+              </OverlayTrigger>
+            </>
+          )}
+        </div>
+
         <div className="board-bar-icon">
           <div className="img-icon-setting" onClick={handleShowPopup}>
             <img src={setting} width="24px" height="24px" alt="setting" />
