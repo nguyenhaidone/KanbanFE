@@ -12,6 +12,7 @@
     background-color: $pinkD291BC;
     width: 100%;
     height: 58px;
+    z-index: 9;
 }
 
 .board-title-label {
@@ -46,6 +47,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .wrap-setting-popup {
@@ -99,4 +101,64 @@
     width: 100%;
     height: 400px;
     overflow-y: auto;
+}
+
+.wrap-list-member-joined {
+    min-width: 300px;
+    border-radius: $borderRadius;
+    padding: $spacing;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    .icon-member {
+        width: 32px;
+        height: 32px;
+        margin-left: 5px;
+    }
+}
+
+.member-label {
+    color: $blue11324D;
+    transition: $transition02;
+    font-size: $fontSize18;
+    font-weight: $fontWeightLight;
+}
+
+.member-option {
+    width: 100%;
+    box-sizing: border-box;
+    padding: $spacing;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: $borderRadius;
+    cursor: pointer;
+    transition: $transition02;
+    box-shadow: $boxShadowStyle1;
+    .member-info {
+        width: fit-content;
+        box-sizing: border-box;
+        padding: $spacing;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        color: $blue11324D;
+        font-size: $fontSize14;
+        font-weight: $fontWeightLight;
+        .member-email {
+            margin-left: $spacing;
+            color: $blue11324D;
+            font-size: $fontSize14;
+            font-weight: $fontWeightLight;
+        }
+    }
+    &:hover {
+        background-color: $white;
+    }
 }

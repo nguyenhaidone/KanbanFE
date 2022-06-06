@@ -6,6 +6,7 @@ export default function useAuth() {
   const [authContext, setAuthContext] = useState({
     isAuth: false,
     user: {
+      _id: "",
       email: "",
       fullname: "",
       address: "",
@@ -38,7 +39,6 @@ export default function useAuth() {
       try {
         await currentUserDetailApi(refreshToken).then((data) => {
           if (isMounting) setAuthContext({ isAuth: true, user: data });
-          // console.log(data);
         });
       } catch (error) {
         throw new Error(error.message);

@@ -32,6 +32,7 @@ const BoardDetail = (props) => {
   const [alertShow, setAlertShow] = useState(false);
   const [listMembers, setListMembers] = useState([]);
   const [memberRemoved, setMemberRemoved] = useState("");
+  const [isCreater, setIsCreater] = useState(false);
 
   const isImage = (boardBgColor) => {
     const spread = [...`${boardBgColor}`];
@@ -39,8 +40,14 @@ const BoardDetail = (props) => {
   };
 
   const handleOnUpload = () => {
-    console.log(imageBackground);
-    if (!boardTitle) {
+    if (!isCreater) {
+      setAlertMessage({
+        message: t("text.youAreNotAuthor"),
+        heading: t("text.authAccess"),
+        variant: "danger",
+      });
+      setAlertShow(!alertShow);
+    } else if (!boardTitle) {
       setAlertMessage({
         message: "Thiếu tên bảng",
         heading: "Yêu cầu nhập tên bảng",
@@ -119,22 +126,44 @@ const BoardDetail = (props) => {
   };
 
   const handleOnChangeImg = (e) => {
-    if (e.target.files[0]) {
+    if (!isCreater) {
+      setAlertMessage({
+        message: t("text.youAreNotAuthor"),
+        heading: t("text.authAccess"),
+        variant: "danger",
+      });
+      setAlertShow(!alertShow);
+    } else if (e.target.files[0]) {
       setImageBackground(e.target.files[0]);
     }
   };
 
+  useEffect(() => {
+    boardInfo.creater && boardInfo.creater === auth.user._id
+      ? setIsCreater(true)
+      : setIsCreater(false);
+  }, [boardInfo, auth.user]);
+
   const handleOnRemoveMember = () => {
-    removeMemberByCreaterApi(boardInfo._id, memberRemoved).then((data) => {
-      setListMembers(data.members);
+    if (!isCreater) {
       setAlertMessage({
-        message: "Xoá thành viên thành công",
-        heading: "Xoá thành viên",
-        variant: "success",
+        message: t("text.youAreNotAuthor"),
+        heading: t("text.authAccess"),
+        variant: "danger",
       });
-      setAlertShow(true);
-      handleCloseRemove();
-    });
+      setAlertShow(!alertShow);
+    } else {
+      removeMemberByCreaterApi(boardInfo._id, memberRemoved).then((data) => {
+        setListMembers(data.members);
+        setAlertMessage({
+          message: "Xoá thành viên thành công",
+          heading: "Xoá thành viên",
+          variant: "success",
+        });
+        setAlertShow(true);
+        handleCloseRemove();
+      });
+    }
   };
 
   const handleCloseRemove = () => setIsRemovePopupOpen(!isRemovePopupOpen);

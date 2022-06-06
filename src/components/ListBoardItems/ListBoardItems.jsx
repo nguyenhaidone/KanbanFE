@@ -10,6 +10,8 @@ import useAuth from "../../libs/hook/useAuth";
 import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
 import { FREE_PLAN } from "../../utils/constants";
 import { messageUpdateCreateBoard } from "../../utils/historyMapping";
+import LazyLoad from "react-lazyload";
+import PageLoading from "../PageLoading/PageLoading";
 
 const ListBoardItems = () => {
   const [listBoardOfCurrentUser, setListBoardOfCurrentUser] = useState([]);
@@ -73,17 +75,19 @@ const ListBoardItems = () => {
         <div className="list-board">
           {listBoardOfCurrentUser.map((item, index) => {
             return (
-              <div
-                className="wrap-board-items"
-                key={index}
-                onClick={() => navigate(`/board/${item._id}`)}
-              >
-                <BoardItems
-                  title={item.title}
-                  index={index}
-                  img={item.boardBackgroundColor}
-                />
-              </div>
+              <LazyLoad key={index} placeholder={<PageLoading />}>
+                <div
+                  className="wrap-board-items"
+                  key={index}
+                  onClick={() => navigate(`/board/${item._id}`)}
+                >
+                  <BoardItems
+                    title={item.title}
+                    index={index}
+                    img={item.boardBackgroundColor}
+                  />
+                </div>
+              </LazyLoad>
             );
           })}
           <div className="wrap-board-items">
