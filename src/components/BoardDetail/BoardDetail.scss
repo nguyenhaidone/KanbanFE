@@ -98,3 +98,27 @@
         }
     }
 }
+
+.wrap-chart {
+    width: 100%;
+    margin: $spacing * 2 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: $spacing * 8;
+    border-radius: $borderRadius;
+    box-shadow: $boxShadowStyle1;
+    .chart-wrapper {
+        width: 100%;
+    }
+    .wrap-group-chart {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .wrap-chart-circle {
+            width: 45%;
+        }
+    }
+}

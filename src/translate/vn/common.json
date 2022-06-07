@@ -131,5 +131,10 @@
   "dontHaveAnyMemberRightNow": "Không có bất kì thành viên nào tham gia bảng",
   "ifYouLeaveThisBoard": "Nếu bạn chọn rời khỏi bảng này, bạn sẽ không thể tham gia hay vào lại bảng lần nữa",
   "youAreNotAuthor": "Ban không được uỷ quyền",
-  "authAccess": "Quyền truy cập!"
+  "authAccess": "Quyền truy cập!",
+  "analysisTable": "Phân tích bảng",
+  "numberOfCardsPerStatus": "Thống kê số thẻ mỗi trạng thái",
+  "percentOfCardsPerStatus": "Phần trăm số thẻ cho mỗi trạng thái",
+  "percentageMemberInteraction": "Tỉ lệ thành viên tích cực tham gia tương tác",
+  "interactionProgressByDay": "Tiến độ tương tác theo ngày"
 }

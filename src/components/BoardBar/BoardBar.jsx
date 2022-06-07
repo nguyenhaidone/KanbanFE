@@ -215,7 +215,7 @@ const BoardBar = (props) => {
         </div>
         <div className="wrap-list-member-joined">
           <span className="member-label">{t("text.listMembers")}: </span>
-          {boardInfo.members && boardInfo.members.length > 3 ? (
+          {boardInfo.members && boardInfo.members.length < 3 ? (
             boardInfo.members.map((item, index) => (
               <div className="icon-member" key={index}>
                 <Avatar name={item} round={true} size="32" />
