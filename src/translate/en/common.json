@@ -131,5 +131,10 @@
   "dontHaveAnyMemberRightNow": "No members have joined the board yet",
   "ifYouLeaveThisBoard": "If you leave this board, you never join the board again",
   "youAreNotAuthor": "You are not author of this board",
-  "authAccess": "Authorization access!"
+  "authAccess": "Authorization access!",
+  "analysisTable": "Board analysis",
+  "numberOfCardsPerStatus": "Number of cards per status",
+  "percentOfCardsPerStatus": "Percent of cards per status",
+  "percentageMemberInteraction": "Percentage of members actively participating in the interaction",
+  "interactionProgressByDay": "Interaction progress by day"
 }

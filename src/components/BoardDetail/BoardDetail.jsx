@@ -13,6 +13,10 @@ import {
   removeMemberByCreaterApi,
 } from "../../libs/apis/board.api";
 import { messageUpdateBoardInfo } from "../../utils/historyMapping";
+import { VerticalBarChart } from "../VerticalBarChart/VerticalBarChart";
+import { PieChart } from "../PieChart/PieChart";
+import { DoughnutChart } from "../DoughnutChart/DoughnutChart";
+import { LineChart } from "../LineChart/LineChart";
 
 const BoardDetail = (props) => {
   const { boardInfo } = props;
@@ -224,7 +228,7 @@ const BoardDetail = (props) => {
                 style={{
                   color: "#11324D",
                   fontSize: "22px",
-                  fontWeight: "300",
+                  fontWeight: "400",
                 }}
               >
                 {t("text.whatIsBoardName")}
@@ -243,7 +247,7 @@ const BoardDetail = (props) => {
                 style={{
                   color: "#11324D",
                   fontSize: "22px",
-                  fontWeight: "300",
+                  fontWeight: "400",
                 }}
               >
                 {t("text.colorBackground", { colorCode: backgroundColor })}
@@ -266,7 +270,7 @@ const BoardDetail = (props) => {
                 style={{
                   color: "#11324D",
                   fontSize: "22px",
-                  fontWeight: "300",
+                  fontWeight: "400",
                 }}
               >
                 {t("text.chooseBackgroundImg")}
@@ -316,6 +320,81 @@ const BoardDetail = (props) => {
                   </div>
                 </div>
               ))}
+          </div>
+          <div className="wrap-chart">
+            <span
+              style={{
+                color: "#11324D",
+                fontSize: "22px",
+                fontWeight: "400",
+              }}
+            >
+              {t("text.analysisTable")}
+            </span>
+            <span
+              style={{
+                marginTop: "10px",
+                color: "#11324D",
+                fontSize: "18px",
+                fontWeight: "400",
+              }}
+            >
+              1.{t("text.numberOfCardsPerStatus")}
+            </span>
+            <div className="chart-wrapper">
+              <VerticalBarChart boardInfo={boardInfo} />
+            </div>
+            <div className="wrap-group-chart" style={{ marginTop: "32px" }}>
+              <div
+                className="wrap-chart-circle"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                <span
+                  style={{
+                    marginTop: "10px",
+                    color: "#11324D",
+                    fontSize: "18px",
+                    fontWeight: "400",
+                  }}
+                >
+                  2.{t("text.percentOfCardsPerStatus")}
+                </span>
+                <div className="chart-wrapper">
+                  <PieChart boardInfo={boardInfo} />
+                </div>
+              </div>
+              <div
+                className="wrap-chart-circle"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                <span
+                  style={{
+                    marginTop: "10px",
+                    color: "#11324D",
+                    fontSize: "18px",
+                    fontWeight: "400",
+                  }}
+                >
+                  3.{t("text.percentageMemberInteraction")}
+                </span>
+                <div className="chart-wrapper">
+                  <DoughnutChart boardInfo={boardInfo} />
+                </div>
+              </div>
+            </div>
+            <span
+              style={{
+                marginTop: "32px",
+                color: "#11324D",
+                fontSize: "18px",
+                fontWeight: "400",
+              }}
+            >
+              4.{t("text.interactionProgressByDay")}
+            </span>
+            <div className="chart-wrapper">
+              <LineChart boardInfo={boardInfo} />
+            </div>
           </div>
         </Container>
       </div>
