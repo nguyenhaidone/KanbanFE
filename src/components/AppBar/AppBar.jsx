@@ -107,7 +107,7 @@ const AppBar = () => {
             <Avatar
               name={name}
               round={true}
-              size="64"
+              size="36"
               onClick={handleShowDetail}
             />
           ) : (

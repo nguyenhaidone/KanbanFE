@@ -160,7 +160,9 @@ const BoardBar = (props) => {
                 </Form.Text>
               </Form.Group>
 
-              <Button variant="primary" type="submit" onClick={handleOnInvite}>
+              <Button variant="primary" 
+              // type="submit"
+               onClick={handleOnInvite}>
                 {t("text.acceptButton")}
               </Button>
             </Form>
