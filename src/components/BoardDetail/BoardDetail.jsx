@@ -99,6 +99,7 @@ const BoardDetail = (props) => {
                     heading: "Cập nhật bảng thành công",
                   });
                   setAlertShow(true);
+                  window.location.reload();
                 });
               }
               const message = messageUpdateBoardInfo(
@@ -120,6 +121,7 @@ const BoardDetail = (props) => {
           heading: "Cập nhật bảng thành công",
         });
         setAlertShow(true);
+        window.location.reload();
       });
       const message = messageUpdateBoardInfo(
         auth.user.fullname,
@@ -165,6 +167,7 @@ const BoardDetail = (props) => {
           variant: "success",
         });
         setAlertShow(true);
+        window.location.reload();
         handleCloseRemove();
       });
     }
@@ -182,7 +185,13 @@ const BoardDetail = (props) => {
   return (
     <>
       <>
-        <Modal show={alertShow} onHide={() => setAlertShow(!alertShow)}>
+        <Modal
+          show={alertShow}
+          onHide={() => {
+            setAlertShow(!alertShow);
+            navigate(`board/${boardInfo._id}`, { replace: true });
+          }}
+        >
           <Modal.Header closeButton>
             <Modal.Title>
               {alertMessage.heading || t("text.notification")}

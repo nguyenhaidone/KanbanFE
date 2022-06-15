@@ -136,5 +136,6 @@
   "numberOfCardsPerStatus": "Number of cards per status",
   "percentOfCardsPerStatus": "Percent of cards per status",
   "percentageMemberInteraction": "Percentage of members actively participating in the interaction",
-  "interactionProgressByDay": "Interaction progress by day"
+  "interactionProgressByDay": "Interaction progress by day",
+  "checkEmail": "Please check your registered email to receive a 6-digit confirmation code and fill it in here"
 }

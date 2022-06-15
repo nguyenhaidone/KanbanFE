@@ -4,20 +4,26 @@ import { Modal, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import successTick from "../../images/successTick.svg";
 import error from "../../images/error.svg";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./PaypalPayment.scss";
 
 const PaypalPayment = () => {
   const paypal = useRef();
   const { t } = useTranslation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
 
-  const handleCloseSuccess = () => setShowSuccess(false);
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
+    navigate("/homepage");
+  };
   const handleShowSuccess = () => setShowSuccess(true);
 
-  const handleCloseError = () => setShowError(false);
+  const handleCloseError = () => {
+    setShowError(false);
+    navigate("/homepage");
+  };
   const handleShowError = () => setShowError(true);
 
   useEffect(() => {

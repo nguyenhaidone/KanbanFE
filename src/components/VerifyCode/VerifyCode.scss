@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./_globleStyle.scss";
+
+.wrap-verify-box {
+    margin-top: 25%;
+    width: 450px;
+    height: 400px;
+    border-radius: $borderRadius;
+    box-shadow: $boxShadowStyle1;
+    box-sizing: border-box;
+    padding: $spacing * 2;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: $fontSize18;
+    color: $black1;
+    font-weight: $fontWeightLight;
+}
+
+.checkEmail-tuts {
+    width: 100%;
+    margin-bottom: $spacing * 2;
+    text-align: center;
+    span {
+        font-size: $fontSize18;
+        color: $black1;
+        font-weight: $fontWeightLight;
+    }
+}
