@@ -53,6 +53,7 @@ const BoardBar = (props) => {
       );
       updateBoardHistory(boardInfo._id, message).then((data) => {
         console.log(data);
+        window.location.reload();
       });
       console.log(sendInviteEmail);
     }
@@ -160,9 +161,11 @@ const BoardBar = (props) => {
                 </Form.Text>
               </Form.Group>
 
-              <Button variant="primary" 
-              // type="submit"
-               onClick={handleOnInvite}>
+              <Button
+                variant="primary"
+                // type="submit"
+                onClick={handleOnInvite}
+              >
                 {t("text.acceptButton")}
               </Button>
             </Form>

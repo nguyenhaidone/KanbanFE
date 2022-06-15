@@ -136,5 +136,6 @@
   "numberOfCardsPerStatus": "Thống kê số thẻ mỗi trạng thái",
   "percentOfCardsPerStatus": "Phần trăm số thẻ cho mỗi trạng thái",
   "percentageMemberInteraction": "Tỉ lệ thành viên tích cực tham gia tương tác",
-  "interactionProgressByDay": "Tiến độ tương tác theo ngày"
+  "interactionProgressByDay": "Tiến độ tương tác theo ngày",
+  "checkEmail": "Vui lòng kiểm tra email bạn vừa đăng ký để nhận mã xác nhận 6 số và điền vào đây"
 }
