@@ -137,5 +137,7 @@
   "percentOfCardsPerStatus": "Percent of cards per status",
   "percentageMemberInteraction": "Percentage of members actively participating in the interaction",
   "interactionProgressByDay": "Interaction progress by day",
-  "checkEmail": "Please check your registered email to receive a 6-digit confirmation code and fill it in here"
+  "checkEmail": "Please check your registered email to receive a 6-digit confirmation code and fill it in here",
+  "softDeleteBoard": "Delete board",
+  "areYouSureDeleteBoard": "Are you sure you want to delete the board? Your board will be inactive for 7 days and will be completely deleted if there are no interactions with your board within 7 days."
 }

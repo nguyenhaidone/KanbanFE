@@ -11,6 +11,7 @@ import { storage } from "../../firebase/index";
 import { FREE_PLAN } from "utils/constants";
 import { getDaysLeft } from "../../utils/formatDateTime";
 import ItemHistory from "../ItemHistory/ItemHistory";
+import Loading from "../Loading/Loading";
 
 const Profile = (props) => {
   const { t } = useTranslation();
@@ -133,10 +134,6 @@ const Profile = (props) => {
         </Modal.Header>
         <Modal.Body>
           <div className="profile-img">
-            {/* <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                  alt=""
-                /> */}
             {avatar ? (
               <img src={url || avatar} alt="" />
             ) : (
@@ -221,85 +218,87 @@ const Profile = (props) => {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                {/* <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                  alt=""
-                /> */}
-                {auth.user.avatar ? (
+                {!auth.isAuth ? (
+                  <Loading />
+                ) : auth.user.avatar ? (
                   <img src={url} alt="" />
                 ) : (
                   <Avatar name={auth.user.fullname} round={true} size="200" />
                 )}
-                {/* <div className="file btn btn-lg btn-primary">
-                  {t("text.changePhoto")}
-                  <input type="file" name="file" />
-                </div> */}
               </div>
             </div>
             <div className="col-md-6">
-              <div className="profile-head">
-                <h3>{auth.user.fullname}</h3>
-                {/* <h6>Web Developer and Designer</h6> */}
-                <p className="proile-rating">
-                  {t("text.currentPlan")} :{" "}
-                  <span>
-                    {auth.user.plan === FREE_PLAN
-                      ? t("text.free")
-                      : t("text.exclusivePlan")}
-                  </span>
-                </p>
-                {auth.user.plan && auth.user.extensionDate && (
+              {!auth.isAuth ? (
+                <Loading />
+              ) : (
+                <div className="profile-head">
+                  <h3>{auth.user.fullname}</h3>
+                  {/* <h6>Web Developer and Designer</h6> */}
                   <p className="proile-rating">
+                    {t("text.currentPlan")} :{" "}
                     <span>
-                      {t("text.daysLeft", {
-                        days: getDaysLeft(auth.user.extensionDate),
-                      })}
+                      {auth.user.plan === FREE_PLAN
+                        ? t("text.free")
+                        : t("text.exclusivePlan")}
                     </span>
                   </p>
-                )}
-                <ul className="nav nav-tabs" id="myTab" role="tablist">
-                  <li className="nav-item">
-                    <a
-                      className={
-                        tab.personalInformation ? "nav-link active" : "nav-link"
-                      }
-                      id="home-tab"
-                      data-toggle="tab"
-                      onClick={() =>
-                        setTab({
-                          personalInformation: true,
-                          myBoards: false,
-                        })
-                      }
-                      role="tab"
-                      aria-controls="home"
-                      aria-selected="true"
-                    >
-                      {t("text.aboutMe")}
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={
-                        tab.personalInformation ? "nav-link" : "nav-link active"
-                      }
-                      id="profile-tab"
-                      data-toggle="tab"
-                      onClick={() =>
-                        setTab({
-                          personalInformation: false,
-                          myBoards: true,
-                        })
-                      }
-                      role="tab"
-                      aria-controls="profile"
-                      aria-selected="false"
-                    >
-                      {t("text.orderHistory")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                  {auth.user.plan && auth.user.extensionDate && (
+                    <p className="proile-rating">
+                      <span>
+                        {t("text.daysLeft", {
+                          days: getDaysLeft(auth.user.extensionDate),
+                        })}
+                      </span>
+                    </p>
+                  )}
+                  <ul className="nav nav-tabs" id="myTab" role="tablist">
+                    <li className="nav-item">
+                      <a
+                        className={
+                          tab.personalInformation
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                        id="home-tab"
+                        data-toggle="tab"
+                        onClick={() =>
+                          setTab({
+                            personalInformation: true,
+                            myBoards: false,
+                          })
+                        }
+                        role="tab"
+                        aria-controls="home"
+                        aria-selected="true"
+                      >
+                        {t("text.aboutMe")}
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className={
+                          tab.personalInformation
+                            ? "nav-link"
+                            : "nav-link active"
+                        }
+                        id="profile-tab"
+                        data-toggle="tab"
+                        onClick={() =>
+                          setTab({
+                            personalInformation: false,
+                            myBoards: true,
+                          })
+                        }
+                        role="tab"
+                        aria-controls="profile"
+                        aria-selected="false"
+                      >
+                        {t("text.orderHistory")}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
             <div className="col-md-2">
               <Button
@@ -312,114 +311,104 @@ const Profile = (props) => {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-4">
-              {/* <div className="profile-work">
-            <p>WORK LINK</p>
-            <a href="">Website Link</a>
-            <br />
-            <a href="">Bootsnipp Profile</a>
-            <br />
-            <a href="">Bootply Profile</a>
-            <p>SKILLS</p>
-            <a href="">Web Designer</a>
-            <br />
-            <a href="">Web Developer</a>
-            <br />
-            <a href="">WordPress</a>
-            <br />
-            <a href="">WooCommerce</a>
-            <br />
-            <a href="">PHP, .Net</a>
-            <br />
-          </div> */}
-            </div>
+            <div className="col-md-4"></div>
             <div className="col-md-8">
               <div className="tab-content profile-tab" id="myTabContent">
-                <div
-                  className={
-                    tab.personalInformation
-                      ? "tab-pane fade show active"
-                      : "tab-pane fade"
-                  }
-                  id="home"
-                  role="tabpanel"
-                  aria-labelledby="home-tab"
-                >
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>{t("text.fullName")}</label>
+                {!auth.isAuth ? (
+                  <Loading />
+                ) : (
+                  <>
+                    <div
+                      className={
+                        tab.personalInformation
+                          ? "tab-pane fade show active"
+                          : "tab-pane fade"
+                      }
+                      id="home"
+                      role="tabpanel"
+                      aria-labelledby="home-tab"
+                    >
+                      <div className="row">
+                        <div className="col-md-6">
+                          <label>{t("text.fullName")}</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>{auth.user.fullname}</p>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <label>Email</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>{auth.user.email}</p>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <label>{t("text.phoneNumber")}</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>
+                            {auth.user.phoneNumber || t("text.haveNotUpdate")}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <label>{t("text.profession")}</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>
+                            {auth.user.profession || t("text.haveNotUpdate")}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <label>{t("text.address")}</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>{auth.user.address || t("text.haveNotUpdate")}</p>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <label>{t("text.dateOfBirth")}</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>
+                            {formatToDMY(auth.user.dateOfBirth) ||
+                              t("text.haveNotUpdate")}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-md-6">
-                      <p>{auth.user.fullname}</p>
+                    <div
+                      className={
+                        tab.personalInformation
+                          ? "tab-pane fade list-order"
+                          : "tab-pane fade show active list-order"
+                      }
+                      id="profile"
+                      role="tabpanel"
+                      aria-labelledby="profile-tab"
+                    >
+                      {listOrder.map((item) => (
+                        <div className="wrap-item-history" key={item._id}>
+                          <ItemHistory
+                            fullname={auth.user.fullname}
+                            createdOrderAt={item.createdOrderAt}
+                            status={item.status}
+                          />
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Email</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{auth.user.email}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>{t("text.phoneNumber")}</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{auth.user.phoneNumber || t("text.haveNotUpdate")}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>{t("text.profession")}</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{auth.user.profession || t("text.haveNotUpdate")}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>{t("text.address")}</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>{auth.user.address || t("text.haveNotUpdate")}</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>{t("text.dateOfBirth")}</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>
-                        {formatToDMY(auth.user.dateOfBirth) ||
-                          t("text.haveNotUpdate")}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={
-                    tab.personalInformation
-                      ? "tab-pane fade list-order"
-                      : "tab-pane fade show active list-order"
-                  }
-                  id="profile"
-                  role="tabpanel"
-                  aria-labelledby="profile-tab"
-                >
-                  {listOrder.map((item) => (
-                    <div className="wrap-item-history" key={item._id}>
-                      <ItemHistory
-                        fullname={auth.user.fullname}
-                        createdOrderAt={item.createdOrderAt}
-                        status={item.status}
-                      />
-                    </div>
-                  ))}
-                </div>
+                  </>
+                )}
               </div>
             </div>
-          </div>
+          </div>]
         </form>
       </div>
     </>

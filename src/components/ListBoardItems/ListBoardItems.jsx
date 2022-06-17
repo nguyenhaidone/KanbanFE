@@ -5,12 +5,14 @@ import { createNewBoardApi } from "../../libs/apis/board.api";
 import { updateBoardHistory } from "../../libs/apis/board.api";
 import { useNavigate } from "react-router-dom";
 import BoardItems from "components/BoardItems/BoardItems";
+import Loading from "components/Loading/Loading";
 import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
 import useAuth from "../../libs/hook/useAuth";
 import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
 import { FREE_PLAN } from "../../utils/constants";
 import { messageUpdateCreateBoard } from "../../utils/historyMapping";
 import LazyLoad from "react-lazyload";
+import { isEmpty } from "lodash";
 import PageLoading from "../PageLoading/PageLoading";
 
 const ListBoardItems = () => {
@@ -73,6 +75,7 @@ const ListBoardItems = () => {
           <span>{t("text.kanbanWorkspace")}</span>
         </div>
         <div className="list-board">
+          {isEmpty(listBoardOfCurrentUser) && <Loading />}
           {listBoardOfCurrentUser.map((item, index) => {
             return (
               <LazyLoad key={index} placeholder={<PageLoading />}>

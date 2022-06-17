@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import GoogleLoginButton from "components/GoogleLogin/GoogleLogin";
+import Loading from "components/Loading/Loading";
 import React, { useState } from "react";
 import "./Login.scss";
 import * as Yup from "yup";
@@ -13,6 +14,7 @@ const Login = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [alert, setAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const Schema = Yup.object().shape({
     email: Yup.string()
@@ -36,6 +38,7 @@ const Login = () => {
     loginApi(data).then((response) => {
       console.log(response);
       if (response.user) {
+        setLoading(!loading);
         setToken(response.accessToken, response.refreshToken);
         navigate("/homepage");
       } else {
@@ -64,6 +67,7 @@ const Login = () => {
             <span>{t("text.letMeHelpYouManageYourWorkBetter")}</span>
           </div>
         </div>
+        {loading && <Loading />}
         <Formik
           onSubmit={handleOnSubmit}
           initialValues={initialValue}
@@ -146,9 +150,9 @@ const Login = () => {
           <a href="/register" className="link-register">
             {t("text.dontHaveAccount")}
           </a>
-          <a href="/forget-password" className="link-register">
+          {/* <a href="/forget-password" className="link-register">
             {t("text.forgottenYourPassword")}
-          </a>
+          </a> */}
         </div>
       </div>
     </>

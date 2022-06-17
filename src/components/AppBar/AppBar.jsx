@@ -97,9 +97,9 @@ const AppBar = () => {
         </h1> */}
         </div>
         <div className="group-info">
-          <div className="wrap-icon">
+          {/* <div className="wrap-icon">
             <i className="fa fa-bell"></i>
-          </div>
+          </div> */}
           <div className="wrap-icon" onClick={handleOnUpgradeClick}>
             <i className="fa fa-diamond"></i>
           </div>
