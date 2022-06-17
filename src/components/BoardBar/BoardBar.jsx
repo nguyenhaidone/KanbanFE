@@ -9,6 +9,7 @@ import useAuth from "../../libs/hook/useAuth";
 import {
   addNewMemberApi,
   updateBoardHistory,
+  updateBoardApi,
   removeCurrentUserApi,
 } from "../../libs/apis/board.api";
 import { messageAddNewMemberStatus } from "../../utils/historyMapping";
@@ -20,6 +21,7 @@ const BoardBar = (props) => {
   const { boardInfo } = props;
   const [showPopup, setShowPopup] = useState(false);
   const [showConfirmLeaveBoard, setShowConfirmLeaveBoard] = useState(false);
+  const [showConfirmDeleteBoard, setShowConfirmDeleteBoard] = useState(false);
   const [showPopupHistory, setShowPopupHistory] = useState(false);
   const [showEmailSubscription, setShowEmailSubscription] = useState(false);
   const navigate = useNavigate();
@@ -67,7 +69,12 @@ const BoardBar = (props) => {
         console.log(err);
       });
   };
-  console.log(boardMessage);
+  const handleOnDeleteBoard = () => {
+    updateBoardApi(boardInfo._id, { _destroy: true }).then(() => {
+      navigate("/homepage");
+    });
+  };
+  // console.log(boardMessage);
   const popover = (
     <Popover id="popover-basic" style={{ height: "300px", overflowY: "auto" }}>
       <Popover.Header as="h3">{t("text.listMembers")}</Popover.Header>
@@ -108,7 +115,14 @@ const BoardBar = (props) => {
                 {t("text.boardDetail")}
               </div>
               {boardInfo.creater && boardInfo.creater === auth.user._id && (
-                <div className="circle-button">{t("text.deleteBoard")}</div>
+                <div
+                  className="circle-button"
+                  onClick={() =>
+                    setShowConfirmDeleteBoard(!showConfirmDeleteBoard)
+                  }
+                >
+                  {t("text.deleteBoard")}
+                </div>
               )}
               {boardInfo.creater && boardInfo.creater === auth.user._id && (
                 <div
@@ -142,8 +156,6 @@ const BoardBar = (props) => {
                 </div>
               )}
             </div>
-            {/* <div className="wrap-row">
-            </div> */}
           </div>
         </Modal.Body>
         {showEmailSubscription && (
@@ -169,12 +181,6 @@ const BoardBar = (props) => {
                 {t("text.acceptButton")}
               </Button>
             </Form>
-            {/* <Button variant="secondary" onClick={handleClosePopup}>
-            {t("text.closeButton")}
-          </Button>
-          <Button variant="primary" onClick={handleClosePopup}>
-            {t("text.acceptButton")}
-          </Button> */}
           </Modal.Footer>
         )}
         {showConfirmLeaveBoard && (
@@ -190,12 +196,21 @@ const BoardBar = (props) => {
                 {t("text.acceptButton")}
               </Button>
             </Form>
-            {/* <Button variant="secondary" onClick={handleClosePopup}>
-            {t("text.closeButton")}
-          </Button>
-          <Button variant="primary" onClick={handleClosePopup}>
-            {t("text.acceptButton")}
-          </Button> */}
+          </Modal.Footer>
+        )}
+        {showConfirmDeleteBoard && (
+          <Modal.Footer>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Text className="text-muted">
+                  {t("text.areYouSureDeleteBoard")}
+                </Form.Text>
+              </Form.Group>
+
+              <Button variant="primary" onClick={handleOnDeleteBoard}>
+                {t("text.acceptButton")}
+              </Button>
+            </Form>
           </Modal.Footer>
         )}
       </Modal>

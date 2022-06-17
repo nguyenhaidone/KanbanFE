@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./ListBoardJoined.scss";
 // import { createNewBoardApi } from "../../libs/apis/board.api";
+import { isEmpty } from "lodash";
+import Loading from "components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
 import BoardItems from "components/BoardItems/BoardItems";
 // import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
@@ -43,6 +45,7 @@ const ListBoardJoined = () => {
           <span>{t("text.listBoardJoined")}</span>
         </div>
         <div className="list-board">
+          {isEmpty(listBoardJoinedOfCurrentUser) && <Loading />}
           {listBoardJoinedOfCurrentUser.map((item, index) => {
             return (
               <div

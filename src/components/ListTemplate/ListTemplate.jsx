@@ -11,6 +11,7 @@ import { template } from "../../template/template";
 // import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
 import { createNewCardApi } from "../../libs/apis/card.api";
 import { PREMIUM_PLAN } from "utils/constants";
+import Loading from "components/Loading/Loading";
 
 const ListTemplate = () => {
   const [templateChosen, setTemplateChosen] = useState({
@@ -97,6 +98,7 @@ const ListTemplate = () => {
           <span>{t("text.createWithTemplate")}</span>
         </div>
         <div className="list-board">
+          {!auth.isAuth && <Loading />}
           {auth.user.plan !== PREMIUM_PLAN ? (
             <div className="let-sign-premium-plan">
               <span>{t("text.letSignPremiumPlan")}</span>

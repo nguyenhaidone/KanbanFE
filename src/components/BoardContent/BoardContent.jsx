@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Column from "components/Column/Column";
+import Loading from "components/Loading/Loading";
 import { Container, Draggable } from "react-smooth-dnd";
 import {
   Container as BootstrapContainer,
@@ -65,7 +66,7 @@ const BoardContent = (props) => {
   }, [isCreateInputOpen]);
 
   if (isEmpty(board)) {
-    return <div className="not-found">{t("text.boardNotFound")}</div>;
+    return <Loading />;
   }
 
   const onColumnDrop = (dropResult) => {

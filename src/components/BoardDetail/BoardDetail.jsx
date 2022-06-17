@@ -405,6 +405,35 @@ const BoardDetail = (props) => {
               <LineChart boardInfo={boardInfo} />
             </div>
           </div>
+          <span
+            style={{
+              color: "#11324D",
+              fontSize: "22px",
+              fontWeight: "300",
+            }}
+          >
+            {t("text.listMembers")}
+          </span>
+          <div className="wrap-list-member">
+            {listMembers &&
+              listMembers.map((member, index) => (
+                <div className="member-option" key={index}>
+                  <div className="member-info">
+                    <Avatar name={member} round={true} size="32" />
+                    <div className="member-email">{member}</div>
+                  </div>
+                  <div
+                    className="member-action"
+                    onClick={() => {
+                      setMemberRemoved(member);
+                      handleCloseRemove();
+                    }}
+                  >
+                    {t("text.requestToLeave")}
+                  </div>
+                </div>
+              ))}
+          </div>
         </Container>
       </div>
     </>
