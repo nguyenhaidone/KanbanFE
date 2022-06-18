@@ -1,19 +1,8 @@
 import "./App.scss";
 import React from "react";
-// import AppBar from "components/AppBar/AppBar";
-// import BoardBar from "components/BoardBar/BoardBar";
-// import BoardContent from "components/BoardContent/BoardContent";
-// import Login from "components/Login/Login";
 import PageLoading from "components/PageLoading/PageLoading";
-import PopupCardDetail from "components/PopupCardDetail/PopupCardDetail";
-// import Register from "components/Register/Register";
 import VerifyCode from "components/VerifyCode/VerifyCode";
-// import BoardItems from "components/BoardItems/BoardItems";
-// import ListBoardItems from "components/ListBoardItems/ListBoardItems";
-// import PopupBoardItems from "components/PopupCreateNew/PopupCreateNew";
-// import CardPayment from "components/CardPayment/CardPayment";
 import CheckoutConfirmation from "components/CheckoutConfirmation/CheckoutConfirmation";
-// import HomepageContainer from "containers/HomepageContainer/HomepageContainer";
 import LoginContainer from "containers/LoginContainer/LoginContainer";
 import RegisterContainer from "containers/RegisterContainer/RegisterContainer";
 import BoardContainer from "containers/BoardContainer/BoardContainer";
@@ -86,16 +75,15 @@ const App = () => {
               </AuthContainer>
             }
           ></Route>
+          <Route path="/verify" element={<VerifyCode />}></Route>
           <Route
-            path="/card-detail"
+            path="/profile"
             element={
               <AuthContainer>
-                <PopupCardDetail />
+                <ProfileContainer />
               </AuthContainer>
             }
           ></Route>
-          <Route path="/verify" element={<VerifyCode />}></Route>
-          <Route path="/profile" element={<ProfileContainer />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

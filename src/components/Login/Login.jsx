@@ -2,6 +2,7 @@ import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import GoogleLoginButton from "components/GoogleLogin/GoogleLogin";
 import Loading from "components/Loading/Loading";
+import LoadingCircle from "components/LoadingCircle/LoadingCircle";
 import React, { useState } from "react";
 import "./Login.scss";
 import * as Yup from "yup";
@@ -34,11 +35,11 @@ const Login = () => {
   };
 
   const handleOnSubmit = (values) => {
+    setLoading(!loading);
     const data = { email: values.email, password: values.password };
     loginApi(data).then((response) => {
       console.log(response);
       if (response.user) {
-        setLoading(!loading);
         setToken(response.accessToken, response.refreshToken);
         navigate("/homepage");
       } else {
@@ -53,7 +54,10 @@ const Login = () => {
         key={"danger"}
         variant={"danger"}
         show={alert}
-        onClose={() => setAlert(false)}
+        onClose={() => {
+          setLoading(!loading);
+          setAlert(false);
+        }}
         dismissible
       >
         {t("text.accountNotVerified")}
@@ -67,7 +71,6 @@ const Login = () => {
             <span>{t("text.letMeHelpYouManageYourWorkBetter")}</span>
           </div>
         </div>
-        {loading && <Loading />}
         <Formik
           onSubmit={handleOnSubmit}
           initialValues={initialValue}
@@ -145,6 +148,7 @@ const Login = () => {
           }}
         </Formik>
         <span className="or">{t("text.or")}</span>
+        {loading && <Loading />}
         <GoogleLoginButton />
         <div className="other">
           <a href="/register" className="link-register">

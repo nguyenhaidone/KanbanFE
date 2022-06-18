@@ -75,7 +75,7 @@
   "checkout": "Tiến hành thanh toán",
   "checkoutThanks": "Kanban team xin chân thành cảm ơn {{name}}!",
   "subCheckoutThanks": "Chúc bạn cùng mọi người có khoảng thời gian làm việc hiệu quả và thú vị cùng với Kanban nhé!",
-  "moreDetail": "Vui lòng kiểm tra email: {{email}} của bạn sau khi thanh toán. Nếu có bất kì vấn đề gì phát sinh, hãy liên hệ đến email: dang682000@gmail.com. Hân hạnh!",
+  "moreDetail": "Vui lòng kiểm tra email: {{email}} của bạn sau khi thanh toán. Nếu có bất kì vấn đề gì phát sinh, hãy liên hệ đến email: noreply.kanbanteam@gmail.com. Hân hạnh!",
   "paymentSuccess": "Thanh tóan thành công",
   "paymentFail": "Thanh toán thất bại, vui lòng kiểm tra và thử lại.",
   "histories": "Lịch sử hoạt động",
@@ -139,5 +139,6 @@
   "interactionProgressByDay": "Tiến độ tương tác theo ngày",
   "checkEmail": "Vui lòng kiểm tra email bạn vừa đăng ký để nhận mã xác nhận 6 số và điền vào đây",
   "softDeleteBoard": "Xoá bảng",
+  "DeletedBoard": "Bảng đã xoá",
   "areYouSureDeleteBoard": "Bạn có chắc chắn muốn xoá bảng không? Bảng của bạn sẽ vào trạng thái không hoạt động trong vòng 7 ngày và sẽ xoá hẳn nếu trong vòng 7 ngày bạn không phát sinh tương tác với bảng."
 }

@@ -3,7 +3,7 @@ import "./BoardContainer.scss";
 import AppBar from "components/AppBar/AppBar";
 import BoardBar from "components/BoardBar/BoardBar";
 import BoardContent from "components/BoardContent/BoardContent";
-import PopupCardDetail from "components/PopupCardDetail/PopupCardDetail";
+// import PopupCardDetail from "components/PopupCardDetail/PopupCardDetail";
 import { boardDetailApi } from "../../libs/apis/board.api";
 
 const BoardContainer = () => {
@@ -24,7 +24,7 @@ const BoardContainer = () => {
   return (
     // <div className="wrap-board-container">
     <>
-      {isOpen && <PopupCardDetail handlePopupClose={handleSetOpen} />}
+      {isOpen && <></>}
       <AppBar />
       <BoardBar boardInfo={board} />
       <BoardContent handleOpenPopup={handleSetOpen} />

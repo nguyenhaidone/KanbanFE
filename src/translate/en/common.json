@@ -75,7 +75,7 @@
   "checkout": "Continue checkout",
   "checkoutThanks": "Kanban team sincerely thank {{name}}!",
   "subCheckoutThanks": "Wish you and everyone have a productive and enjoyable time with Kanban!",
-  "moreDetail": "Please check your email: {{email}} after payment. If there are any problems, please contact email: dang682000@gmail.com. Welcome!",
+  "moreDetail": "Please check your email: {{email}} after payment. If there are any problems, please contact email: noreply.kanbanteam@gmail.com. Welcome!",
   "paymentSuccess": "Payment Successfully",
   "paymentFail": "Payment fail, check again and try again.",
   "histories": "Activity histories",
@@ -139,5 +139,6 @@
   "interactionProgressByDay": "Interaction progress by day",
   "checkEmail": "Please check your registered email to receive a 6-digit confirmation code and fill it in here",
   "softDeleteBoard": "Delete board",
+  "DeletedBoard": "Deleted board",
   "areYouSureDeleteBoard": "Are you sure you want to delete the board? Your board will be inactive for 7 days and will be completely deleted if there are no interactions with your board within 7 days."
 }
