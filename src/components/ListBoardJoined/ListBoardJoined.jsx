@@ -36,7 +36,7 @@ const ListBoardJoined = () => {
       ...boardDetailCreated,
       creater: auth.user ? auth.user.email : "",
     });
-  }, []);
+  }, [auth]);
 
   return (
     <>
@@ -45,7 +45,8 @@ const ListBoardJoined = () => {
           <span>{t("text.listBoardJoined")}</span>
         </div>
         <div className="list-board">
-          {isEmpty(listBoardJoinedOfCurrentUser) && <Loading />}
+          {/* {isEmpty(listBoardJoinedOfCurrentUser) && <Loading />} */}
+          {!auth.isAuth && <Loading />}
           {listBoardJoinedOfCurrentUser.map((item, index) => {
             return (
               <div

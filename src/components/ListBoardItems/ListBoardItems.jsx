@@ -52,14 +52,14 @@ const ListBoardItems = () => {
     });
   };
 
-  // console.log(listBoardOfCurrentUser);
+  console.log(listBoardOfCurrentUser);
   useEffect(() => {
     getBoardOfCurrentUser();
     setBoardDetailCreated({
       ...boardDetailCreated,
       creater: auth.user ? auth.user.email : "",
     });
-  }, []);
+  }, [auth]);
 
   return (
     <>
@@ -75,7 +75,8 @@ const ListBoardItems = () => {
           <span>{t("text.kanbanWorkspace")}</span>
         </div>
         <div className="list-board">
-          {isEmpty(listBoardOfCurrentUser) && <Loading />}
+          {!auth.isAuth && <Loading />}
+          {/* {isEmpty(listBoardOfCurrentUser) && <Loading />} */}
           {listBoardOfCurrentUser.map((item, index) => {
             return (
               <LazyLoad key={index} placeholder={<PageLoading />}>

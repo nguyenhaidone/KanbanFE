@@ -189,7 +189,7 @@ const BoardDetail = (props) => {
           show={alertShow}
           onHide={() => {
             setAlertShow(!alertShow);
-            navigate(`board/${boardInfo._id}`, { replace: true });
+            window.location.reload();
           }}
         >
           <Modal.Header closeButton>
@@ -405,14 +405,14 @@ const BoardDetail = (props) => {
               <LineChart boardInfo={boardInfo} />
             </div>
           </div>
-          <span
+          {/* <span
             style={{
               color: "#11324D",
               fontSize: "22px",
               fontWeight: "300",
             }}
           >
-            {t("text.listMembers")}
+            {t("text.DeletedBoard")}
           </span>
           <div className="wrap-list-member">
             {listMembers &&
@@ -433,7 +433,7 @@ const BoardDetail = (props) => {
                   </div>
                 </div>
               ))}
-          </div>
+          </div> */}
         </Container>
       </div>
     </>

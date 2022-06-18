@@ -408,7 +408,7 @@ const Profile = (props) => {
                 )}
               </div>
             </div>
-          </div>]
+          </div>
         </form>
       </div>
     </>
