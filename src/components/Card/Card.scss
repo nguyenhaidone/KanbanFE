@@ -18,3 +18,72 @@
     }
     border-radius: $borderRadius;
 }
+
+.card-creater-label {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: $spacing * 2;
+    border-bottom: 1px solid $blue11324D;
+    span {
+        font-size: $fontSize14;
+        color: $black1;
+        font-weight: $fontWeightLight;
+    }
+}
+
+.card-title-label {
+    width: 100%;
+    margin-bottom: $spacing * 2;
+    span {
+        font-size: $fontSize24;
+        color: $black1;
+        font-weight: $fontWeightLight;
+    }
+}
+
+.wrap-card-content {
+    width: 100%;
+    height: 400px;
+    overflow-y: auto;
+    padding: $spacing;
+    box-sizing: border-box;
+}
+
+.label-description {
+    font-size: $fontSize20;
+    font-weight: $fontWeightLight;
+    color: $blue11324D;
+    margin: $spacing/2 0;
+}
+
+.title-card-detail {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: $spacing;
+    border: 1px solid $blue11324D;
+    border-radius: $borderRadius;
+    margin: $spacing 0;
+    font-size: $fontSize18;
+    font-weight: $fontWeightLight;
+    color: $blue11324D;
+    outline: none;
+    resize: none;
+}
+
+.sub-time-left {
+    font-size: $fontSize18;
+    font-weight: $fontWeightLight;
+    color: $blue11324D;
+    margin: $spacing/2 0;
+}
+
+.card-assignee {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}

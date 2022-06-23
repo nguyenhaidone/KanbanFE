@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Column from "components/Column/Column";
 import Loading from "components/Loading/Loading";
 import { Container, Draggable } from "react-smooth-dnd";
+import { Modal, OverlayTrigger, Popover } from "react-bootstrap";
 import {
   Container as BootstrapContainer,
   Row,
@@ -39,6 +40,7 @@ const BoardContent = (props) => {
   const [board, setBoard] = useState({});
   const [column, setColumn] = useState([]);
   const [isCreateInputOpen, setIsCreateInputOpen] = useState(false);
+  const [isCardShow, setIsCardShow] = useState(false);
   const handleToggleInput = () => {
     setIsCreateInputOpen(!isCreateInputOpen);
   };
@@ -70,64 +72,66 @@ const BoardContent = (props) => {
   }
 
   const onColumnDrop = (dropResult) => {
-    let newColumn = cloneDeep(column);
-    newColumn = applyDrag(newColumn, dropResult);
+    if (!board.blackList.includes(auth.user.email)) {
+      let newColumn = cloneDeep(column);
+      newColumn = applyDrag(newColumn, dropResult);
 
-    let newBoard = cloneDeep(board);
-    newBoard.columnOrder = newColumn.map((c) => c._id);
-    newBoard.columns = newColumn;
-    console.log(newColumn);
-    /**
-     * !call api update column order
-     */
-    setBoard(newBoard);
-    setColumn(newColumn);
-    updateBoardApi(newBoard._id, newBoard).catch((error) => {
-      console.log(error);
-      setBoard(board);
-      setColumn(column);
-    });
+      let newBoard = cloneDeep(board);
+      newBoard.columnOrder = newColumn.map((c) => c._id);
+      newBoard.columns = newColumn;
+      console.log(newColumn);
+      /**
+       * !call api update column order
+       */
+      setBoard(newBoard);
+      setColumn(newColumn);
+      updateBoardApi(newBoard._id, newBoard).catch((error) => {
+        console.log(error);
+        setBoard(board);
+        setColumn(column);
+      });
+    }
   };
+  // console.log(board);
 
   const onCardDrop = (columnId, dropResult) => {
-    //log history when change column
-    console.log(columnId, dropResult);
-    if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-      let newColumn = cloneDeep(column);
+    if (!board.blackList.includes(auth.user.email)) {
+      // console.log(columnId, dropResult);
+      if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+        let newColumn = cloneDeep(column);
+        let curColumn = newColumn.find((c) => c._id === columnId);
 
-      let curColumn = newColumn.find((c) => c._id === columnId);
+        curColumn.cards = applyDrag(curColumn.cards, dropResult);
+        curColumn.cardOrder = curColumn.cards.map((i) => i._id);
 
-      curColumn.cards = applyDrag(curColumn.cards, dropResult);
-      curColumn.cardOrder = curColumn.cards.map((i) => i._id);
+        setColumn(newColumn);
+        // console.log(column)
 
-      setColumn(newColumn);
+        if (
+          dropResult.removedIndex !== null &&
+          dropResult.addedIndex !== null
+        ) {
+          updateColumnApi(curColumn, curColumn._id).catch((error) => {
+            setColumn(newColumn);
+          });
+        } else {
+          updateColumnApi(curColumn, curColumn._id).catch((error) => {
+            setColumn(newColumn);
+          });
 
-      if (dropResult.removedIndex !== null && dropResult.addedIndex !== null) {
-        //move card inside col
-        //update order current col
-        updateColumnApi(curColumn, curColumn._id).catch((error) => {
-          setColumn(newColumn);
-        });
-      } else {
-        //move card between 2 cols
-        //update order current col and col._id of card moving
-        // console.log(curColumn)
-        updateColumnApi(curColumn, curColumn._id).catch((error) => {
-          setColumn(newColumn);
-        });
-
-        // console.log(dropResult);
-        if (dropResult.addedIndex !== null) {
-          let currentCard = cloneDeep(dropResult.payload);
-          currentCard.columnId = curColumn._id;
-          // console.log(currentCard);
-          updateCardApi(currentCard, currentCard._id);
-          const message = messageUpdateCardStatus(
-            auth.user.fullname,
-            board.title,
-            currentCard.title
-          );
-          updateBoardHistory(boardId, message);
+          if (dropResult.addedIndex !== null) {
+            let currentCard = cloneDeep(dropResult.payload);
+            currentCard.columnId = curColumn._id;
+            currentCard.cover = curColumn.cover || "";
+            currentCard.updatedAt = curColumn.updatedAt || "";
+            updateCardApi(currentCard, currentCard._id);
+            const message = messageUpdateCardStatus(
+              auth.user.fullname,
+              board.title,
+              currentCard.title
+            );
+            updateBoardHistory(boardId, message);
+          }
         }
       }
     }
@@ -193,6 +197,10 @@ const BoardContent = (props) => {
     return spread[0] !== "#" ? true : false;
   };
 
+  const handleShowCardDetail = () => {
+    setIsCardShow(!isCardShow);
+  };
+
   return (
     <>
       <nav
@@ -223,7 +231,8 @@ const BoardContent = (props) => {
                 column={column}
                 onCardDrop={onCardDrop}
                 onUpdateColumn={onUpdateColumn}
-                handleOpenPopup={handleOpenPopup}
+                handleOpenPopup={handleShowCardDetail}
+                board={board}
               />
             </Draggable>
           ))}

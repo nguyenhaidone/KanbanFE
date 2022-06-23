@@ -8,7 +8,7 @@ export const boardDetailApi = async (id) => {
       x_authorization: getToken().accessToken,
     },
   });
-  console.log(request.data.data);
+  // console.log(request.data.data);
   return request.data.data;
 };
 
@@ -102,6 +102,38 @@ export const removeMemberByCreaterApi = async (boardId, email) => {
     `${API_ROUTE}/v1/boards/remove-current-user-by-creater/${boardId}`,
     {
       member: email,
+    },
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+};
+
+export const addNewPeopleToBlackListApi = async (boardId, email) => {
+  const request = await axios.put(
+    `${API_ROUTE}/v1/boards/add-new-user-to-blackList/${boardId}`,
+    {
+      email: email,
+    },
+    {
+      headers: {
+        x_authorization: getToken().accessToken,
+      },
+    }
+  );
+  console.log(request.data.data);
+  return request.data.data;
+};
+
+export const removePeopleFromBlackListApi = async (boardId, email) => {
+  const request = await axios.put(
+    `${API_ROUTE}/v1/boards/remove-user-from-blackList/${boardId}`,
+    {
+      email: email,
     },
     {
       headers: {

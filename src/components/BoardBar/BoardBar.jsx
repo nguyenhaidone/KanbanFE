@@ -275,6 +275,15 @@ const BoardBar = (props) => {
             </>
           )}
         </div>
+        <div className="wrap-list-member-joined">
+          <span className="member-label">
+            {t("text.permCurUser")}{" "}
+            {boardInfo.blackList &&
+            boardInfo.blackList.includes(auth.user.email)
+              ? t("text.viewOnly")
+              : t("text.viewAndEdit")}
+          </span>
+        </div>
 
         <div className="board-bar-icon">
           <div className="img-icon-setting" onClick={handleShowPopup}>

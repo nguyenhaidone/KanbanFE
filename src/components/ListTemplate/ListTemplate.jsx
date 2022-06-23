@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./ListTemplate.scss";
 import { createNewBoardApi } from "../../libs/apis/board.api";
@@ -8,9 +8,9 @@ import BoardItems from "components/BoardItems/BoardItems";
 import PopupCreateNew from "components/PopupCreateNew/PopupCreateNew";
 import useAuth from "../../libs/hook/useAuth";
 import { template } from "../../template/template";
-// import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
+import { getBoardOfCurrentUserApi } from "../../libs/apis/board.api";
 import { createNewCardApi } from "../../libs/apis/card.api";
-import { PREMIUM_PLAN } from "utils/constants";
+import { PREMIUM_PLAN, FREE_PLAN } from "utils/constants";
 import Loading from "components/Loading/Loading";
 
 const ListTemplate = () => {
@@ -20,6 +20,7 @@ const ListTemplate = () => {
     title: "",
     column: [],
   });
+  const [listBoard, setListBoard] = useState();
   const navigate = useNavigate();
   const auth = useAuth();
 
@@ -31,13 +32,17 @@ const ListTemplate = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const handleCreateNewBoard = (item) => {
-    setIsOpen(!isOpen);
-    setTemplateChosen({
-      type: item.type,
-      description: item.description,
-      title: item.title,
-      column: item.column,
-    });
+    if (listBoard.length < 10 && auth.user.permission === FREE_PLAN) {
+      navigate("/payment-plan");
+    } else {
+      setIsOpen(!isOpen);
+      setTemplateChosen({
+        type: item.type,
+        description: item.description,
+        title: item.title,
+        column: item.column,
+      });
+    }
   };
   const handleOnClose = () => {
     setIsOpen(!isOpen);
@@ -67,20 +72,14 @@ const ListTemplate = () => {
       });
     });
   };
-
-  //   const getBoardOfCurrentUser = async () => {
-  //     await getBoardOfCurrentUserApi().then((data) => {
-  //       setListBoardOfCurrentUser(data);
-  //     });
-  //   };
-
-  //   useEffect(() => {
-  //     getBoardOfCurrentUser();
-  //     setBoardDetailCreated({
-  //       ...boardDetailCreated,
-  //       creater: auth.user ? auth.user.email : "",
-  //     });
-  //   }, []);
+  const getBoardOfCurrentUser = async () => {
+    await getBoardOfCurrentUserApi().then((data) => {
+      setListBoard(data);
+    });
+  };
+  useEffect(() => {
+    getBoardOfCurrentUser();
+  }, [listBoard]);
 
   return (
     <>
@@ -99,11 +98,12 @@ const ListTemplate = () => {
         </div>
         <div className="list-board">
           {!auth.isAuth && <Loading />}
-          {auth.user.plan !== PREMIUM_PLAN ? (
-            <div className="let-sign-premium-plan">
-              <span>{t("text.letSignPremiumPlan")}</span>
-            </div>
-          ) : (
+          {
+            // auth.user.plan !== FREE_PLAN ? (
+            //   <div className="let-sign-premium-plan">
+            //     <span>{t("text.letSignPremiumPlan")}</span>
+            //   </div>
+            // ) : (
             template.map((item, index) => {
               return (
                 <div
@@ -115,7 +115,8 @@ const ListTemplate = () => {
                 </div>
               );
             })
-          )}
+            // )
+          }
           {/* <div className="wrap-board-items">
             <div className="add-new" onClick={handleCreateNewBoard}>
               <i className="fa fa-plus-square"></i>

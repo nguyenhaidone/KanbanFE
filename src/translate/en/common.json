@@ -140,5 +140,13 @@
   "checkEmail": "Please check your registered email to receive a 6-digit confirmation code and fill it in here",
   "softDeleteBoard": "Delete board",
   "DeletedBoard": "Deleted board",
+  "perm": "User permission: ",
+  "permCurUser": "Your permission: ",
+  "viewOnly": "View only",
+  "viewAndEdit": "View and edit",
+  "task": "Task",
+  "deadline": "Deadline",
+  "taskAssignee": "Assignee:",
+  "timeLeft":"You have {{day}} day {{hours}} hours {{minutes}} minutes",
   "areYouSureDeleteBoard": "Are you sure you want to delete the board? Your board will be inactive for 7 days and will be completely deleted if there are no interactions with your board within 7 days."
 }
