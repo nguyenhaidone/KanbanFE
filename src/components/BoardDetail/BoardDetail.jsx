@@ -6,11 +6,13 @@ import "./BoardDetail.scss";
 import Avatar from "react-avatar";
 import { storage } from "../../firebase/index";
 import useAuth from "../../libs/hook/useAuth";
-import { Container, Modal, Form, Button } from "react-bootstrap";
+import { Container, Modal, Form, Button, Dropdown } from "react-bootstrap";
 import {
   updateBoardApi,
   updateBoardHistory,
   removeMemberByCreaterApi,
+  addNewPeopleToBlackListApi,
+  removePeopleFromBlackListApi,
 } from "../../libs/apis/board.api";
 import { messageUpdateBoardInfo } from "../../utils/historyMapping";
 import { VerticalBarChart } from "../VerticalBarChart/VerticalBarChart";
@@ -20,6 +22,7 @@ import { LineChart } from "../LineChart/LineChart";
 
 const BoardDetail = (props) => {
   const { boardInfo } = props;
+  console.log(boardInfo);
   const auth = useAuth();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -173,6 +176,20 @@ const BoardDetail = (props) => {
     }
   };
 
+  const handleOnAddPeopleToBlackList = (email) => {
+    addNewPeopleToBlackListApi(boardInfo._id, email).then((data) => {
+      console.log(data);
+      window.location.reload();
+    });
+  };
+
+  const handleOnRemovePeopleFromBlackList = (email) => {
+    removePeopleFromBlackListApi(boardInfo._id, email).then((data) => {
+      console.log(data);
+      window.location.reload();
+    });
+  };
+
   const handleCloseRemove = () => setIsRemovePopupOpen(!isRemovePopupOpen);
 
   useEffect(() => {
@@ -268,7 +285,6 @@ const BoardDetail = (props) => {
                     className="color-option"
                     style={{ backgroundColor: `${color}` }}
                     value={color}
-                    // onClick={handleOnColorClick}
                   ></div>
                 ))}
               </div>
@@ -318,14 +334,43 @@ const BoardDetail = (props) => {
                     <Avatar name={member} round={true} size="32" />
                     <div className="member-email">{member}</div>
                   </div>
-                  <div
-                    className="member-action"
-                    onClick={() => {
-                      setMemberRemoved(member);
-                      handleCloseRemove();
-                    }}
-                  >
-                    {t("text.requestToLeave")}
+                  <div className="wrap-member-option">
+                    <div className="wrap-member-perm">
+                      <div className="member-email">{t("text.perm")}</div>
+                      <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                          {boardInfo.blackList &&
+                          boardInfo.blackList.includes(member)
+                            ? t("text.viewOnly")
+                            : t("text.viewAndEdit")}
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                          <Dropdown.Item
+                            onClick={() => handleOnAddPeopleToBlackList(member)}
+                          >
+                            {t("text.viewOnly")}
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() =>
+                              handleOnRemovePeopleFromBlackList(member)
+                            }
+                          >
+                            {t("text.viewAndEdit")}
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </div>
+
+                    <div
+                      className="member-action"
+                      onClick={() => {
+                        setMemberRemoved(member);
+                        handleCloseRemove();
+                      }}
+                    >
+                      {t("text.requestToLeave")}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -405,35 +450,6 @@ const BoardDetail = (props) => {
               <LineChart boardInfo={boardInfo} />
             </div>
           </div>
-          {/* <span
-            style={{
-              color: "#11324D",
-              fontSize: "22px",
-              fontWeight: "300",
-            }}
-          >
-            {t("text.DeletedBoard")}
-          </span>
-          <div className="wrap-list-member">
-            {listMembers &&
-              listMembers.map((member, index) => (
-                <div className="member-option" key={index}>
-                  <div className="member-info">
-                    <Avatar name={member} round={true} size="32" />
-                    <div className="member-email">{member}</div>
-                  </div>
-                  <div
-                    className="member-action"
-                    onClick={() => {
-                      setMemberRemoved(member);
-                      handleCloseRemove();
-                    }}
-                  >
-                    {t("text.requestToLeave")}
-                  </div>
-                </div>
-              ))}
-          </div> */}
         </Container>
       </div>
     </>

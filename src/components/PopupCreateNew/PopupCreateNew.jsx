@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LIST_COLOR_THEME } from "../../utils/constants";
+import Loading from "components/Loading/Loading";
 import "./PopupCreateNew.scss";
 import useAuth from "../../libs/hook/useAuth";
 
@@ -14,7 +15,7 @@ const PopupCreateNew = ({
   const { t } = useTranslation();
   const [boardTitle, setBoardTitle] = useState("");
   const [boardColor, setBoardColor] = useState("");
-  // const [template, setTemplate] = useState(false);
+  const [loading, setLoading] = useState(false);
   const auth = useAuth();
 
   const handleInputChange = (e) => {
@@ -45,6 +46,7 @@ const PopupCreateNew = ({
       alert("Nhap dung dinh dang");
     } else {
       handleOnAccept();
+      setLoading(!loading);
     }
   };
 
@@ -88,7 +90,7 @@ const PopupCreateNew = ({
             ))}
           </div>
         </form>
-
+        {loading && <Loading />}
         <div className="group-button">
           <button className="close" onClick={handleOnClosePopup}>
             {t("text.closeButton")}

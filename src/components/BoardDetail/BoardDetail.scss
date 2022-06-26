@@ -122,3 +122,19 @@
         }
     }
 }
+
+.wrap-member-option {
+    width: 420px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrap-member-perm {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

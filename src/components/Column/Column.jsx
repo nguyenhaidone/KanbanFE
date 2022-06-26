@@ -17,7 +17,7 @@ import "./Column.scss";
 import useAuth from "libs/hook/useAuth";
 
 const Column = (props) => {
-  const { column, onCardDrop, onUpdateColumn, handleOpenPopup } = props;
+  const { column, onCardDrop, onUpdateColumn, handleOpenPopup, board } = props;
   const cards = mapOrder(column.cards, column.cardOrder, "_id");
   const { t } = useTranslation();
   const [isShowConfirmPopup, setIsShowConfirmPopup] = useState(false);
@@ -181,7 +181,11 @@ const Column = (props) => {
           >
             {cards.map((card, index) => (
               <Draggable key={index}>
-                <Card card={card} handleOpenPopup={handleOpenPopup} />
+                <Card
+                  card={card}
+                  handleOpenPopup={handleOpenPopup}
+                  board={board}
+                />
               </Draggable>
             ))}
           </Container>
