@@ -49,6 +49,7 @@ const Card = (props) => {
     ).then((data) => {
       console.log(data);
     });
+    setIsCardShow(!isCardShow)
   };
   useEffect(() => {
     setDayLeft(getTimeRemaining(deadline));
